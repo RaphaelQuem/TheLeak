@@ -19,8 +19,6 @@ public class MyGdxGame  implements ApplicationListener
 	
 	IGameObject player;
 	GestureDetector detector;
-	Animation walkAnimation;
-	Animation idleAnimation;
 	Vector2 inputVector;
 	SpriteBatch batch;
 	float time;
