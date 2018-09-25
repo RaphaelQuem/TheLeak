@@ -4,8 +4,8 @@ import com.thousandeyes.TheLeak.Base.*;
 
 public interface IState
 {
-	public String Name;
-	public Animation StateAnimation;
-	public IGameObject GameObject;
+	public String getName()
+	public Animation getStateAnimation();
+	public IGameObject getGameObject();
 	public void Update(SpriteBatch batch, Float time);
 }

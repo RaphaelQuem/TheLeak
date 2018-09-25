@@ -2,7 +2,7 @@ package com.thousandeyes.TheLeak.State;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 
-public class PlayerIdleState implements IState
+public class EnemyIdleState implements IState
 {
 	private Animation stateAnimation;
 	private IGameObject gameObject;
@@ -22,8 +22,8 @@ public class PlayerIdleState implements IState
 	{
 		return name;
 	}
-	
-	public PlayerIdleState(IGameObject _gameObject){
+
+	public EnemyIdleState(IGameObject _gameObject){
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
@@ -32,7 +32,7 @@ public class PlayerIdleState implements IState
 	public void Update(SpriteBatch batch, Float time)
 	{
 		batch.draw(getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
-		
+
 	}
 
 }

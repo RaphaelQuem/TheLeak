@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 public interface IGameObject
 {
-	public String Name;
-	public IState State;
-	public Rectangle Transform;
+	public String getName();
+	public IState getState();
+	public Rectangle getTransform();
     public void Update(SpriteBatch batch, Float time);
 }

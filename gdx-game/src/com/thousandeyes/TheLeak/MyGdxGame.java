@@ -18,12 +18,14 @@ public class MyGdxGame  implements ApplicationListener
 
 	
 	IGameObject player;
+	IGameObject enemy;
+	
 	GestureDetector detector;
 	Vector2 inputVector;
 	SpriteBatch batch;
 	float time;
+	Rectangle ePosition;
 	Rectangle manPosition;
-	
 	@Override
 	public void create()
 	{
@@ -32,7 +34,14 @@ public class MyGdxGame  implements ApplicationListener
 		manPosition = new Rectangle();
 		manPosition.width = 150;
 		manPosition.height = 300;
+	manPosition.x =100;
+		ePosition = new Rectangle();
+		ePosition.width = 150;
+		ePosition.height = 300;
+	
+		
 		player = new Player(manPosition);
+		enemy = new Player(ePosition);
 		batch = new SpriteBatch();
 	}
 
@@ -49,6 +58,7 @@ public class MyGdxGame  implements ApplicationListener
 		
 				  
 		player.Update(batch,time);
+		enemy.Update(batch,time);
 			
 		batch.end();
 	
