@@ -12,12 +12,15 @@ public class Player implements IGameObject
 {
 	private Rectangle transform;
 	private IState state;
+	@Override
 	public String getName(){
 		return this.getClass().getName();
 	};
+	@Override
 	public IState getState(){
 		return this.state;
 	};
+	@Override
 	public Rectangle getTransform(){
 		return this.transform;
 	};
@@ -28,7 +31,7 @@ public class Player implements IGameObject
 		state = new PlayerIdleState(this);
 		
 	}
-
+	@Override
 	public void Update(SpriteBatch batch, Float time){
 		
 			this.transform.y += InputHandler.InputVector().y * speed;
