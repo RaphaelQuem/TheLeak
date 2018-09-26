@@ -61,14 +61,13 @@ public class MyGdxGame  implements ApplicationListener
 		batch.draw(texture, Gdx.graphics.getWidth() / 4, 0, 
 				   Gdx.graphics.getWidth() / 2, Gdx.graphics.getWidth() / 2);
 		
-		/*while(objectIterator.hasNext()){
-			objectIterator.next().Update(batch, time);*/
 	
 		float xprevious = player.getTransform().x;
 		float yprevious = player.getTransform().y;
 			
 		player.Update(batch, time);
 		enemy.Update(batch, time);
+		
 				 
 		if(player.getTransform().overlaps(enemy.getTransform()))
 		{
