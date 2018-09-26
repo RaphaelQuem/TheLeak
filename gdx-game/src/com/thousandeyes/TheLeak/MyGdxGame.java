@@ -41,7 +41,7 @@ public class MyGdxGame  implements ApplicationListener
 	
 		
 		player = new Player(manPosition);
-		enemy = new Player(ePosition);
+		enemy = new Enemy(ePosition);
 		batch = new SpriteBatch();
 	}
 

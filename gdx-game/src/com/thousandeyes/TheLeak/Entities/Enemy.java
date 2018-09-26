@@ -20,7 +20,6 @@ public class Enemy implements IGameObject
 	public Rectangle getTransform(){
 		return this.transform;
 	};
-	private float speed = 5;
 
 	public Enemy(Rectangle _transform){
 		transform = _transform;

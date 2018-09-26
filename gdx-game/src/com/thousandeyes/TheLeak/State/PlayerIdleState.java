@@ -31,7 +31,7 @@ public class PlayerIdleState implements IState
 	@Override
 	public void Update(SpriteBatch batch, Float time)
 	{
-		batch.draw(getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		batch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 		
 	}
 

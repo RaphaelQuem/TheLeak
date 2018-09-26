@@ -25,7 +25,7 @@ public class EnemyIdleState implements IState
 
 	public EnemyIdleState(IGameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
