@@ -7,6 +7,7 @@ public interface IGameObject
 {
 	public String getName();
 	public IState getState();
-	public Rectangle getTransform();
+	public Rectangle getTransform()
+	public void setTransform(Rectangle _transform);
     public void Update(SpriteBatch batch, Float time);
 }

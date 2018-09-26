@@ -10,6 +10,8 @@ import com.badlogic.gdx.input.*;
 import org.apache.http.conn.util.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.assets.loaders.*;
+import java.util.*;
+import android.preference.*;
 
 
 public class MyGdxGame  implements ApplicationListener
@@ -19,7 +21,8 @@ public class MyGdxGame  implements ApplicationListener
 	
 	IGameObject player;
 	IGameObject enemy;
-	
+	java.util.List<IGameObject> sceneObjects;
+	ListIterator<IGameObject> objectIterator;
 	GestureDetector detector;
 	Vector2 inputVector;
 	SpriteBatch batch;
@@ -34,15 +37,18 @@ public class MyGdxGame  implements ApplicationListener
 		manPosition = new Rectangle();
 		manPosition.width = 150;
 		manPosition.height = 300;
-	manPosition.x =100;
+		manPosition.x =100;
 		ePosition = new Rectangle();
 		ePosition.width = 150;
 		ePosition.height = 300;
 	
-		
+		sceneObjects = new ArrayList<IGameObject>();
 		player = new Player(manPosition);
 		enemy = new Enemy(ePosition);
+		sceneObjects.add(player);
+		sceneObjects.add(enemy);
 		batch = new SpriteBatch();
+		objectIterator = sceneObjects.listIterator();
 	}
 
 	@Override
@@ -54,16 +60,23 @@ public class MyGdxGame  implements ApplicationListener
 		time += Gdx.graphics.getDeltaTime();
 		batch.draw(texture, Gdx.graphics.getWidth() / 4, 0, 
 				   Gdx.graphics.getWidth() / 2, Gdx.graphics.getWidth() / 2);
-
 		
-				  
-		player.Update(batch,time);
-		enemy.Update(batch,time);
+		/*while(objectIterator.hasNext()){
+			objectIterator.next().Update(batch, time);*/
+	
+		Rectangle previous = player.getTransform();
 			
+		player.Update(batch, time);
+		enemy.Update(batch, time);
+				 
+		if(player.getTransform().overlaps(enemy.getTransform()))
+			player.setTransform(previous);
+		
+		
 		batch.end();
 	
 		
-}
+	}
 	@Override
 	public void dispose()
 	{

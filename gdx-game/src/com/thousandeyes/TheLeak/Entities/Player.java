@@ -23,7 +23,12 @@ public class Player implements IGameObject
 	@Override
 	public Rectangle getTransform(){
 		return this.transform;
-	};
+	} 
+	@Override
+	public void setTransform (Rectangle _transform)
+	{
+		this.transform = _transform;
+	}
 	private float speed = 5;
 
 	public Player(Rectangle _transform){
@@ -32,10 +37,14 @@ public class Player implements IGameObject
 		
 	}
 	@Override
-	public void Update(SpriteBatch batch, Float time){
-		
+	public void Update(SpriteBatch batch, Float time)
+	{
+			
+			
 			this.transform.y += InputHandler.InputVector().y * speed;
 		    this.transform.x += InputHandler.InputVector().x * speed;
+		
+			
 			state.Update(batch,time);
 			
 	}

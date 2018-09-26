@@ -19,7 +19,15 @@ public class Enemy implements IGameObject
 	@Override
 	public Rectangle getTransform(){
 		return this.transform;
-	};
+	}
+
+	@Override
+	public void setTransform(Rectangle _transform)
+	{
+		// TODO: Implement this method
+	}
+
+	
 
 	public Enemy(Rectangle _transform){
 		transform = _transform;
