@@ -37,7 +37,7 @@ public class MyGdxGame  implements ApplicationListener
 		manPosition = new Rectangle();
 		manPosition.width = 150;
 		manPosition.height = 300;
-		manPosition.x =100;
+		manPosition.x =300;
 		ePosition = new Rectangle();
 		ePosition.width = 150;
 		ePosition.height = 300;
@@ -64,13 +64,17 @@ public class MyGdxGame  implements ApplicationListener
 		/*while(objectIterator.hasNext()){
 			objectIterator.next().Update(batch, time);*/
 	
-		Rectangle previous = player.getTransform();
+		float xprevious = player.getTransform().x;
+		float yprevious = player.getTransform().y;
 			
 		player.Update(batch, time);
 		enemy.Update(batch, time);
 				 
 		if(player.getTransform().overlaps(enemy.getTransform()))
-			player.setTransform(previous);
+		{
+			player.getTransform().x = xprevious;
+			player.getTransform().y = yprevious;
+		}
 		
 		
 		batch.end();
