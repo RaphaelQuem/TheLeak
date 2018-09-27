@@ -45,6 +45,8 @@ public class MyGdxGame  implements ApplicationListener
 		sceneObjects.add(enemy);
 		batch = new SpriteBatch();
 		objectIterator = sceneObjects.listIterator();
+		GameResources.Objects.add(player);
+		GameResources.Objects.add(enemy); 
 	}
 
 	@Override
@@ -60,16 +62,17 @@ public class MyGdxGame  implements ApplicationListener
 	
 		float xprevious = player.getTransform().x;
 		float yprevious = player.getTransform().y;
-			
+	
+		
 		player.Update(batch, time);
 		enemy.Update(batch, time);
-		
-				 
+					 
 		if(player.getTransform().overlaps(enemy.getTransform()))
 		{
 			player.getTransform().x = xprevious;
 			player.getTransform().y = yprevious;
 		}
+		
 		
 		
 		batch.end();

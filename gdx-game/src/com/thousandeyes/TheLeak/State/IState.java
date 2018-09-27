@@ -8,4 +8,5 @@ public interface IState
 	public Animation getStateAnimation();
 	public IGameObject getGameObject();
 	public void Update(SpriteBatch batch, Float time);
+
 }
