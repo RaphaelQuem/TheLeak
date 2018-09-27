@@ -10,7 +10,7 @@ import com.thousandeyes.TheLeak.State.*;
 
 public class Player implements IGameObject
 {
-	private Rectangle transform;
+	private Transform transform;
 	private IState state;
 	@Override
 	public String getName(){
@@ -21,17 +21,17 @@ public class Player implements IGameObject
 		return this.state;
 	};
 	@Override
-	public Rectangle getTransform(){
+	public Transform getTransform(){
 		return this.transform;
 	} 
 	@Override
-	public void setTransform (Rectangle _transform)
+	public void setTransform (Transform _transform)
 	{
 		this.transform = _transform;
 	}
 	private float speed = 5;
 
-	public Player(Rectangle _transform){
+	public Player(Transform _transform){
 		transform = _transform;
 		state = new PlayerIdleState(this);
 		

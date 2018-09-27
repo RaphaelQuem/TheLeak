@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.*;
 
 public class Enemy implements IGameObject
 {
-	private Rectangle transform;
+	private Transform transform;
 	private IState state;
 	@Override
 	public String getName(){
@@ -17,19 +17,19 @@ public class Enemy implements IGameObject
 		return this.state;
 	};
 	@Override
-	public Rectangle getTransform(){
+	public Transform getTransform(){
 		return this.transform;
 	}
 
 	@Override
-	public void setTransform(Rectangle _transform)
+	public void setTransform(Transform _transform)
 	{
 		// TODO: Implement this method
 	}
 
 	
 
-	public Enemy(Rectangle _transform){
+	public Enemy(Transform _transform){
 		transform = _transform;
 		state = new EnemyIdleState(this);
 

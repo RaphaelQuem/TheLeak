@@ -27,21 +27,17 @@ public class MyGdxGame  implements ApplicationListener
 	Vector2 inputVector;
 	SpriteBatch batch;
 	float time;
-	Rectangle ePosition;
-	Rectangle manPosition;
+	Transform ePosition;
+	Transform manPosition;
 	@Override
 	public void create()
 	{
 		
 		texture = new Texture(Gdx.files.internal("android.jpg"));
-		manPosition = new Rectangle();
-		manPosition.width = 150;
-		manPosition.height = 300;
+		manPosition = new Transform(10,50);
 		manPosition.x =300;
-		ePosition = new Rectangle();
-		ePosition.width = 150;
-		ePosition.height = 300;
-	
+		ePosition = new Transform(10,30);
+		
 		sceneObjects = new ArrayList<IGameObject>();
 		player = new Player(manPosition);
 		enemy = new Enemy(ePosition);
