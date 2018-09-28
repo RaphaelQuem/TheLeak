@@ -17,14 +17,9 @@ import android.preference.*;
 public class MyGdxGame  implements ApplicationListener
 {
 	Texture texture;
-
-	static final int WORLD_WIDTH = 100;
-	static final int WORLD_HEIGHT = 100;
-
-	private OrthographicCamera cam;
 	
 	IGameObject player;
-	//IGameObject enemy;
+	IGameObject enemy;
 	java.util.List<IGameObject> sceneObjects;
 	ListIterator<IGameObject> objectIterator;
 	GestureDetector detector;
@@ -38,61 +33,50 @@ public class MyGdxGame  implements ApplicationListener
 	{
 		
 		texture = new Texture(Gdx.files.internal("android.jpg"));
-		manPosition = new Transform(100,100);
+		manPosition = new Transform(10f,40f);
 		manPosition.x =300;
-		ePosition = new Transform(10,30);
+		ePosition = new Transform(10f,30f);
 		ePosition.x = 999;
 		ePosition.y = 999;
 		
 		sceneObjects = new ArrayList<IGameObject>();
 		player = new Player(manPosition);
-		//enemy = new Enemy(ePosition);
+		enemy = new Enemy(ePosition);
 		sceneObjects.add(player);
-		//sceneObjects.add(enemy);
+		sceneObjects.add(enemy);
 		batch = new SpriteBatch();
 		objectIterator = sceneObjects.listIterator();
 		GameResources.Objects.add(player);
-
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-
-		// Constructs a new OrthographicCamera, using the given viewport width and height
-		// Height is multiplied by aspect ratio.
-		cam = new OrthographicCamera(30, 30 * (h / w));
-
-		cam.position.set(0,0, -1);
-		cam.update();
-		//GameResources.Objects.add(enemy); 
+		GameResources.Objects.add(enemy); 
 	}
 
 	@Override
 	public void render()
 	{       
-	cam.update();
-		batch.setProjectionMatrix(cam.combined);
+		time += Gdx.graphics.getDeltaTime();
 		
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		time += Gdx.graphics.getDeltaTime();
-		batch.draw(texture, Gdx.graphics.getWidth() / 4, 0, 
-				   Gdx.graphics.getWidth() / 2, Gdx.graphics.getWidth() / 2);
 		
-	
-		float xprevious = player.getTransform().x;
-		float yprevious = player.getTransform().y;
-	
-		cam.rotate(0.01f,0,0,1);
-		player.Update(batch, time);
-		//enemy.Update(batch, time);
-					 
-		/*if(player.getTransform().overlaps(enemy.getTransform()))
+		batch.draw(texture, 0, 0, 
+				   Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		objectIterator = GameResources.Objects.listIterator();
+		while(objectIterator.hasNext())
 		{
-			player.getTransform().x = xprevious;
-			player.getTransform().y = yprevious;
-		}*/
+			float xprevious = player.getTransform().x;
+			float yprevious = player.getTransform().y;
+			
+			
+			objectIterator.next().Update(batch,time);
 		
-		
+			if(player.getTransform().overlaps(enemy.getTransform()))
+			{
+				player.getTransform().x = xprevious;
+				player.getTransform().y = yprevious;
+			}
+		}
 		
 		batch.end();
 	
