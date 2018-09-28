@@ -23,6 +23,7 @@ public class MyGdxGame  implements ApplicationListener
 	java.util.List<IGameObject> sceneObjects;
 	ListIterator<IGameObject> objectIterator;
 	GestureDetector detector;
+	OrthographicCamera camera;
 	Vector2 inputVector;
 	SpriteBatch batch;
 	float time;
@@ -31,10 +32,12 @@ public class MyGdxGame  implements ApplicationListener
 	@Override
 	public void create()
 	{
-		
+		camera = new OrthographicCamera(1280f, 720f);
+		camera.position.set(1280f/2f,720f/2f,10f);
+		camera.update();
 		texture = new Texture(Gdx.files.internal("android.jpg"));
 		manPosition = new Transform(10f,40f);
-		manPosition.x =300;
+		manPosition.x =300f;
 		ePosition = new Transform(10f,30f);
 		ePosition.x = 999;
 		ePosition.y = 999;
@@ -57,6 +60,7 @@ public class MyGdxGame  implements ApplicationListener
 		
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		
 		batch.draw(texture, 0, 0, 
@@ -77,7 +81,13 @@ public class MyGdxGame  implements ApplicationListener
 				player.getTransform().y = yprevious;
 			}
 		}
-		
+	
+	
+		if(Gdx.input.isTouched())
+		{
+			camera.zoom +=0.001f;
+			camera.update();
+		}
 		batch.end();
 	
 		
