@@ -23,7 +23,6 @@ public class MyGdxGame  implements ApplicationListener
 	java.util.List<IGameObject> sceneObjects;
 	ListIterator<IGameObject> objectIterator;
 	GestureDetector detector;
-	OrthographicCamera camera;
 	Vector2 inputVector;
 	SpriteBatch batch;
 	float time;
@@ -32,11 +31,12 @@ public class MyGdxGame  implements ApplicationListener
 	@Override
 	public void create()
 	{
-		camera = new OrthographicCamera(1280f, 720f);
-		camera.position.set(1280f/2f,720f/2f,10f);
-		camera.update();
+		GameResources.Camera = new OrthographicCamera(1280f, 720f);
+		GameResources.Camera.position.set(1280f/2f,720f/2f,10f);
+		GameResources.Camera.update();
+		
 		texture = new Texture(Gdx.files.internal("android.jpg"));
-		manPosition = new Transform(10f,40f);
+		manPosition = new Transform(10f,100f);
 		manPosition.x =300f;
 		ePosition = new Transform(10f,30f);
 		ePosition.x = 999;
@@ -60,11 +60,10 @@ public class MyGdxGame  implements ApplicationListener
 		
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.setProjectionMatrix(camera.combined);
+		batch.setProjectionMatrix(GameResources.Camera.combined);
 		batch.begin();
 		
-		batch.draw(texture, 0, 0, 
-				   Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
 		
 		objectIterator = GameResources.Objects.listIterator();
 		while(objectIterator.hasNext())
@@ -85,8 +84,8 @@ public class MyGdxGame  implements ApplicationListener
 	
 		if(Gdx.input.isTouched())
 		{
-			camera.zoom +=0.001f;
-			camera.update();
+			GameResources.Camera.zoom +=0.001f;
+			GameResources.Camera.update();
 		}
 		batch.end();
 	
