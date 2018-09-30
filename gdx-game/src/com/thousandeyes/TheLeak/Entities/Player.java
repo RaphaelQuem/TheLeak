@@ -29,6 +29,11 @@ public class Player implements IGameObject
 	{
 		this.transform = _transform;
 	}
+	@Override
+	public void setState (IState _state)
+	{
+		this.state = _state;
+	}
 	private float speed = 5;
 
 	public Player(Transform _transform){

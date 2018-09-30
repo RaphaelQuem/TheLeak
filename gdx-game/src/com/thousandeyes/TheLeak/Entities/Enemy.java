@@ -20,7 +20,11 @@ public class Enemy implements IGameObject
 	public Transform getTransform(){
 		return this.transform;
 	}
-
+	@Override
+	public void setState (IState _state)
+	{
+		this.state = _state;
+	}
 	@Override
 	public void setTransform(Transform _transform)
 	{

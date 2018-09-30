@@ -36,7 +36,7 @@ public class MyGdxGame  implements ApplicationListener
 		GameResources.Camera.update();
 		
 		texture = new Texture(Gdx.files.internal("android.jpg"));
-		manPosition = new Transform(10f,100f);
+		manPosition = new Transform(10f,40f);
 		manPosition.x =300f;
 		ePosition = new Transform(10f,30f);
 		ePosition.x = 999;
@@ -62,18 +62,12 @@ public class MyGdxGame  implements ApplicationListener
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.setProjectionMatrix(GameResources.Camera.combined);
 		batch.begin();
-		
 		batch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
 		
 		objectIterator = GameResources.Objects.listIterator();
 		while(objectIterator.hasNext())
 		{
-			
-			
-			
-			objectIterator.next().Update(batch,time);
-		
-			
+			objectIterator.next().Update(batch,time);			
 		}
 	
 	

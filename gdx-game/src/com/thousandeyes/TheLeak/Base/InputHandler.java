@@ -16,9 +16,12 @@ public class InputHandler
 			}
 			else
 			{ 
-				Vector2 vec =new Vector2(Gdx.input.getX(), Gdx.input.getY()).sub(InputHandler.OriginalTouch).nor();
+				Vector2 vec =new Vector2(Gdx.input.getX(), Gdx.input.getY()).sub(InputHandler.OriginalTouch);
 				vec.y *= -1;
-				return vec;
+				if(Math.abs(vec.x) > 25f || Math.abs(vec.y) > 25f)
+					return vec.nor();
+				else
+					return Vector2.Zero;
 			}
 		}
 		else
