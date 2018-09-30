@@ -50,7 +50,8 @@ public class MyGdxGame  implements ApplicationListener
 		batch = new SpriteBatch();
 		objectIterator = sceneObjects.listIterator();
 		GameResources.Objects.add(player);
-		GameResources.Objects.add(enemy); 
+		GameResources.Objects.add(enemy);
+		GameResources.Objects.add(new Touchable());
 	}
 
 	@Override

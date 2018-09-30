@@ -30,7 +30,14 @@ public class InputHandler
 			return Vector2.Zero;
 		}
 	};
-	
-	
+	private static Boolean actionPressed;
+	public static void setActionPressed(Boolean _actionPressed)
+	{
+		actionPressed = _actionPressed;
+	}
+	public static Boolean getActionPressed() 
+	{
+		return actionPressed;
+	}
 	
 }
