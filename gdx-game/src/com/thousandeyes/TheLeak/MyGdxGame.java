@@ -68,17 +68,12 @@ public class MyGdxGame  implements ApplicationListener
 		objectIterator = GameResources.Objects.listIterator();
 		while(objectIterator.hasNext())
 		{
-			float xprevious = player.getTransform().x;
-			float yprevious = player.getTransform().y;
+			
 			
 			
 			objectIterator.next().Update(batch,time);
 		
-			if(player.getTransform().overlaps(enemy.getTransform()))
-			{
-				player.getTransform().x = xprevious;
-				player.getTransform().y = yprevious;
-			}
+			
 		}
 	
 	

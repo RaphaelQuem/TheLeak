@@ -24,13 +24,15 @@ public class Enemy implements IGameObject
 	@Override
 	public void setTransform(Transform _transform)
 	{
-		// TODO: Implement this method
+		// TODO: Implement this metho
+		
 	}
 
 	
 
 	public Enemy(Transform _transform){
 		transform = _transform;
+		transform.setOwner(this);
 		state = new EnemyIdleState(this);
 
 	}

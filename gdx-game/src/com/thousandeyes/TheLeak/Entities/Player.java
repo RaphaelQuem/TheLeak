@@ -33,17 +33,14 @@ public class Player implements IGameObject
 
 	public Player(Transform _transform){
 		transform = _transform;
+		transform.setOwner(this);
 		state = new PlayerIdleState(this);
 		
 	}
 	@Override
 	public void Update(SpriteBatch batch, Float time)
 	{
-			
-			
-			this.transform.y += InputHandler.InputVector().y * speed;
-		    this.transform.x += InputHandler.InputVector().x * speed;
-		
+			transform.AddTransform(InputHandler.InputVector(),speed);
 			
 			state.Update(batch,time);
 			
