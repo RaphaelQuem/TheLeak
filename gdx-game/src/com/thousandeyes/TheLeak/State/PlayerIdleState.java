@@ -42,7 +42,8 @@ public class PlayerIdleState implements IState
 		{
 			gameObject.setState(new PlayerWalkingState(gameObject));
 		}
-			
+		
+
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 		
 	}

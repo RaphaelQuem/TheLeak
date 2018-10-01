@@ -13,6 +13,7 @@ import com.badlogic.gdx.assets.loaders.*;
 import java.util.*;
 import android.preference.*;
 import com.badlogic.gdx.graphics.glutils.*;
+import android.os.*;
 
 
 public class MyGdxGame  implements ApplicationListener
@@ -71,6 +72,7 @@ public class MyGdxGame  implements ApplicationListener
 		
 		UpdateUI();
 		GameResources.SpriteBatch.end();
+		UpdateDebug();
 	
 		
 	}
@@ -87,6 +89,21 @@ public class MyGdxGame  implements ApplicationListener
 		if(!InputHandler.getActionPressed())
 			GameResources.SpriteBatch.draw(actionTexture, InputHandler.actionBounds.x, InputHandler.actionBounds.y, InputHandler.actionBounds.width, InputHandler.actionBounds.height);
 		
+	}
+	private void UpdateDebug()
+	{
+		if(GameResources.Debug) 
+		{
+
+			GameResources.ShapeRenderer.setProjectionMatrix(GameResources.Camera.combined);
+			GameResources.ShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+			GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
+			for(IGameObject obj : GameResources.Objects)
+			 {
+				 GameResources.ShapeRenderer.rect(obj.getTransform().x,obj.getTransform().y,obj.getTransform().width, obj.getTransform().height);
+			 }
+			 GameResources.ShapeRenderer.end();
+		}
 	}
 	@Override
 	public void dispose()
