@@ -17,6 +17,7 @@ public static Animation GetAnimationFromSpritesheet(String path, int cols, int r
 			frames[index++] = tmp[i][j];
 		}
 	}
+	
 	return new Animation(time, frames);
 	
 }
