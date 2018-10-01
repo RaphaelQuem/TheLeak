@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.thousandeyes.TheLeak.Entities.*;
 import com.badlogic.gdx.input.*;
-import org.apache.http.conn.util.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.assets.loaders.*;
 import java.util.*;
