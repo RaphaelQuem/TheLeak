@@ -43,11 +43,11 @@ public class Player implements IGameObject
 		
 	}
 	@Override
-	public void Update(SpriteBatch batch, Float time)
+	public void Update(Float time)
 	{
 			transform.AddTransform(InputHandler.InputVector(),speed);
 			
-			state.Update(batch,time);
+			state.Update(time);
 			
 	}
 }

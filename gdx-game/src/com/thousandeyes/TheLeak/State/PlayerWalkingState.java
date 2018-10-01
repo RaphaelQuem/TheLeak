@@ -32,12 +32,12 @@ public class PlayerWalkingState implements IState
 		name = this.getClass().getName();
 	}
 	@Override
-	public void Update(SpriteBatch batch, Float time)
+	public void Update( Float time)
 	{
 		if(InputHandler.InputVector()==null || InputHandler.InputVector().equals(Vector2.Zero))
 			gameObject.setState(new PlayerIdleState(gameObject));
 			
-		batch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
 	}
 

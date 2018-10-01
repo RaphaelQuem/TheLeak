@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.assets.loaders.*;
 import java.util.*;
 import android.preference.*;
+import com.badlogic.gdx.graphics.glutils.*;
 
 
 public class MyGdxGame  implements ApplicationListener
@@ -23,7 +24,7 @@ public class MyGdxGame  implements ApplicationListener
 	IGameObject player;
 	IGameObject enemy;
 	java.util.List<IGameObject> sceneObjects;
-	SpriteBatch batch;
+	
 	float time;
 	Transform ePosition;
 	Transform manPosition;
@@ -47,7 +48,9 @@ public class MyGdxGame  implements ApplicationListener
 		enemy = new Enemy(ePosition);
 		sceneObjects.add(player);
 		sceneObjects.add(enemy);
-		batch = new SpriteBatch();
+		
+		GameResources.SpriteBatch = new SpriteBatch();
+		GameResources.ShapeRenderer = new ShapeRenderer();
 	
 		GameResources.Objects.add(player);
 		GameResources.Objects.add(enemy);
@@ -58,16 +61,16 @@ public class MyGdxGame  implements ApplicationListener
 	{       
 		Init();
 		
-		batch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
+		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
 		
 	
 		for(IGameObject object : GameResources.Objects)
 		{
-			object.Update(batch, time);
+			object.Update(time);
 		}
 		
 		UpdateUI();
-		batch.end();
+		GameResources.SpriteBatch.end();
 	
 		
 	}
@@ -76,13 +79,13 @@ public class MyGdxGame  implements ApplicationListener
 		time += Gdx.graphics.getDeltaTime();
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.setProjectionMatrix(GameResources.Camera.combined);
-		batch.begin();
+		GameResources.SpriteBatch.setProjectionMatrix(GameResources.Camera.combined);
+		GameResources.SpriteBatch.begin();
 	}
 	private void UpdateUI()
 	{
 		if(!InputHandler.getActionPressed())
-			batch.draw(actionTexture, InputHandler.actionBounds.x, InputHandler.actionBounds.y, InputHandler.actionBounds.width, InputHandler.actionBounds.height);
+			GameResources.SpriteBatch.draw(actionTexture, InputHandler.actionBounds.x, InputHandler.actionBounds.y, InputHandler.actionBounds.width, InputHandler.actionBounds.height);
 		
 	}
 	@Override

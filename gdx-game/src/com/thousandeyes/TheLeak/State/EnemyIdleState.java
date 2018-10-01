@@ -29,9 +29,9 @@ public class EnemyIdleState implements IState
 		name = this.getClass().getName();
 	}
 	@Override
-	public void Update(SpriteBatch batch, Float time)
+	public void Update( Float time)
 	{
-		batch.draw(getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
 	}
 

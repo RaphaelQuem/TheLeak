@@ -7,6 +7,6 @@ public interface IState
 	public String getName()
 	public Animation getStateAnimation();
 	public IGameObject getGameObject();
-	public void Update(SpriteBatch batch, Float time);
+	public void Update(Float time);
 
 }

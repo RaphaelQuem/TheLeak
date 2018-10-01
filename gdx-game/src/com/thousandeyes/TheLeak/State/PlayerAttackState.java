@@ -35,7 +35,7 @@ public class PlayerAttackState implements IState
 		name = this.getClass().getName();
 	}
 	@Override
-	public void Update(SpriteBatch batch, Float time)
+	public void Update( Float time)
 	{
 		stateTime  += Gdx.graphics.getDeltaTime();
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
@@ -46,7 +46,7 @@ public class PlayerAttackState implements IState
 			gameObject.setState(new PlayerWalkingState(gameObject));
 			
 
-		batch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
 	}
 

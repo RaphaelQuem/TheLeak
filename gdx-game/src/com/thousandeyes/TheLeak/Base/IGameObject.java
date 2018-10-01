@@ -10,5 +10,5 @@ public interface IGameObject
 	public Transform getTransform()
 	public void setTransform(Transform _transform)
 	public void setState(IState _state);
-    public void Update(SpriteBatch batch, Float time);
+    public void Update (Float time);
 }

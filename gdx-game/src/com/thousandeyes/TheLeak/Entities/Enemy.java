@@ -41,10 +41,10 @@ public class Enemy implements IGameObject
 
 	}
 	@Override
-	public void Update(SpriteBatch batch, Float time){
+	public void Update(Float time){
 
 	
-		state.Update(batch,time);
+		state.Update(time);
 
 	}
 }
