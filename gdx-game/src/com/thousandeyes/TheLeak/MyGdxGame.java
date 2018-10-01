@@ -23,9 +23,6 @@ public class MyGdxGame  implements ApplicationListener
 	IGameObject player;
 	IGameObject enemy;
 	java.util.List<IGameObject> sceneObjects;
-	ListIterator<IGameObject> objectIterator;
-	GestureDetector detector;
-	Vector2 inputVector;
 	SpriteBatch batch;
 	float time;
 	Transform ePosition;
@@ -51,7 +48,7 @@ public class MyGdxGame  implements ApplicationListener
 		sceneObjects.add(player);
 		sceneObjects.add(enemy);
 		batch = new SpriteBatch();
-		objectIterator = sceneObjects.listIterator();
+	
 		GameResources.Objects.add(player);
 		GameResources.Objects.add(enemy);
 	}
