@@ -4,6 +4,7 @@ import com.badlogic.gdx.*;
 public class InputHandler
 
 {
+	public static Rectangle actionBounds = new Transform(GameResources.Camera.viewportWidth/100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
 	
 	public static Vector2 OriginalTouch;
 	public static Vector2 InputVector(){
@@ -37,7 +38,16 @@ public class InputHandler
 	}
 	public static Boolean getActionPressed() 
 	{
-		return actionPressed;
+		Vector3 touchPoint = new Vector3();
+
+		for (int i=0; i<5; i++){
+			if (!Gdx.input.isTouched(i)) continue;
+			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
+			if (actionBounds.contains(touchPoint.x, touchPoint.y)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

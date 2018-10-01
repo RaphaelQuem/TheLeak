@@ -17,6 +17,8 @@ import android.preference.*;
 public class MyGdxGame  implements ApplicationListener
 {
 	Texture texture;
+	Texture actionTexture;
+	
 	
 	IGameObject player;
 	IGameObject enemy;
@@ -36,6 +38,7 @@ public class MyGdxGame  implements ApplicationListener
 		GameResources.Camera.update();
 		
 		texture = new Texture(Gdx.files.internal("android.jpg"));
+		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 		manPosition = new Transform(10f,40f);
 		manPosition.x =300f;
 		ePosition = new Transform(10f,30f);
@@ -51,34 +54,38 @@ public class MyGdxGame  implements ApplicationListener
 		objectIterator = sceneObjects.listIterator();
 		GameResources.Objects.add(player);
 		GameResources.Objects.add(enemy);
-		GameResources.Objects.add(new Touchable());
 	}
 
 	@Override
 	public void render()
 	{       
-		time += Gdx.graphics.getDeltaTime();
+		Init();
 		
+		batch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
+		
+	
+		for(IGameObject object : GameResources.Objects)
+		{
+			object.Update(batch, time);
+		}
+		
+		UpdateUI();
+		batch.end();
+	
+		
+	}
+	private void Init()
+	{
+		time += Gdx.graphics.getDeltaTime();
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.setProjectionMatrix(GameResources.Camera.combined);
 		batch.begin();
-		batch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
-		
-		objectIterator = GameResources.Objects.listIterator();
-		while(objectIterator.hasNext())
-		{
-			objectIterator.next().Update(batch,time);			
-		}
-	
-	
-		if(Gdx.input.isTouched())
-		{
-			GameResources.Camera.zoom +=0.001f;
-			GameResources.Camera.update();
-		}
-		batch.end();
-	
+	}
+	private void UpdateUI()
+	{
+		if(!InputHandler.getActionPressed())
+			batch.draw(actionTexture, InputHandler.actionBounds.x, InputHandler.actionBounds.y, InputHandler.actionBounds.width, InputHandler.actionBounds.height);
 		
 	}
 	@Override

@@ -17,6 +17,12 @@ public class Transform extends Rectangle
 	public void setOwner(IGameObject _owner){
 		this.owner = _owner;
 	}
+	public Transform(float _x, float _y, float widthPct, float heightPct){
+		this.x = _x;
+		this.y = _y;
+		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
+		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+	}
 	public Transform(float widthPct, float heightPct){
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
