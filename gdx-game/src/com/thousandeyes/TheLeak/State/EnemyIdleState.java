@@ -16,9 +16,7 @@ public class EnemyIdleState implements IState
 	@Override
 	public Transform getCollider()
 	{
-		// TODO: Implement this method
-		return new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f, 10f);
-		
+		return new Transform();
 	}
 
 	

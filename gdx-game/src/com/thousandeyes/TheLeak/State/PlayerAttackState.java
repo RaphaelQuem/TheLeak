@@ -4,6 +4,7 @@ import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
 import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
+import java.util.*;
 
 public class PlayerAttackState implements IState
 {
@@ -11,6 +12,7 @@ public class PlayerAttackState implements IState
 	private IGameObject gameObject;
 	private float stateTime;
 	private String name;
+	private List<Transform> colliders;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -30,9 +32,9 @@ public class PlayerAttackState implements IState
 	@Override
 	public Transform getCollider()
 	{
-		return new Transform(gameObject.getTransform().x +gameObject.getTransform().width*2, gameObject.getTransform().y, 10f,10f);
-
-	}
+		double i = Math.floor(stateAnimation.getKeyFrameIndex(stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
+		return colliders.get((int)i);
+}
 
 	
 	public PlayerAttackState(IGameObject _gameObject){
@@ -41,6 +43,10 @@ public class PlayerAttackState implements IState
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",5,2,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName();
+		colliders = new ArrayList<Transform>();
+		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f));
+		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 20f,10f));
+		
 	}
 	@Override
 	public void Update( Float time)

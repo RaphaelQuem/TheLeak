@@ -23,6 +23,13 @@ public class Transform extends Rectangle
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
 	}
+
+	public Transform(){
+		this.x = 0;
+		this.y = 0;
+		this.width = 0;
+		this.height = 0;
+	}
 	public Transform(float widthPct, float heightPct){
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
