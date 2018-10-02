@@ -50,4 +50,12 @@ public class Player implements IGameObject
 			state.Update(time);
 			
 	}
+
+	@Override
+	public Transform getCollider()
+	{
+		return state.getCollider();
+	}
+
+	
 }

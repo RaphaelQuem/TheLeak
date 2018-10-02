@@ -15,6 +15,16 @@ public class PlayerWalkingState implements IState
 	{
 		return stateAnimation;
 	}
+
+	@Override
+	public Transform getCollider()
+	{
+		return new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f);
+	
+	
+	}
+
+	
 	@Override
 	public IGameObject getGameObject()
 	{

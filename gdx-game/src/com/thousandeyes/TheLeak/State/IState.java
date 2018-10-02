@@ -4,9 +4,10 @@ import com.thousandeyes.TheLeak.Base.*;
 
 public interface IState
 {
-	public String getName()
+	public String getName();
 	public Animation getStateAnimation();
 	public IGameObject getGameObject();
+	public Transform getCollider();
 	public void Update(Float time);
 
 }

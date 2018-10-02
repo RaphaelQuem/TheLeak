@@ -25,6 +25,15 @@ public class Enemy implements IGameObject
 	{
 		this.state = _state;
 	}
+
+	@Override
+	public Transform getCollider()
+	{
+		// TODO: Implement this method
+		return state.getCollider();
+	}
+
+	
 	@Override
 	public void setTransform(Transform _transform)
 	{

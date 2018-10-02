@@ -27,6 +27,14 @@ public class PlayerAttackState implements IState
 		return name;
 	}
 
+	@Override
+	public Transform getCollider()
+	{
+		return new Transform(gameObject.getTransform().x +gameObject.getTransform().width*2, gameObject.getTransform().y, 10f,10f);
+
+	}
+
+	
 	public PlayerAttackState(IGameObject _gameObject){
 		stateTime = 0f;
 		gameObject = _gameObject;

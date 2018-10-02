@@ -7,8 +7,9 @@ public interface IGameObject
 {
 	public String getName();
 	public IState getState();
-	public Transform getTransform()
-	public void setTransform(Transform _transform)
+	public Transform getTransform();
+	public void setTransform(Transform _transform);
 	public void setState(IState _state);
     public void Update (Float time);
+	public Transform getCollider();
 }

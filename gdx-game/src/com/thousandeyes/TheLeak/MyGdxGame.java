@@ -96,10 +96,13 @@ public class MyGdxGame  implements ApplicationListener
 
 			GameResources.ShapeRenderer.setProjectionMatrix(GameResources.Camera.combined);
 			GameResources.ShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-			GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
+			
 			for(IGameObject obj : GameResources.Objects)
 			 {
+				 GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
 				 GameResources.ShapeRenderer.rect(obj.getTransform().x,obj.getTransform().y,obj.getTransform().width, obj.getTransform().height);
+				 GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
+				 GameResources.ShapeRenderer.rect(obj.getCollider().x,obj.getCollider().y,obj.getCollider().width, obj.getCollider().height);
 			 }
 			 GameResources.ShapeRenderer.end();
 		}

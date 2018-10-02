@@ -25,6 +25,14 @@ public class PlayerIdleState implements IState
 	{
 		return name;
 	}
+
+	@Override
+	public Transform getCollider()
+	{
+		// TODO: Implement this method
+		return new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f);
+	}
+
 	
 	public PlayerIdleState(IGameObject _gameObject){
 		gameObject = _gameObject;
