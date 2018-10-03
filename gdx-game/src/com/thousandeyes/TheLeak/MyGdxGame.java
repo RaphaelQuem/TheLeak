@@ -96,7 +96,7 @@ public class MyGdxGame  implements ApplicationListener
 
 			GameResources.ShapeRenderer.setProjectionMatrix(GameResources.Camera.combined);
 			GameResources.ShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-			
+			Gdx.gl20.glLineWidth(4);
 			for(IGameObject obj : GameResources.Objects)
 			 {
 				 GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
