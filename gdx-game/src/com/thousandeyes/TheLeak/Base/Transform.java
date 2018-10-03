@@ -22,6 +22,7 @@ public class Transform extends Rectangle
 		this.y = _y;
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+		GameResources.TransformInstances.add(this);
 	}
 
 	public Transform(){
@@ -29,10 +30,12 @@ public class Transform extends Rectangle
 		this.y = 0;
 		this.width = 0;
 		this.height = 0;
+		GameResources.TransformInstances.add(this);
 	}
 	public Transform(float widthPct, float heightPct){
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+		GameResources.TransformInstances.add(this);
 	}
 	public void AddTransform(Vector2 transform, float multiplier)
 	{
