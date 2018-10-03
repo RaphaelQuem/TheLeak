@@ -10,12 +10,28 @@ public class Transform extends Rectangle
 {
 	private ListIterator<IGameObject> objectIterator;
 	private IGameObject owner;
+	private boolean isColliding;
 	public IGameObject getOwner()
 	{
 		return owner;
 	}
 	public void setOwner(IGameObject _owner){
 		this.owner = _owner;
+	}
+	public void CheckColisions()
+	{
+		isColliding = false;
+		for(Transform t : GameResources.TransformInstances)
+		{
+			if(t != this && this.overlaps(t))
+			{
+				isColliding = true;
+			}
+		}
+	} 
+	public boolean IsColliding()
+	{
+		return isColliding;
 	}
 	public Transform(float _x, float _y, float widthPct, float heightPct){
 		this.x = _x;

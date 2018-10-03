@@ -40,8 +40,8 @@ public class MyGdxGame  implements ApplicationListener
 		manPosition = new Transform(10f,40f);
 		manPosition.x =300f;
 		ePosition = new Transform(10f,30f);
-		ePosition.x = 999;
-		ePosition.y = 999;
+		ePosition.x = 500f;
+		
 		
 		sceneObjects = new ArrayList<IGameObject>();
 		player = new Player(manPosition);
@@ -62,7 +62,7 @@ public class MyGdxGame  implements ApplicationListener
 		Init();
 		
 		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
-		
+		CheckCollisions();
 	
 		for(IGameObject object : GameResources.Objects)
 		{
@@ -89,6 +89,12 @@ public class MyGdxGame  implements ApplicationListener
 			GameResources.SpriteBatch.draw(actionTexture, InputHandler.actionBounds.x, InputHandler.actionBounds.y, InputHandler.actionBounds.width, InputHandler.actionBounds.height);
 		
 	}
+	private void CheckCollisions()
+	{
+		for(Transform t : GameResources.TransformInstances)
+		{ t.CheckColisions();
+			}
+	}
 	private void UpdateDebug()
 	{
 		if(GameResources.Debug) 
@@ -99,9 +105,13 @@ public class MyGdxGame  implements ApplicationListener
 			Gdx.gl20.glLineWidth(4);
 			for(IGameObject obj : GameResources.Objects)
 			 {
+				 
 				 GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
 				 GameResources.ShapeRenderer.rect(obj.getTransform().x,obj.getTransform().y,obj.getTransform().width, obj.getTransform().height);
-				 GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
+				 if(obj.getCollider().IsColliding())
+				 	GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
+				 else
+					 GameResources.ShapeRenderer.setColor(0f,1f,0f,0f);
 				 GameResources.ShapeRenderer.rect(obj.getCollider().x,obj.getCollider().y,obj.getCollider().width, obj.getCollider().height);
 			 }
 			 GameResources.ShapeRenderer.end();
