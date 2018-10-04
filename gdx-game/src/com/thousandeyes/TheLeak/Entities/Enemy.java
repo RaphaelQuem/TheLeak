@@ -40,7 +40,11 @@ public class Enemy implements IGameObject
 		// TODO: Implement this metho
 		
 	}
-
+	public Enemy() 
+	{
+		transform = new Transform();
+		transform.setOwner(this);
+	}
 	
 
 	public Enemy(Transform _transform){

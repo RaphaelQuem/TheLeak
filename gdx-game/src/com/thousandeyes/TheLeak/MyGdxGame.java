@@ -46,14 +46,17 @@ public class MyGdxGame  implements ApplicationListener
 		sceneObjects = new ArrayList<IGameObject>();
 		player = new Player(manPosition);
 		enemy = new Enemy(ePosition);
+		
 		sceneObjects.add(player);
 		sceneObjects.add(enemy);
+
 		
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
 	
 		GameResources.Objects.add(player);
-		GameResources.Objects.add(enemy);
+		GameResources.Objects.add(enemy); 
+		GameResources.Objects.add(new Enemy(new Transform(900f, 0f,10f,30f)));
 	}
 
 	@Override
@@ -62,8 +65,7 @@ public class MyGdxGame  implements ApplicationListener
 		Init();
 		
 		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
-		CheckCollisions();
-	
+		
 		for(IGameObject object : GameResources.Objects)
 		{
 			object.Update(time);
@@ -89,12 +91,6 @@ public class MyGdxGame  implements ApplicationListener
 			GameResources.SpriteBatch.draw(actionTexture, InputHandler.actionBounds.x, InputHandler.actionBounds.y, InputHandler.actionBounds.width, InputHandler.actionBounds.height);
 		
 	}
-	private void CheckCollisions()
-	{
-		for(Transform t : GameResources.TransformInstances)
-		{ t.CheckColisions();
-			}
-	}
 	private void UpdateDebug()
 	{
 		if(GameResources.Debug) 
@@ -108,11 +104,16 @@ public class MyGdxGame  implements ApplicationListener
 				 
 				 GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
 				 GameResources.ShapeRenderer.rect(obj.getTransform().x,obj.getTransform().y,obj.getTransform().width, obj.getTransform().height);
-				 if(obj.getCollider().IsColliding())
+				
+				 for(IGameObject objy : GameResources.Objects)
+				 { 
+				 if(obj.getCollider().overlaps(objy.getTransform()))
 				 	GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
 				 else
 					 GameResources.ShapeRenderer.setColor(0f,1f,0f,0f);
+				}
 				 GameResources.ShapeRenderer.rect(obj.getCollider().x,obj.getCollider().y,obj.getCollider().width, obj.getCollider().height);
+				
 			 }
 			 GameResources.ShapeRenderer.end();
 		}

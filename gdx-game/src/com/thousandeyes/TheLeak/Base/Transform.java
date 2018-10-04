@@ -18,20 +18,17 @@ public class Transform extends Rectangle
 	public void setOwner(IGameObject _owner){
 		this.owner = _owner;
 	}
-	public void CheckColisions()
+	
+	public boolean IsColliding()
 	{
-		isColliding = false;
 		for(Transform t : GameResources.TransformInstances)
 		{
 			if(t != this && this.overlaps(t))
 			{
-				isColliding = true;
+				return true;
 			}
 		}
-	} 
-	public boolean IsColliding()
-	{
-		return isColliding;
+		return false;
 	}
 	public Transform(float _x, float _y, float widthPct, float heightPct){
 		this.x = _x;
