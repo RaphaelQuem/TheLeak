@@ -31,10 +31,9 @@ public class EnemyIdleState implements IState
 		return name;
 	}
 
-	public EnemyIdleState(IGameObject _gameObject)
-	{
+	public EnemyIdleState(IGameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-idle-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
@@ -47,7 +46,7 @@ public class EnemyIdleState implements IState
 	@Override
 	public void onTriggerEnter()
 	{
-		this.gameObject.setState(new EnemyHitState(this.gameObject));
+		// TODO: Implement this method
 	}
 
 

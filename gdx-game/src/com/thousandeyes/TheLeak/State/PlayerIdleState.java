@@ -54,4 +54,11 @@ public class PlayerIdleState implements IState
 		
 	}
 
+	@Override
+	public void onTriggerEnter()
+	{
+		// TODO: Implement this method
+	}
+
+	
 }

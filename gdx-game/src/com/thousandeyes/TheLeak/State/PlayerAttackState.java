@@ -56,12 +56,17 @@ public class PlayerAttackState implements IState
 		{
 			gameObject.setState(new PlayerIdleState(gameObject));
 		}
-		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero))
-			gameObject.setState(new PlayerWalkingState(gameObject));
 			
 
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
 	}
 
+	@Override
+	public void onTriggerEnter()
+	{
+		// TODO: Implement this method
+	}
+
+	
 }
