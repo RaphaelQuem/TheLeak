@@ -104,14 +104,15 @@ public class MyGdxGame  implements ApplicationListener
 				 
 				 GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
 				 GameResources.ShapeRenderer.rect(obj.getTransform().x,obj.getTransform().y,obj.getTransform().width, obj.getTransform().height);
-				
+				 GameResources.ShapeRenderer.setColor(0f,1f,0f,0f);
 				 for(IGameObject objy : GameResources.Objects)
 				 { 
+					 
 				 if(obj.getCollider().overlaps(objy.getTransform()))
+				 {
 				 	GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
-				 else
-					 GameResources.ShapeRenderer.setColor(0f,1f,0f,0f);
 				}
+				 }
 				 GameResources.ShapeRenderer.rect(obj.getCollider().x,obj.getCollider().y,obj.getCollider().width, obj.getCollider().height);
 				
 			 }
