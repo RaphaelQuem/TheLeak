@@ -21,7 +21,7 @@ public class MyGdxGame  implements ApplicationListener
 	Texture actionTexture;
 	
 	
-	IGameObject player;
+
 	IGameObject enemy;
 	java.util.List<IGameObject> sceneObjects;
 	
@@ -43,18 +43,15 @@ public class MyGdxGame  implements ApplicationListener
 		ePosition.x = 500f;
 		
 		
-		sceneObjects = new ArrayList<IGameObject>();
-		player = new Player(manPosition);
-		enemy = new Enemy(ePosition);
-		
-		sceneObjects.add(player);
-		sceneObjects.add(enemy);
 
-		
+		enemy = new Enemy(ePosition);
+	
+
+		GameResources.Player = new Player(manPosition);
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
 	
-		GameResources.Objects.add(player);
+		GameResources.Objects.add(GameResources.Player);
 		GameResources.Objects.add(enemy); 
 		GameResources.Objects.add(new Enemy(new Transform(900f, 0f,10f,30f)));
 	}

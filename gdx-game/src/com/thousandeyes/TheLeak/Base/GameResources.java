@@ -3,6 +3,7 @@ import java.util.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.glutils.*;
 import com.badlogic.gdx.graphics.g2d.*;
+import com.thousandeyes.TheLeak.Entities.*;
 
 public class GameResources
 {
@@ -10,6 +11,7 @@ public class GameResources
 	public static List<Transform> TransformInstances = new ArrayList<Transform>();
 	public static List<IGameObject> Objects = new ArrayList<IGameObject>();
 	public static boolean Debug = true;
+	public static Player Player;
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
 }

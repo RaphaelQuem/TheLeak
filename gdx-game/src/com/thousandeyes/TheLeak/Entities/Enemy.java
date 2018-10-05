@@ -58,7 +58,7 @@ public class Enemy implements IGameObject
 	public Enemy(Transform _transform){
 		transform = _transform;
 		transform.setOwner(this);
-		state = new EnemyIdleState(this);
+		state = new EnemyWalkingState(this);
 
 	}
 	@Override
