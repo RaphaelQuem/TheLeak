@@ -20,6 +20,14 @@ public class Enemy implements IGameObject
 	public Transform getTransform(){
 		return this.transform;
 	}
+
+	@Override
+	public float getSpeed()
+	{
+		return 0;
+	}
+
+	
 	@Override
 	public void setState (IState _state)
 	{

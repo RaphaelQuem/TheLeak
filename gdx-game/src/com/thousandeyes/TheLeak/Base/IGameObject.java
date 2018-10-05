@@ -7,6 +7,7 @@ public interface IGameObject
 {
 	public String getName();
 	public IState getState();
+	public float getSpeed();
 	public Transform getTransform();
 	public void setTransform(Transform _transform);
 	public void setState(IState _state);

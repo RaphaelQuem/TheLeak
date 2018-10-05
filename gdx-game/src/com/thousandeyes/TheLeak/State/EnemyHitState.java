@@ -2,6 +2,7 @@ package com.thousandeyes.TheLeak.State;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.math.*;
 
 public class EnemyHitState implements IState
 {
@@ -36,12 +37,13 @@ public class EnemyHitState implements IState
 	public EnemyHitState(IGameObject _gameObject){
 		stateTime = 0f;
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-hit-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-hit-spritesheet.png",5,1,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
 	public void Update( Float time)
 	{
+		this.gameObject.getTransform().AddTransform(new Vector2(3f,0f),1f);
 		stateTime  += Gdx.graphics.getDeltaTime();
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{

@@ -10,7 +10,6 @@ public class Transform extends Rectangle
 {
 	private ListIterator<IGameObject> objectIterator;
 	private IGameObject owner;
-	private boolean isColliding;
 	public IGameObject getOwner()
 	{
 		return owner;

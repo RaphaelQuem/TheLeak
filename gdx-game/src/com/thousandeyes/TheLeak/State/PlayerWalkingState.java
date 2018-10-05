@@ -42,6 +42,7 @@ public class PlayerWalkingState implements IState
 	@Override
 	public void Update( Float time)
 	{
+		this.gameObject.getTransform().AddTransform(InputHandler.InputVector(),this.gameObject.getSpeed());
 		if(InputHandler.InputVector()==null || InputHandler.InputVector().equals(Vector2.Zero))
 			gameObject.setState(new PlayerIdleState(gameObject));
 			

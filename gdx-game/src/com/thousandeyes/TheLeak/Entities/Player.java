@@ -34,7 +34,14 @@ public class Player implements IGameObject
 	{
 		this.state = _state;
 	}
-	private float speed = 5;
+
+	@Override
+	public float getSpeed()
+	{
+		return 5f;
+	}
+
+	
 
 	public Player(Transform _transform){
 		transform = _transform;
@@ -45,7 +52,7 @@ public class Player implements IGameObject
 	@Override
 	public void Update(Float time)
 	{
-			transform.AddTransform(InputHandler.InputVector(),speed);
+			
 			
 			state.Update(time);
 			
