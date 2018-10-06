@@ -4,6 +4,7 @@ import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
 import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
+import java.util.*;
 
 public class EnemyWalkingState implements IState
 {
@@ -44,10 +45,14 @@ public class EnemyWalkingState implements IState
 	{
 		
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
+		if(Math.abs(movVector.x)<=200f)
+			this.gameObject.setState(new EnemyAttackState(this.gameObject));
+	
 		this.gameObject.getTransform().AddTransform(movVector.nor(),2);
 		
-		if(!movVector.equals(Vector2.Zero))
-			gameObject.setState(new PlayerIdleState(gameObject));
+		
+		if(movVector.equals(Vector2.Zero))
+			gameObject.setState(new EnemyIdleState(gameObject));
 
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
@@ -56,7 +61,7 @@ public class EnemyWalkingState implements IState
 	@Override
 	public void onTriggerEnter()
 	{
-		// TODO: Implement this method
+		this.gameObject.setState(new EnemyHitState(this.gameObject));
 	}
 
 

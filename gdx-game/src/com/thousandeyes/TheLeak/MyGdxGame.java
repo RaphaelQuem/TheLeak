@@ -25,12 +25,15 @@ public class MyGdxGame  implements ApplicationListener
 	IGameObject enemy;
 	java.util.List<IGameObject> sceneObjects;
 	
+	
 	float time;
 	Transform ePosition;
 	Transform manPosition;
+	BitmapFont font;
 	@Override
 	public void create()
 	{
+		font = new BitmapFont();
 		GameResources.Camera = new OrthographicCamera(1280f, 720f);
 		GameResources.Camera.position.set(1280f/2f,720f/2f,10f);
 		GameResources.Camera.update();
@@ -67,7 +70,7 @@ public class MyGdxGame  implements ApplicationListener
 		{
 			object.Update(time);
 		}
-		
+		font.draw(GameResources.SpriteBatch,"teste",10f,10f);
 		UpdateUI();
 		GameResources.SpriteBatch.end();
 		UpdateDebug();
