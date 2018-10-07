@@ -23,7 +23,6 @@ public class MyGdxGame  implements ApplicationListener
 	
 
 	IGameObject enemy;
-	java.util.List<IGameObject> sceneObjects;
 	
 	
 	float time;
