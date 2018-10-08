@@ -4,6 +4,7 @@ import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
 import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
+import com.badlogic.gdx.graphics.*;
 
 public class PlayerWalkingState implements IState
 {
@@ -46,7 +47,11 @@ public class PlayerWalkingState implements IState
 		if(InputHandler.InputVector()==null || InputHandler.InputVector().equals(Vector2.Zero))
 			gameObject.setState(new PlayerIdleState(gameObject));
 			
+		if(!this.getStateAnimation().getKeyFrame(time, true).isFlipX())
+			this.getStateAnimation().getKeyFrame(time, true).flip(isFlipped(),false);
+			
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		
 
 	}
 
@@ -55,6 +60,13 @@ public class PlayerWalkingState implements IState
 	{
 		// TODO: Implement this method
 	}
+
+	@Override
+	public boolean isFlipped()
+	{
+		return InputHandler.InputVector().x < 0;
+	}
+
 
 
 

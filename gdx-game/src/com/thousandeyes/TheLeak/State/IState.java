@@ -4,6 +4,7 @@ import com.thousandeyes.TheLeak.Base.*;
 
 public interface IState
 {
+	public boolean isFlipped();
 	public String getName();
 	public Animation getStateAnimation();
 	public IGameObject getGameObject();

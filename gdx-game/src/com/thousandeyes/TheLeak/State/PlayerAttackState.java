@@ -30,6 +30,7 @@ public class PlayerAttackState implements IState
 	}
 
 	@Override
+	
 	public Transform getCollider()
 	{
 		double i = Math.floor(stateAnimation.getKeyFrameIndex(stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
@@ -68,5 +69,13 @@ public class PlayerAttackState implements IState
 		// TODO: Implement this method
 	}
 
+	@Override
+	public boolean isFlipped()
+	{
+		// TODO: Implement this method
+		return false;
+	}
+
+	
 	
 }
