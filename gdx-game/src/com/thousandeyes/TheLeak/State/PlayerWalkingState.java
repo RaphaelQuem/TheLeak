@@ -69,7 +69,7 @@ public class PlayerWalkingState implements IState
 		{
 			return true;
 		}
-		if(InputHandler.InputVector().x >=  0 && animationFlipped) 
+		if(InputHandler.InputVector().x >  0 && animationFlipped) 
 		{
 			return true;
 		}

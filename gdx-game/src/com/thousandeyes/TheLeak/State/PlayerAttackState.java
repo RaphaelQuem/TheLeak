@@ -13,6 +13,7 @@ public class PlayerAttackState implements IState
 	private float stateTime;
 	private String name;
 	private List<Transform> colliders;
+	private boolean animationFlipped;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -34,7 +35,12 @@ public class PlayerAttackState implements IState
 	public Transform getCollider()
 	{
 		double i = Math.floor(stateAnimation.getKeyFrameIndex(stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
-		return colliders.get((int)i);
+		Transform collider = colliders.get((int)i);
+		if(this.getStateAnimation().getKeyFrame(stateTime).isFlipX())
+		{
+			collider.x = collider.x - collider.width - this.gameObject.getTransform().width;
+		}
+		return collider;
 }
 
 	
@@ -43,7 +49,7 @@ public class PlayerAttackState implements IState
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",5,2,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
-		name = this.getClass().getName();
+		name = this.getClass().getName(); 
 		colliders = new ArrayList<Transform>();
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f));
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 20f,10f));
@@ -58,7 +64,9 @@ public class PlayerAttackState implements IState
 			gameObject.setState(new PlayerIdleState(gameObject));
 		}
 			
-
+		animationFlipped = this.getStateAnimation().getKeyFrame(time, true).isFlipX();
+		this.getStateAnimation().getKeyFrame(time, true).flip(isFlipped(),false);
+		
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
 	}
@@ -69,13 +77,17 @@ public class PlayerAttackState implements IState
 		// TODO: Implement this method
 	}
 
-	@Override
 	public boolean isFlipped()
 	{
-		// TODO: Implement this method
+		if(InputHandler.InputVector().x < 0 && !animationFlipped) 
+		{
+			return true;
+		}
+		if(InputHandler.InputVector().x >  0 && animationFlipped) 
+		{
+			return true;
+		}
 		return false;
 	}
-
-	
 	
 }
