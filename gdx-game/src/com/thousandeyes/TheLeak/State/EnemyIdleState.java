@@ -55,14 +55,4 @@ public class EnemyIdleState implements IState
 	{
 		this.gameObject.setState(new EnemyHitState(this.gameObject));
 	}
-
-	@Override
-	public boolean isFlipped()
-	{
-		// TODO: Implement this method
-		return false;
-	}
-
-	
-
 }

@@ -59,12 +59,7 @@ public class EnemyHitState implements IState
 		// TODO: Implement this method
 	}
 
-	@Override
-	public boolean isFlipped()
-	{
-		// TODO: Implement this method
-		return false;
-	}
+	
 
 	
 

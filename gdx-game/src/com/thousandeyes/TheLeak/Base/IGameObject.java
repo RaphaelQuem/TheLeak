@@ -13,4 +13,6 @@ public interface IGameObject
 	public void setState(IState _state);
     public void Update (Float time);
 	public Transform getCollider();
+	public boolean getFlipped();
+	public void setFlipped(boolean _flipped);
 }

@@ -8,6 +8,7 @@ public class Enemy implements IGameObject
 {
 	private Transform transform;
 	private IState state;
+	private boolean flipped;
 	@Override
 	public String getName(){
 		return this.getClass().getName();
@@ -68,4 +69,19 @@ public class Enemy implements IGameObject
 		state.Update(time);
 
 	}
+
+	@Override
+	public boolean getFlipped()
+	{
+		return flipped;
+	}
+
+	@Override
+	public void setFlipped(boolean _flipped)
+	{
+		flipped =_flipped;
+	}
+
+
+	
 }

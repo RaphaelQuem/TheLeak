@@ -45,11 +45,26 @@ public class PlayerWalkingState implements IState
 	public void Update( Float time)
 	{
 		this.gameObject.getTransform().AddTransform(InputHandler.InputVector(),this.gameObject.getSpeed());
+		boolean flipFrame = false;
+		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
+			this.gameObject.setFlipped(true);
+		if(this.gameObject.getFlipped() && InputHandler.InputVector().x > 0)
+			this.gameObject.setFlipped(false);
+		
+		if
+		(
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(time,true).isFlipX()
+			||
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(time,true).isFlipX()
+		)
+			flipFrame = true;
+			
 		if(InputHandler.InputVector()==null || InputHandler.InputVector().equals(Vector2.Zero))
 			gameObject.setState(new PlayerIdleState(gameObject));
-			
-		animationFlipped = this.getStateAnimation().getKeyFrame(time, true).isFlipX();
-		this.getStateAnimation().getKeyFrame(time, true).flip(isFlipped(),false);
+		
+		
+		
+		this.getStateAnimation().getKeyFrame(time, true).flip(flipFrame,false);
 			
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 		
@@ -62,21 +77,4 @@ public class PlayerWalkingState implements IState
 		// TODO: Implement this method
 	}
 
-	@Override
-	public boolean isFlipped()
-	{
-		if(InputHandler.InputVector().x < 0 && !animationFlipped) 
-		{
-			return true;
-		}
-		if(InputHandler.InputVector().x >  0 && animationFlipped) 
-		{
-			return true;
-		}
-		return false;
 	}
-
-
-
-
-}

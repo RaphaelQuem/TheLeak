@@ -12,6 +12,7 @@ public class Player implements IGameObject
 {
 	private Transform transform;
 	private IState state;
+	private boolean flipped;
 	@Override
 	public String getName(){
 		return this.getClass().getName();
@@ -63,6 +64,16 @@ public class Player implements IGameObject
 	{
 		return state.getCollider();
 	}
+	@Override
+	public boolean getFlipped()
+	{
+		return flipped;
+	}
 
+	@Override
+	public void setFlipped(boolean _flipped)
+	{
+		flipped =_flipped;
+	}
 	
 }
