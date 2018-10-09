@@ -11,6 +11,7 @@ public class PlayerWalkingState implements IState
 	private Animation stateAnimation;
 	private IGameObject gameObject;
 	private String name;
+	private boolean animationFlipped;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -47,8 +48,8 @@ public class PlayerWalkingState implements IState
 		if(InputHandler.InputVector()==null || InputHandler.InputVector().equals(Vector2.Zero))
 			gameObject.setState(new PlayerIdleState(gameObject));
 			
-		if(!this.getStateAnimation().getKeyFrame(time, true).isFlipX())
-			this.getStateAnimation().getKeyFrame(time, true).flip(isFlipped(),false);
+		animationFlipped = this.getStateAnimation().getKeyFrame(time, true).isFlipX();
+		this.getStateAnimation().getKeyFrame(time, true).flip(isFlipped(),false);
 			
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 		
@@ -64,7 +65,15 @@ public class PlayerWalkingState implements IState
 	@Override
 	public boolean isFlipped()
 	{
-		return InputHandler.InputVector().x < 0;
+		if(InputHandler.InputVector().x < 0 && !animationFlipped) 
+		{
+			return true;
+		}
+		if(InputHandler.InputVector().x >=  0 && animationFlipped) 
+		{
+			return true;
+		}
+		return false;
 	}
 
 
