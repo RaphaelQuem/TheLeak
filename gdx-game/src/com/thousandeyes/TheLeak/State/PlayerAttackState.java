@@ -38,7 +38,7 @@ public class PlayerAttackState implements IState
 		Transform collider = colliders.get((int)i);
 		if(this.getStateAnimation().getKeyFrame(stateTime).isFlipX())
 		{
-			collider.x = collider.x - collider.width - this.gameObject.getTransform().width;
+			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
 		}
 		return collider;
 }

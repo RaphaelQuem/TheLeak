@@ -9,7 +9,9 @@ import java.util.*;
 public class Transform extends Rectangle
 {
 	private ListIterator<IGameObject> objectIterator;
-	private IGameObject owner;
+	private IGameObject owner; 
+	private float screenWidthPercentage;
+	private float screenHeightPercentage;
 	public IGameObject getOwner()
 	{
 		return owner;
@@ -32,9 +34,19 @@ public class Transform extends Rectangle
 	public Transform(float _x, float _y, float widthPct, float heightPct){
 		this.x = _x;
 		this.y = _y;
+		this.screenHeightPercentage = heightPct;
+		this.screenWidthPercentage = widthPct;
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
 		GameResources.TransformInstances.add(this);
+	}
+	public float getWidthPercentage() 
+	{
+		return this.screenWidthPercentage;
+	}
+	public float getHeightPercentage()
+	{
+		return this.screenHeightPercentage;
 	}
 
 	public Transform(){
