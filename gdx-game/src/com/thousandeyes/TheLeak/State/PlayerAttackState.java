@@ -36,7 +36,7 @@ public class PlayerAttackState implements IState
 	{
 		double i = Math.floor(stateAnimation.getKeyFrameIndex(stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
 		Transform collider = colliders.get((int)i);
-		if(this.getStateAnimation().getKeyFrame(stateTime).isFlipX())
+		if(this.gameObject.getFlipped())
 		{
 			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
 		}
@@ -63,9 +63,17 @@ public class PlayerAttackState implements IState
 		{
 			gameObject.setState(new PlayerIdleState(gameObject));
 		}
+		boolean flipFrame = false;
+		if
+		(
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			||
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			)
+			flipFrame = true;
 			
-		animationFlipped = this.getStateAnimation().getKeyFrame(time, true).isFlipX();
-		this.getStateAnimation().getKeyFrame(time, true).flip(isFlipped(),false);
+	
+		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
@@ -75,19 +83,6 @@ public class PlayerAttackState implements IState
 	public void onTriggerEnter()
 	{
 		// TODO: Implement this method
-	}
-
-	public boolean isFlipped()
-	{
-		if(InputHandler.InputVector().x < 0 && !animationFlipped) 
-		{
-			return true;
-		}
-		if(InputHandler.InputVector().x >  0 && animationFlipped) 
-		{
-			return true;
-		}
-		return false;
 	}
 	
 }

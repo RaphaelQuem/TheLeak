@@ -11,7 +11,7 @@ public class PlayerWalkingState implements IState
 	private Animation stateAnimation;
 	private IGameObject gameObject;
 	private String name;
-	private boolean animationFlipped;
+	
 	@Override
 	public Animation getStateAnimation()
 	{

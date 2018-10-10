@@ -10,6 +10,7 @@ public class PlayerIdleState implements IState
 	private Animation stateAnimation;
 	private IGameObject gameObject;
 	private String name;
+	private float stateTime;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -40,6 +41,7 @@ public class PlayerIdleState implements IState
 	@Override
 	public void Update(Float time)
 	{
+		stateTime += Gdx.graphics.getDeltaTime();
 		if(InputHandler.getActionPressed())
 		{
 			gameObject.setState(new PlayerAttackState(gameObject));
@@ -48,6 +50,17 @@ public class PlayerIdleState implements IState
 		{
 			gameObject.setState(new PlayerWalkingState(gameObject));
 		}
+		boolean flipFrame = false;
+		if
+		(
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			||
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			)
+			flipFrame = true;
+
+
+		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
 
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);

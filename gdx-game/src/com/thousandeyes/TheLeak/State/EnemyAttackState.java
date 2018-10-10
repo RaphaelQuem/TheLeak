@@ -52,6 +52,7 @@ public class EnemyAttackState implements IState
 	public void Update( Float time)
 	{
 		stateTime  += Gdx.graphics.getDeltaTime();
+		
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{
 			gameObject.setState(new EnemyIdleState(gameObject));
