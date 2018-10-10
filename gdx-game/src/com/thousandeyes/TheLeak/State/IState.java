@@ -9,6 +9,6 @@ public interface IState
 	public IGameObject getGameObject();
 	public void onTriggerEnter();
 	public Transform getCollider();
-	public void Update(Float time);
+	public void Update();
 
 }

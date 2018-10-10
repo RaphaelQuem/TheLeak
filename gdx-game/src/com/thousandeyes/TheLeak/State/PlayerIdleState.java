@@ -39,7 +39,7 @@ public class PlayerIdleState implements IState
 		name = this.getClass().getName();
 	}
 	@Override
-	public void Update(Float time)
+	public void Update()
 	{
 		stateTime += Gdx.graphics.getDeltaTime();
 		if(InputHandler.getActionPressed())
@@ -50,6 +50,12 @@ public class PlayerIdleState implements IState
 		{
 			gameObject.setState(new PlayerWalkingState(gameObject));
 		}
+	
+		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
+			this.gameObject.setFlipped(true);
+		if(this.gameObject.getFlipped() && InputHandler.InputVector().x > 0)
+			this.gameObject.setFlipped(false);
+		
 		boolean flipFrame = false;
 		if
 		(
@@ -63,7 +69,7 @@ public class PlayerIdleState implements IState
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
 
-		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 		
 	}
 

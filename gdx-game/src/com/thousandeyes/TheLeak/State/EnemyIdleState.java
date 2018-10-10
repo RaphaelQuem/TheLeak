@@ -41,12 +41,24 @@ public class EnemyIdleState implements IState
 		name = this.getClass().getName();
 	}
 	@Override
-	public void Update( Float time)
+	public void Update()
 	{
 		stateTime += Gdx.graphics.getDeltaTime();
 		if(stateTime >= 1f)
 			this.gameObject.setState(new EnemyWalkingState(this.gameObject));
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		
+		boolean flipFrame = false;
+		if
+		(
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			||
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			)
+			flipFrame = true;
+
+		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 
 	}
 

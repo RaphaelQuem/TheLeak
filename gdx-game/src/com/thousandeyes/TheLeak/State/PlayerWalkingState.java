@@ -11,6 +11,7 @@ public class PlayerWalkingState implements IState
 	private Animation stateAnimation;
 	private IGameObject gameObject;
 	private String name;
+	private float stateTime;
 	
 	@Override
 	public Animation getStateAnimation()
@@ -40,10 +41,12 @@ public class PlayerWalkingState implements IState
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
+		stateTime = 0f;
 	}
 	@Override
-	public void Update( Float time)
+	public void Update()
 	{
+		stateTime += Gdx.graphics.getDeltaTime();
 		this.gameObject.getTransform().AddTransform(InputHandler.InputVector(),this.gameObject.getSpeed());
 		boolean flipFrame = false;
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
@@ -53,9 +56,9 @@ public class PlayerWalkingState implements IState
 		
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(time,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(time,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
 		)
 			flipFrame = true;
 			
@@ -64,9 +67,9 @@ public class PlayerWalkingState implements IState
 		
 		
 		
-		this.getStateAnimation().getKeyFrame(time, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 			
-		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(time, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
 		
 
 	}

@@ -51,12 +51,9 @@ public class Player implements IGameObject
 		
 	}
 	@Override
-	public void Update(Float time)
-	{
-			
-			
-			state.Update(time);
-			
+	public void Update()
+	{	
+		state.Update();	
 	}
 
 	@Override

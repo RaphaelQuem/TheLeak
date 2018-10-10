@@ -67,7 +67,7 @@ public class MyGdxGame  implements ApplicationListener
 		
 		for(IGameObject object : GameResources.Objects)
 		{
-			object.Update(time);
+			object.Update();
 		}
 		font.draw(GameResources.SpriteBatch,"teste",10f,10f);
 		UpdateUI();

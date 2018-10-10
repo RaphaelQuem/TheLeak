@@ -56,7 +56,7 @@ public class PlayerAttackState implements IState
 		
 	}
 	@Override
-	public void Update( Float time)
+	public void Update()
 	{
 		stateTime  += Gdx.graphics.getDeltaTime();
 		if(this.getStateAnimation().isAnimationFinished(stateTime))

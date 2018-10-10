@@ -33,7 +33,12 @@ public class EnemyAttackState implements IState
 	public Transform getCollider()
 	{
 		double i = Math.floor(stateAnimation.getKeyFrameIndex(stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
-		return colliders.get((int)i);
+		Transform collider = colliders.get((int)i);
+		if(this.gameObject.getFlipped())
+		{
+			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
+		}
+		return collider;
 	}
 
 
@@ -49,7 +54,7 @@ public class EnemyAttackState implements IState
 
 	}
 	@Override
-	public void Update( Float time)
+	public void Update()
 	{
 		stateTime  += Gdx.graphics.getDeltaTime();
 		
@@ -57,6 +62,18 @@ public class EnemyAttackState implements IState
 		{
 			gameObject.setState(new EnemyIdleState(gameObject));
 		}
+	
+		boolean flipFrame = false;
+		if
+		(
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			||
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			)
+			flipFrame = true;
+
+		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		
 
 
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);

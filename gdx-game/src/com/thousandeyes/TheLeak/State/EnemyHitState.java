@@ -41,7 +41,7 @@ public class EnemyHitState implements IState
 		name = this.getClass().getName();
 	}
 	@Override
-	public void Update( Float time)
+	public void Update()
 	{
 		this.gameObject.getTransform().AddTransform(new Vector2(3f,0f),1f);
 		stateTime  += Gdx.graphics.getDeltaTime();

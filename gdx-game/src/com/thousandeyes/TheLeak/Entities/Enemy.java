@@ -63,10 +63,10 @@ public class Enemy implements IGameObject
 
 	}
 	@Override
-	public void Update(Float time){
+	public void Update(){
 
 	
-		state.Update(time);
+		state.Update();
 
 	}
 
