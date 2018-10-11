@@ -14,4 +14,5 @@ public class GameResources
 	public static Player Player;
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
+	
 }

@@ -111,7 +111,7 @@ public class MyGdxGame  implements ApplicationListener
 				 		if(obj.getCollider().overlaps(objy.getTransform()))
 				 		{
 				 			GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
-							objy.getState().onTriggerEnter();
+							//objy.getState().onTriggerEnter();
 						}
 					}
 				 }

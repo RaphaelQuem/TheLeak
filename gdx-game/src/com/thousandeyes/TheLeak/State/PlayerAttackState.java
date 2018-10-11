@@ -13,7 +13,7 @@ public class PlayerAttackState implements IState
 	private float stateTime;
 	private String name;
 	private List<Transform> colliders;
-	private boolean animationFlipped;
+	private List<IGameObject> collisions;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -53,6 +53,7 @@ public class PlayerAttackState implements IState
 		colliders = new ArrayList<Transform>();
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f));
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 20f,10f));
+		collisions = new ArrayList<IGameObject>();
 		
 	}
 	@Override
@@ -69,10 +70,21 @@ public class PlayerAttackState implements IState
 			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
 			||
 			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
-			)
+		)
 			flipFrame = true;
 			
-	
+		for(IGameObject objy : GameResources.Objects)
+		{ 
+			if(this.gameObject != objy && !collisions.contains(objy))
+			{
+				if(this.gameObject.getCollider().overlaps(objy.getTransform()))
+				{
+					objy.getState().onTriggerEnter();
+					collisions.add(objy);
+				}
+			}
+		}
+		
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
 		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
