@@ -69,7 +69,7 @@ public class MyGdxGame  implements ApplicationListener
 		{
 			object.Update();
 		}
-		font.draw(GameResources.SpriteBatch,"teste",10f,10f);
+		
 		UpdateUI();
 		GameResources.SpriteBatch.end();
 		UpdateDebug();
@@ -106,12 +106,14 @@ public class MyGdxGame  implements ApplicationListener
 				 GameResources.ShapeRenderer.setColor(0f,1f,0f,0f);
 				 for(IGameObject objy : GameResources.Objects)
 				 { 
-					 
-				 if(obj.getCollider().overlaps(objy.getTransform()))
-				 {
-				 	GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
-					objy.getState().onTriggerEnter();
-				}
+					if(obj!= objy)
+					{
+				 		if(obj.getCollider().overlaps(objy.getTransform()))
+				 		{
+				 			GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
+							objy.getState().onTriggerEnter();
+						}
+					}
 				 }
 				 GameResources.ShapeRenderer.rect(obj.getCollider().x,obj.getCollider().y,obj.getCollider().width, obj.getCollider().height);
 				
