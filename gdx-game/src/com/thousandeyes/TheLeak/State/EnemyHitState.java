@@ -43,7 +43,10 @@ public class EnemyHitState implements IState
 	@Override
 	public void Update()
 	{
-		this.gameObject.getTransform().AddTransform(new Vector2(3f,0f),1f);
+		Vector2 pushback = new Vector2(3f,0f);
+		if(!this.gameObject.getFlipped())
+			pushback.x *= -1f;
+		this.gameObject.getTransform().AddTransform(pushback,1f);
 		stateTime  += Gdx.graphics.getDeltaTime();
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{
