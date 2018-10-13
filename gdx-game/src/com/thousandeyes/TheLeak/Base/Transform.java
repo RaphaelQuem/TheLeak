@@ -101,10 +101,13 @@ public class Transform extends Rectangle
 	public Transform getCanvas()
 	{
 		Transform ret = new Transform();
-		ret.x = this.x;
-		ret.y = this.y;
+
 		ret.width = this.width / canvasWPct * 100f;
 		ret.height = this.height / canvasHPct * 100f;
+	
+		ret.x = this.x - (ret.width - this.width )/2f;
+		ret.y = this.y - (ret.height - this.height) /2f;
+		
 		return ret;
 	}
 }
