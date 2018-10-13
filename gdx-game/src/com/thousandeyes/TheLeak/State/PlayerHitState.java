@@ -35,7 +35,7 @@ public class PlayerHitState implements IState
 
 	public PlayerHitState(IGameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-hit-spritesheet.png",5,1,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
