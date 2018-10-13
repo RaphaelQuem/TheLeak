@@ -38,10 +38,11 @@ public class Transform extends Rectangle
 		this.y = _y;
 		this.screenHeightPercentage = heightPct;
 		this.screenWidthPercentage = widthPct;
-		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
-		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+		this.width = (GameResources.Camera.viewportWidth /100f*widthPct)/100f*_canvasWPct;
+		this.height = (GameResources.Camera.viewportHeight/100f*heightPct)/100f*_canvasHPct;
 		this.canvasWPct = _canvasWPct;
 		this.canvasHPct = _canvasHPct;
+		
 		
 		GameResources.TransformInstances.add(this);
 	}
