@@ -51,7 +51,7 @@ public class MyGdxGame  implements ApplicationListener
 		Init();
 		
 		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
-		
+		Collections.sort(GameResources.Objects);
 		for(GameObject object : GameResources.Objects)
 		{
 			object.Update();

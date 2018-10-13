@@ -3,7 +3,7 @@ import com.badlogic.gdx.utils.reflect.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
-public abstract class GameObject
+public abstract class GameObject implements Comparable<GameObject>
 {
 	// Attributes
 	private Transform transform;
@@ -72,5 +72,11 @@ public abstract class GameObject
 	{
 		state.Update();
 	};
+	
+	@Override
+	public int compareTo(GameObject other)
+	{
+		return Float.compare(other.getTransform().y,this.transform.y);
+	}
 	//
 }
