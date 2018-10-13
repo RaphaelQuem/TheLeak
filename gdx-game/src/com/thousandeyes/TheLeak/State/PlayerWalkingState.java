@@ -69,9 +69,8 @@ public class PlayerWalkingState implements IState
 		
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 			
-		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
-
 	}
 
 	@Override

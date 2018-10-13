@@ -22,8 +22,7 @@ public class MyGdxGame  implements ApplicationListener
 	
 	
 	float time;
-	Transform ePosition;
-	Transform manPosition;
+
 	BitmapFont font;
 	@Override
 	public void create()
@@ -35,20 +34,14 @@ public class MyGdxGame  implements ApplicationListener
 		
 		texture = new Texture(Gdx.files.internal("android.jpg"));
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
-		manPosition = new Transform(10f,40f);
-		manPosition.x =300f;
-		
-		
 
-	
-
-		GameResources.Player = new Player(manPosition);
+		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
 		GameResources.Player.setSpeed(5f);
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
 	
 		GameResources.Objects.add(GameResources.Player);
-		GameResources.Objects.add(new Enemy(new Transform(500f, 0f,10f,30f,80f,100f)));
+		GameResources.Objects.add(new Enemy(new Transform(500f, 0f,10f,30f,80f,80f)));
 		GameResources.Objects.add(new Enemy(new Transform(900f, 300f,10f,30f,80f,100f)));
 	}
 
