@@ -9,18 +9,18 @@ import java.util.*;
 public class EnemyAttackState implements IState
 {
 	private Animation stateAnimation;
-	private IGameObject gameObject;
+	private GameObject gameObject;
 	private float stateTime;
 	private String name;
 	private List<Transform> colliders;
-	private List<IGameObject> collisions;
+	private List<GameObject> collisions;
 	@Override
 	public Animation getStateAnimation()
 	{
 		return stateAnimation;
 	}
 	@Override
-	public IGameObject getGameObject()
+	public GameObject getGameObject()
 	{
 		return gameObject;
 	}
@@ -43,7 +43,7 @@ public class EnemyAttackState implements IState
 	}
 
 
-	public EnemyAttackState(IGameObject _gameObject){
+	public EnemyAttackState(GameObject _gameObject){
 		stateTime = 0f;
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",5,2,0.1f);
@@ -52,7 +52,7 @@ public class EnemyAttackState implements IState
 		colliders = new ArrayList<Transform>();
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f));
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 20f,10f));
-		collisions = new ArrayList<IGameObject>();
+		collisions = new ArrayList<GameObject>();
 
 	}
 	@Override
@@ -74,7 +74,7 @@ public class EnemyAttackState implements IState
 		)
 			flipFrame = true;
 		
-		for(IGameObject objy : GameResources.Objects)
+		for(GameObject objy : GameResources.Objects)
 		{ 
 			if(this.gameObject != objy && !collisions.contains(objy))
 			{
@@ -88,10 +88,8 @@ public class EnemyAttackState implements IState
 
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
-
-
-		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
-
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		
 	}
 
 	@Override

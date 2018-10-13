@@ -9,7 +9,7 @@ import java.util.*;
 public class EnemyWalkingState implements IState
 {
 	private Animation stateAnimation;
-	private IGameObject gameObject;
+	private GameObject gameObject;
 	private String name;
 	private float stateTime;
 	@Override
@@ -26,7 +26,7 @@ public class EnemyWalkingState implements IState
 
 
 	@Override
-	public IGameObject getGameObject()
+	public GameObject getGameObject()
 	{
 		return gameObject;
 	}
@@ -36,7 +36,7 @@ public class EnemyWalkingState implements IState
 		return name;
 	}
 
-	public EnemyWalkingState(IGameObject _gameObject){
+	public EnemyWalkingState(GameObject _gameObject){
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
@@ -71,8 +71,8 @@ public class EnemyWalkingState implements IState
 		if(movVector.equals(Vector2.Zero))
 			gameObject.setState(new EnemyIdleState(gameObject));
 
-		GameResources.SpriteBatch.draw(this.getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
-
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		
 	}
 
 	@Override

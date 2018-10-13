@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.*;
 public class PlayerHitState implements IState
 {
 	private Animation stateAnimation;
-	private IGameObject gameObject;
+	private GameObject gameObject;
 	private String name;
 	private float stateTime;
 	@Override
@@ -17,7 +17,7 @@ public class PlayerHitState implements IState
 		return stateAnimation;
 	}
 	@Override
-	public IGameObject getGameObject()
+	public GameObject getGameObject()
 	{
 		return gameObject;
 	}
@@ -33,7 +33,7 @@ public class PlayerHitState implements IState
 		return new Transform();
 	}
 
-	public PlayerHitState(IGameObject _gameObject){
+	public PlayerHitState(GameObject _gameObject){
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-hit-spritesheet.png",5,1,0.1f);
 		name = this.getClass().getName();

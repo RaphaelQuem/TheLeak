@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.*;
 public class PlayerIdleState implements IState
 {
 	private Animation stateAnimation;
-	private IGameObject gameObject;
+	private GameObject gameObject;
 	private String name;
 	private float stateTime;
 	@Override
@@ -17,7 +17,7 @@ public class PlayerIdleState implements IState
 		return stateAnimation;
 	}
 	@Override
-	public IGameObject getGameObject()
+	public GameObject getGameObject()
 	{
 		return gameObject;
 	}
@@ -33,7 +33,7 @@ public class PlayerIdleState implements IState
 		return new Transform();
 	}
 	
-	public PlayerIdleState(IGameObject _gameObject){
+	public PlayerIdleState(GameObject _gameObject){
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();

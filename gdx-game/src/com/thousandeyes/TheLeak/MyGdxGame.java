@@ -21,10 +21,6 @@ public class MyGdxGame  implements ApplicationListener
 	Texture actionTexture;
 	
 	
-
-	IGameObject enemy;
-	
-	
 	float time;
 	Transform ePosition;
 	Transform manPosition;
@@ -41,21 +37,19 @@ public class MyGdxGame  implements ApplicationListener
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 		manPosition = new Transform(10f,40f);
 		manPosition.x =300f;
-		ePosition = new Transform(10f,30f);
-		ePosition.x = 500f;
 		
 		
 
-		enemy = new Enemy(ePosition);
 	
 
 		GameResources.Player = new Player(manPosition);
+		GameResources.Player.setSpeed(5f);
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
 	
 		GameResources.Objects.add(GameResources.Player);
-		GameResources.Objects.add(enemy); 
-		GameResources.Objects.add(new Enemy(new Transform(900f, 0f,10f,30f)));
+		GameResources.Objects.add(new Enemy(new Transform(500f, 0f,10f,30f,80f,100f)));
+		GameResources.Objects.add(new Enemy(new Transform(900f, 300f,10f,30f,80f,100f)));
 	}
 
 	@Override
@@ -65,7 +59,7 @@ public class MyGdxGame  implements ApplicationListener
 		
 		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
 		
-		for(IGameObject object : GameResources.Objects)
+		for(GameObject object : GameResources.Objects)
 		{
 			object.Update();
 		}
@@ -98,13 +92,13 @@ public class MyGdxGame  implements ApplicationListener
 			GameResources.ShapeRenderer.setProjectionMatrix(GameResources.Camera.combined);
 			GameResources.ShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 			Gdx.gl20.glLineWidth(4);
-			for(IGameObject obj : GameResources.Objects)
+			for(GameObject obj : GameResources.Objects)
 			 {
 				 
 				 GameResources.ShapeRenderer.setColor(1f,0f,0f,0f);
 				 GameResources.ShapeRenderer.rect(obj.getTransform().x,obj.getTransform().y,obj.getTransform().width, obj.getTransform().height);
 				 GameResources.ShapeRenderer.setColor(0f,1f,0f,0f);
-				 for(IGameObject objy : GameResources.Objects)
+				 for(GameObject objy : GameResources.Objects)
 				 { 
 					if(obj!= objy)
 					{

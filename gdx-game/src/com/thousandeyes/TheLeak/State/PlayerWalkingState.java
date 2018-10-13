@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.*;
 public class PlayerWalkingState implements IState
 {
 	private Animation stateAnimation;
-	private IGameObject gameObject;
+	private GameObject gameObject;
 	private String name;
 	private float stateTime;
 	
@@ -27,7 +27,7 @@ public class PlayerWalkingState implements IState
 
 	
 	@Override
-	public IGameObject getGameObject()
+	public GameObject getGameObject()
 	{
 		return gameObject;
 	}
@@ -37,7 +37,7 @@ public class PlayerWalkingState implements IState
 		return name;
 	}
 
-	public PlayerWalkingState(IGameObject _gameObject){
+	public PlayerWalkingState(GameObject _gameObject){
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();

@@ -4,84 +4,19 @@ import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.graphics.g2d.*;
 
-public class Enemy implements IGameObject
+public class Enemy extends GameObject
 {
-	private Transform transform;
-	private IState state;
-	private boolean flipped;
-	@Override
-	public String getName(){
-		return this.getClass().getName();
-	};
-	@Override
-	public IState getState(){
-		return this.state;
-	};
-	@Override
-	public Transform getTransform(){
-		return this.transform;
-	}
-
-	@Override
-	public float getSpeed()
-	{
-		return 0;
-	}
-
-	
-	@Override
-	public void setState (IState _state)
-	{
-		this.state = _state;
-	}
-
-	@Override
-	public Transform getCollider()
-	{
-		// TODO: Implement this method
-		return state.getCollider();
-	}
-
-	
-	@Override
-	public void setTransform(Transform _transform)
-	{
-		// TODO: Implement this metho
-		
-	}
 	public Enemy() 
 	{
-		transform = new Transform();
-		transform.setOwner(this);
+		this.setTransform(new Transform());
+		this.getTransform().setOwner(this);
 	}
 	
 
 	public Enemy(Transform _transform){
-		transform = _transform;
-		transform.setOwner(this);
-		state = new EnemyWalkingState(this);
+		this.setTransform (_transform);
+		this.getTransform().setOwner(this);
+		this.setState (new EnemyWalkingState(this));
 
 	}
-	@Override
-	public void Update(){
-
-	
-		state.Update();
-
-	}
-
-	@Override
-	public boolean getFlipped()
-	{
-		return flipped;
-	}
-
-	@Override
-	public void setFlipped(boolean _flipped)
-	{
-		flipped =_flipped;
-	}
-
-
-	
 }

@@ -6,7 +6,7 @@ import com.badlogic.gdx.*;
 public class EnemyIdleState implements IState
 {
 	private Animation stateAnimation;
-	private IGameObject gameObject;
+	private GameObject gameObject;
 	private String name;
 	private float stateTime;
 	@Override
@@ -23,7 +23,7 @@ public class EnemyIdleState implements IState
 
 	
 	@Override
-	public IGameObject getGameObject()
+	public GameObject getGameObject()
 	{
 		return gameObject;
 	}
@@ -33,7 +33,7 @@ public class EnemyIdleState implements IState
 		return name;
 	}
 
-	public EnemyIdleState(IGameObject _gameObject)
+	public EnemyIdleState(GameObject _gameObject)
 	{
 		stateTime = 0f;
 		gameObject = _gameObject;
@@ -58,8 +58,8 @@ public class EnemyIdleState implements IState
 
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().x,getGameObject().getTransform().y, getGameObject().getTransform().width, getGameObject().getTransform().height);
-
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		
 	}
 
 	@Override
