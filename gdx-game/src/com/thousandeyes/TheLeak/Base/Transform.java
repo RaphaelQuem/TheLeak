@@ -92,7 +92,10 @@ public class Transform extends Rectangle
 		while(objectIterator.hasNext())
 		{
 			GameObject obj = objectIterator.next();
-			if(this.owner != null && this.owner != obj && this.overlaps(obj.getTransform()))
+			if(this.owner != null && this.owner != obj && this.overlaps(obj.getTransform())
+				&&
+				(this.y >= obj.getTransform().y - 50f) && (this.y <= obj.getTransform().y + 50f)
+				)
 			{
 				this.y = yprevious;
 				this.x = xprevious;
