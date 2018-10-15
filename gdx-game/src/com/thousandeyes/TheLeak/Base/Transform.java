@@ -74,6 +74,10 @@ public class Transform extends Rectangle
 		
 		GameResources.TransformInstances.add(this);
 	}
+	public Vector3 getVector()
+	{
+		return new Vector3(this.x, this.y, 0f);
+	}
 	public Transform(float widthPct, float heightPct){
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;

@@ -11,6 +11,7 @@ import com.thousandeyes.TheLeak.State.*;
 public class Player extends GameObject
 {
 	public Player(Transform _transform){
+		this.setSpeed(5f);
 		this.setTransform ( _transform);
 		this.getTransform().setOwner(this);
 		this.setState( new PlayerIdleState(this));

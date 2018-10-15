@@ -22,12 +22,10 @@ public class MyGdxGame  implements ApplicationListener
 	
 	
 	float time;
-
-	BitmapFont font;
 	@Override
 	public void create()
 	{
-		font = new BitmapFont();
+
 		GameResources.Camera = new OrthographicCamera(1280f, 720f);
 		GameResources.Camera.position.set(1280f/2f,720f/2f,10f);
 		GameResources.Camera.update();
@@ -36,7 +34,6 @@ public class MyGdxGame  implements ApplicationListener
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 
 		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
-		GameResources.Player.setSpeed(5f);
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
 	
@@ -56,7 +53,10 @@ public class MyGdxGame  implements ApplicationListener
 		{
 			object.Update();
 		}
+		Vector3 vecCam =GameResources.Player.getTransform().getVector();
 		
+		GameResources.Camera.position.set(vecCam.x-1280f/2f,720f/2f,10f);
+		GameResources.Camera.update();
 		UpdateUI();
 		GameResources.SpriteBatch.end();
 		UpdateDebug();
