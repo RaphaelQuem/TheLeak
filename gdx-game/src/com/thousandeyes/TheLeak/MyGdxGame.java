@@ -55,7 +55,7 @@ public class MyGdxGame  implements ApplicationListener
 		}
 		Vector3 vecCam =GameResources.Player.getTransform().getVector();
 		
-		GameResources.Camera.position.set(vecCam.x-1280f/2f,720f/2f,10f);
+		GameResources.Camera.position.set(vecCam.x+1280f/4f,720f/2f,10f);
 		GameResources.Camera.update();
 		UpdateUI();
 		GameResources.SpriteBatch.end();
