@@ -6,8 +6,8 @@ public class InputHandler
 {
 	public static Rectangle getActionBounds ()
 	{
-		float caneraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
-		return new Transform(caneraLeft + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
+		float cameraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
+		return new Transform(cameraLeft + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
 	}
 	
 	public static Vector2 OriginalTouch;
@@ -16,20 +16,14 @@ public class InputHandler
 		{
 			for (int i=0; i<5; i++)
 			{ 
-				
+				if(Gdx.input.getX(i)<= Gdx.graphics.getWidth() / 2)
+				{
 				if(InputHandler.OriginalTouch == null)
 				{
-					if(Gdx.input.getX(i)<= Gdx.graphics.getWidth() / 2)
-					{
+					
 						InputHandler.OriginalTouch = new Vector2(Gdx.input.getX(i), Gdx.input.getY(i));
 						return Vector2.Zero;
-					}
-					else
-					{
-
-						InputHandler.OriginalTouch = null;
-						return Vector2.Zero;
-					}
+					
 					
 				}
 				else
@@ -42,6 +36,13 @@ public class InputHandler
 						return Vector2.Zero;
 				}
 				
+				}
+				else
+				{
+
+					InputHandler.OriginalTouch = null;
+					return Vector2.Zero;
+				}
 			}
 			
 		}

@@ -24,7 +24,7 @@ public class CameraHolder extends GameObject
 			x = GameResources.Player.getTransform().getVector().x+1280f/4f;
 		else
 			x = GameResources.Player.getTransform().getVector().x-1280f/4f;
-	
+		
 		float camy= GameResources.Camera.position.y;
 		float camx = GameResources.Camera.position.x;
 	
@@ -33,8 +33,9 @@ public class CameraHolder extends GameObject
 		
 		Vector2 cammov = vec.sub(camvec);
 	
-			GameResources.Camera.position.set(camx + cammov.x * Gdx.graphics.getDeltaTime(),720f/2f,10f);
-		
+		GameResources.Camera.position.set(camx + cammov.x * Gdx.graphics.getDeltaTime(),720f/2f,10f);
+		GameResources.Camera.position.x = Math.max(0f + GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
+		GameResources.Camera.position.x = Math.min(2000f - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
 		
 		GameResources.Camera.update();
 	}
