@@ -6,7 +6,7 @@ import com.thousandeyes.TheLeak.State.*;
 public abstract class GameObject implements Comparable<GameObject>
 {
 	// Attributes
-	private Transform transform;
+	private Transform transform = new Transform();
 	private IState state;
 	private boolean flipped;
 	private float speed;

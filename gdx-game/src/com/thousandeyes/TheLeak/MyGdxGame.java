@@ -25,18 +25,16 @@ public class MyGdxGame  implements ApplicationListener
 	@Override
 	public void create()
 	{
-
-		GameResources.Camera = new OrthographicCamera(1280f, 720f);
-		GameResources.Camera.position.set(1280f/2f,720f/2f,10f);
-		GameResources.Camera.update();
 		
 		texture = new Texture(Gdx.files.internal("android.jpg"));
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
-
+		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
+		GameResources.Objects.add(new CameraHolder());
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
 	
+		
 		GameResources.Objects.add(GameResources.Player);
 		GameResources.Objects.add(new Enemy(new Transform(500f, 0f,10f,30f,80f,80f)));
 		GameResources.Objects.add(new Enemy(new Transform(900f, 300f,10f,30f,80f,100f)));
@@ -53,10 +51,6 @@ public class MyGdxGame  implements ApplicationListener
 		{
 			object.Update();
 		}
-		Vector3 vecCam =GameResources.Player.getTransform().getVector();
-		
-		GameResources.Camera.position.set(vecCam.x+1280f/4f,720f/2f,10f);
-		GameResources.Camera.update();
 		UpdateUI();
 		GameResources.SpriteBatch.end();
 		UpdateDebug();
