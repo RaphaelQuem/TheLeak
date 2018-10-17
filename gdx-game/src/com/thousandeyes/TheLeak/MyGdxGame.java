@@ -26,7 +26,7 @@ public class MyGdxGame  implements ApplicationListener
 	public void create()
 	{
 		
-		texture = new Texture(Gdx.files.internal("android.jpg"));
+		texture = new Texture(Gdx.files.internal("map-1.png"));
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
@@ -45,8 +45,10 @@ public class MyGdxGame  implements ApplicationListener
 	{       
 		Init();
 		
-		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
+		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth*2, GameResources.Camera.viewportHeight);
 		Collections.sort(GameResources.Objects);
+		GameResources.Objects.addAll(GameResources.CreateObjects);
+		GameResources.CreateObjects.clear();
 		for(GameObject object : GameResources.Objects)
 		{
 			object.Update();

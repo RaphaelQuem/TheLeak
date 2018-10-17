@@ -10,6 +10,7 @@ public class GameResources
 	public static OrthographicCamera Camera;
 	public static List<Transform> TransformInstances = new ArrayList<Transform>();
 	public static List<GameObject> Objects = new ArrayList<GameObject>();
+	public static List<GameObject> CreateObjects = new ArrayList<GameObject>();
 	public static boolean Debug = true;
 	public static Player Player;
 	public static ShapeRenderer ShapeRenderer;
