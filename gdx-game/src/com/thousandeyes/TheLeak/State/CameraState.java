@@ -39,7 +39,7 @@ public class CameraState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter()
+	public void onTriggerEnter(GameObject other)
 	{
 		
 	}

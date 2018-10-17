@@ -7,7 +7,7 @@ public interface IState
 	public String getName();
 	public Animation getStateAnimation();
 	public GameObject getGameObject();
-	public void onTriggerEnter();
+	public void onTriggerEnter(GameObject other);
 	public Transform getCollider();
 	public void Update();
 

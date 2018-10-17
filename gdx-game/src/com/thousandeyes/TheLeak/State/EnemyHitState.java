@@ -8,6 +8,7 @@ public class EnemyHitState implements IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
+	private GameObject hitter;
 	private String name;
 	private float stateTime;
 	@Override
@@ -34,9 +35,12 @@ public class EnemyHitState implements IState
 		return name;
 	}
 
-	public EnemyHitState(GameObject _gameObject){
+	public EnemyHitState(GameObject _gameObject, GameObject _hitter){
 		stateTime = 0f;
-		gameObject = _gameObject;
+		this.gameObject = _gameObject;
+		this.hitter = _hitter;
+		this.gameObject.DecreaseHealthBy(MathUtils.random(hitter.getStrength(),hitter.getStrength()*5));
+		
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-hit-spritesheet.png",5,1,0.1f);
 		name = this.getClass().getName();
 	}
@@ -50,16 +54,22 @@ public class EnemyHitState implements IState
 		stateTime  += Gdx.graphics.getDeltaTime();
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{
-			gameObject.setState(new EnemyIdleState(gameObject));
+			if(this.gameObject.getHealth() <= 0)
+			{
+				gameObject.setState(new CameraState(this.gameObject));
+				return;
+			}
+			gameObject.setState(new EnemyIdleState(this.gameObject));
 		}
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 	}
 
 	@Override
-	public void onTriggerEnter()
+	public void onTriggerEnter(GameObject other)
 	{
-		// TODO: Implement this method
+		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
+		
 	}
 
 	

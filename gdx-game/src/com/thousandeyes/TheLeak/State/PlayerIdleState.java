@@ -74,9 +74,9 @@ public class PlayerIdleState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter()
+	public void onTriggerEnter(GameObject other)
 	{
-		this.gameObject.setState(new PlayerHitState(this.gameObject));
+		this.gameObject.setState(new PlayerHitState(this.gameObject,other));
 	}
 	
 

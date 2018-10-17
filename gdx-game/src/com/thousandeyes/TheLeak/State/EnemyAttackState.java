@@ -80,7 +80,7 @@ public class EnemyAttackState implements IState
 			{
 				if(this.gameObject.getCollider().overlaps(objy.getTransform()))
 				{
-					objy.getState().onTriggerEnter();
+					objy.getState().onTriggerEnter(this.gameObject);
 					collisions.add(objy);
 				}
 			}
@@ -93,8 +93,8 @@ public class EnemyAttackState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter()
+	public void onTriggerEnter(GameObject other)
 	{
-		// TODO: Implement this method
+		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
 	}
 }

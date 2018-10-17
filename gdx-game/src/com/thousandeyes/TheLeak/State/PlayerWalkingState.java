@@ -74,7 +74,7 @@ public class PlayerWalkingState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter()
+	public void onTriggerEnter(GameObject other)
 	{
 		// TODO: Implement this method
 	}

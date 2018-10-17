@@ -79,4 +79,56 @@ public abstract class GameObject implements Comparable<GameObject>
 		return Float.compare(other.getTransform().y,this.transform.y);
 	}
 	//
+
+
+	
+	private int health=100;
+	private int strength = 3;
+	private int dexterity=2;
+	private int resistance=3;
+	private int firePower=3;
+	public void DecreaseHealthBy(int amount)
+	{
+		health-= amount;
+	}
+	public int getHealth()
+	{
+		return health;
+	}
+	public void setHealth(int _health)
+	{
+		health = _health;
+	}
+	public int getStrength()
+	{
+		return strength;
+	}
+	public void setStrength(int _strength)
+	{
+		strength = _strength;
+	}
+	public int getDexterity()
+	{
+		return dexterity;
+	}
+	public void setDexterity(int _dexterity)
+	{
+		dexterity = _dexterity;
+	}
+	public int getResistance()
+	{
+		return resistance;
+	}
+	public void setResistance(int _resistance)
+	{
+		resistance = _resistance;
+	}
+	public int getFirePower()
+	{
+		return firePower;
+	}
+	public void setFirePower(int _firePower)
+	{
+		firePower = _firePower;
+	}
 }

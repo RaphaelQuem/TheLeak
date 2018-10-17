@@ -76,9 +76,8 @@ public class EnemyWalkingState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter()
+	public void onTriggerEnter(GameObject other)
 	{
-		this.gameObject.setState(new EnemyHitState(this.gameObject));
+		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
 	}
-
 }

@@ -2,6 +2,8 @@ package com.thousandeyes.TheLeak.State;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
+import java.util.*;
+import com.badlogic.gdx.math.*;
 
 public class EnemyIdleState implements IState
 {
@@ -63,8 +65,9 @@ public class EnemyIdleState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter()
+	public void onTriggerEnter(GameObject other)
 	{
-		this.gameObject.setState(new EnemyHitState(this.gameObject));
+		
+		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
 	}
 }
