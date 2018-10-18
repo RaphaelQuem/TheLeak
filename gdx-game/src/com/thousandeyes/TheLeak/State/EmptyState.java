@@ -2,7 +2,7 @@ package com.thousandeyes.TheLeak.State;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.graphics.g2d.*;
 
-public class CameraState implements IState
+public class EmptyState implements IState
 {
 	@Override
 	public Animation getStateAnimation()
@@ -28,7 +28,7 @@ public class CameraState implements IState
 		return this.getClass().getName();
 	}
 
-	public CameraState(GameObject _gameObject)
+	public EmptyState(GameObject _gameObject)
 	{
 		
 	}

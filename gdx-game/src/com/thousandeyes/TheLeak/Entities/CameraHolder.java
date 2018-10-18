@@ -13,7 +13,7 @@ public class CameraHolder extends GameObject
 		GameResources.Camera = new OrthographicCamera(1280f, 720f);
 		GameResources.Camera.position.set(1280f/2f,720f/2f,10f);
 		GameResources.Camera.update();
-		this.setState(new CameraState(this));
+		this.setState(new EmptyState(this));
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class CameraHolder extends GameObject
 	
 		GameResources.Camera.position.set(camx + cammov.x * Gdx.graphics.getDeltaTime(),720f/2f,10f);
 		GameResources.Camera.position.x = Math.max(0f + GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
-		GameResources.Camera.position.x = Math.min(2000f - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
+		GameResources.Camera.position.x = Math.min(3000f - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
 		
 		GameResources.Camera.update();
 	}

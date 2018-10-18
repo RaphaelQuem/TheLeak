@@ -38,6 +38,10 @@ public class MyGdxGame  implements ApplicationListener
 		GameResources.Objects.add(GameResources.Player);
 		GameResources.Objects.add(new Enemy(new Transform(500f, 0f,10f,30f,80f,80f)));
 		GameResources.Objects.add(new Enemy(new Transform(900f, 300f,10f,30f,80f,100f)));
+		GameResources.Objects.add(new SpawnTrigger(new Transform(1100f,0f,10f,100f)));
+		GameResources.Objects.add(new SpawnTrigger(new Transform(1500f,0f,10f,100f)));
+		
+		
 	}
 
 	@Override
@@ -45,7 +49,7 @@ public class MyGdxGame  implements ApplicationListener
 	{       
 		Init();
 		
-		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth*2, GameResources.Camera.viewportHeight);
+		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth*3, GameResources.Camera.viewportHeight);
 		Collections.sort(GameResources.Objects);
 		GameResources.Objects.addAll(GameResources.CreateObjects);
 		GameResources.CreateObjects.clear();
@@ -53,6 +57,9 @@ public class MyGdxGame  implements ApplicationListener
 		{
 			object.Update();
 		}
+		GameResources.Objects.removeAll(GameResources.DeleteObjects);
+		GameResources.DeleteObjects.clear();
+		
 		UpdateUI();
 		GameResources.SpriteBatch.end();
 		UpdateDebug();

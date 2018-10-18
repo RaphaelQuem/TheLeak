@@ -48,7 +48,7 @@ public class PlayerHitState implements IState
 	{
 		if(this.gameObject.getHealth() <= 0)
 		{
-			gameObject.setState(new CameraState(this.gameObject));
+			gameObject.setState(new EmptyState(this.gameObject));
 			return;
 		}
 		

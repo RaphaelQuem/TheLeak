@@ -54,7 +54,7 @@ public class PlayerAttackState implements IState
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f));
 		colliders.add(new Transform(gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 20f,10f));
 		collisions = new ArrayList<GameObject>();
-		EnemyHelper.newEnemy();
+		
 		
 	}
 	@Override
