@@ -17,7 +17,6 @@ import android.os.*;
 
 public class MyGdxGame  implements ApplicationListener
 {
-	Texture texture;
 	Texture actionTexture;
 	
 	
@@ -26,22 +25,17 @@ public class MyGdxGame  implements ApplicationListener
 	public void create()
 	{
 		
-		texture = new Texture(Gdx.files.internal("map-1.png"));
+		
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
-	
 		
+		GameResources.Level1().Load();
 		GameResources.Objects.add(GameResources.Player);
-		GameResources.Objects.add(new Enemy(new Transform(500f, 0f,10f,30f,80f,80f)));
-		GameResources.Objects.add(new Enemy(new Transform(900f, 300f,10f,30f,80f,100f)));
-		GameResources.Objects.add(new SpawnTrigger(new Transform(1100f,0f,10f,100f)));
-		GameResources.Objects.add(new SpawnTrigger(new Transform(1500f,0f,10f,100f)));
-		
-		
+			
 	}
 
 	@Override
@@ -49,7 +43,7 @@ public class MyGdxGame  implements ApplicationListener
 	{       
 		Init();
 		
-		GameResources.SpriteBatch.draw(texture, 0, 0,GameResources.Camera.viewportWidth*3, GameResources.Camera.viewportHeight);
+		GameResources.SpriteBatch.draw(GameResources.Level.getBackground(), 0, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
 		Collections.sort(GameResources.Objects);
 		GameResources.Objects.addAll(GameResources.CreateObjects);
 		GameResources.CreateObjects.clear();
@@ -68,6 +62,7 @@ public class MyGdxGame  implements ApplicationListener
 	}
 	private void Init()
 	{
+		
 		time += Gdx.graphics.getDeltaTime();
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
