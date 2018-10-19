@@ -13,19 +13,20 @@ import java.util.*;
 import android.preference.*;
 import com.badlogic.gdx.graphics.glutils.*;
 import android.os.*;
+import com.thousandeyes.TheLeak.State.GameState.*;
 
 
 public class MyGdxGame  implements ApplicationListener
 {
 	Texture actionTexture;
-	
+	GameState gameState;
 	
 	float time;
 	@Override
 	public void create()
 	{
 		
-		
+		gameState = new LevelGameState();
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
@@ -42,23 +43,16 @@ public class MyGdxGame  implements ApplicationListener
 	public void render()
 	{       
 		Init();
+			 
+		if(InputHandler.getActionPressed())
+			gameState = new PauseGameState();
 		
-		GameResources.SpriteBatch.draw(GameResources.Level.getBackground(), 0, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
-		Collections.sort(GameResources.Objects);
-		GameResources.Objects.addAll(GameResources.CreateObjects);
-		GameResources.CreateObjects.clear();
-		for(GameObject object : GameResources.Objects)
-		{
-			object.Update();
-		}
-		GameResources.Objects.removeAll(GameResources.DeleteObjects);
-		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);
-		GameResources.DeleteObjects.clear();
+		gameState.Update();
 		
 		UpdateUI();
+		
 		GameResources.SpriteBatch.end();
 		UpdateDebug();
-	
 		
 	}
 	private void Init()
