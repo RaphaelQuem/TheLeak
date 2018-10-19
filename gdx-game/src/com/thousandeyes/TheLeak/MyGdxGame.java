@@ -52,6 +52,7 @@ public class MyGdxGame  implements ApplicationListener
 			object.Update();
 		}
 		GameResources.Objects.removeAll(GameResources.DeleteObjects);
+		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);
 		GameResources.DeleteObjects.clear();
 		
 		UpdateUI();

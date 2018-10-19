@@ -4,7 +4,8 @@ import com.thousandeyes.TheLeak.State.*;
 
 public class SpawnTrigger extends GameObject
 {
-	
+	private float localRightLimit = 2000f;
+	private float localLefLimit= 500f;
 	public SpawnTrigger(Transform _transform){
 		this.setTransform (_transform);
 		this.getTransform().setOwner(this);
@@ -16,8 +17,11 @@ public class SpawnTrigger extends GameObject
 	{
 		if(this.getTransform().overlaps(GameResources.Player.getTransform()))
 		{
+			GameResources.LocalLeftLimit = localLefLimit;
+			GameResources.LocalRightLimit = localRightLimit;
 			GameResources.DeleteObjects.add(this);
-			EnemyHelper.newEnemy();
+			GameResources.LockingObjects.add(EnemyHelper.newEnemy());
+			
 		}
 	}
 	

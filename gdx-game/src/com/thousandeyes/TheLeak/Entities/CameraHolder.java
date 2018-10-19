@@ -33,9 +33,14 @@ public class CameraHolder extends GameObject
 		
 		Vector2 cammov = vec.sub(camvec);
 	
+	
+		float limitL =GameResources.LocalLeftLimit == 0f || GameResources.LockingObjects.isEmpty()?GameResources.Level.getLeftLimit():GameResources.LocalLeftLimit;
+		float limitR = GameResources.LocalRightLimit == 0f || GameResources.LockingObjects.isEmpty()?GameResources.Level.getRightLimit():GameResources.LocalRightLimit;
+		
+	
 		GameResources.Camera.position.set(camx + cammov.x * Gdx.graphics.getDeltaTime(),720f/2f,10f);
-		GameResources.Camera.position.x = Math.max(0f + GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
-		GameResources.Camera.position.x = Math.min(3000f - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
+		GameResources.Camera.position.x = Math.max(limitL+ GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
+		GameResources.Camera.position.x = Math.min(limitR - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
 		
 		GameResources.Camera.update();
 	}

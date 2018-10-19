@@ -6,9 +6,19 @@ import com.thousandeyes.TheLeak.Base.*;
 
 public class Level
 { 
+	private float leftLimit;
+	private float rightLimit;
 	private float width;
 	private float height;
 	private Texture backgroud;
+	public void setLeftLimit(float _leftLimit)
+	{
+		this.leftLimit = _leftLimit;
+	}
+	public void setRightLimit(float _rightLimit)
+	{
+		this.rightLimit = _rightLimit;
+	}
 	public void setWidth(float _width)
 	{
 		 this.width = _width;
@@ -20,6 +30,14 @@ public class Level
 	public void setBackground(Texture _background)
 	{
 		this.backgroud = _background;
+	}
+	public float getLeftLimit()
+	{
+		return this.leftLimit;
+	}
+	public float getRightLimit()
+	{
+		return this.rightLimit;
 	}
 	public float getWidth()
 	{

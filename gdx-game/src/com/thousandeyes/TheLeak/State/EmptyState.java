@@ -30,7 +30,7 @@ public class EmptyState implements IState
 
 	public EmptyState(GameObject _gameObject)
 	{
-		
+		GameResources.LockingObjects.remove(_gameObject);
 	}
 	@Override
 	public void Update()
