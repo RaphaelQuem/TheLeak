@@ -4,6 +4,7 @@ import com.badlogic.gdx.*;
 public class InputHandler
 
 {
+	private static boolean lastActionVerification = false;
 	public static Rectangle getActionBounds ()
 	{
 		float cameraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
@@ -63,10 +64,16 @@ public class InputHandler
 			if (!Gdx.input.isTouched(i)) continue;
 			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
 			if (InputHandler.getActionBounds().contains(touchPoint.x, touchPoint.y)){
-				return true;
+				if(!lastActionVerification)
+				{
+					lastActionVerification =true; 
+					return lastActionVerification;
+				}
+				return false;
 			}
 		}
-		return false;
+		lastActionVerification = false;
+		return lastActionVerification;
 	}
 	
 }
