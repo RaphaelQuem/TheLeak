@@ -19,14 +19,11 @@ import com.thousandeyes.TheLeak.State.GameState.*;
 public class MyGdxGame  implements ApplicationListener
 {
 	Texture actionTexture;
-	GameState gameState;
 	
 	float time;
 	@Override
 	public void create()
 	{
-		
-		gameState = new LevelGameState();
 		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
@@ -43,11 +40,8 @@ public class MyGdxGame  implements ApplicationListener
 	public void render()
 	{       
 		Init();
-			 
-		if(InputHandler.getActionPressed())
-			gameState = new PauseGameState();
 		
-		gameState.Update();
+		GameResources.CurrentGameState.Update();
 		
 		UpdateUI();
 		

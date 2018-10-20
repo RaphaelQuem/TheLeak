@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Entities.*;
 import com.badlogic.gdx.*;
+import com.thousandeyes.TheLeak.State.GameState.*;
 
 public class GameResources
 {
@@ -20,6 +21,7 @@ public class GameResources
 	public static float LocalLeftLimit=0f;
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
+	public static GameState CurrentGameState = new LevelGameState();
 	public static Level Level;
 	public static Level Level1()
 	{

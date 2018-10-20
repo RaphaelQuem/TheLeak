@@ -15,18 +15,12 @@ public class PauseGameState extends GameState
 	@Override
 	public void Update()
 	{
-		GameResources.SpriteBatch.draw(background, 0, 0,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
-		/*
-		Collections.sort(GameResources.Objects);
-		GameResources.Objects.addAll(GameResources.CreateObjects);
-		GameResources.CreateObjects.clear();
-		for(GameObject object : GameResources.Objects)
+		if(InputHandler.getActionPressed())
 		{
-			object.Update();
+			GameResources.CurrentGameState = new LevelGameState();
 		}
-		GameResources.Objects.removeAll(GameResources.DeleteObjects);
-		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);
-		GameResources.DeleteObjects.clear();
-		*/
+		
+		GameResources.SpriteBatch.draw(background,GameResources.Camera.position.x - GameResources.Camera.viewportWidth /2f, GameResources.Camera.position.y - GameResources.Camera.viewportHeight / 2f,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
+		
 	}
 }
