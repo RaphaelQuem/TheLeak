@@ -15,7 +15,7 @@ public abstract class GameObject implements Comparable<GameObject>
 	// Getters
 	public String getName()
 	{
-		return this.getClass().getName();
+		return this.getClass().getSimpleName().toLowerCase();
 	};
 	
 	public IState getState()
