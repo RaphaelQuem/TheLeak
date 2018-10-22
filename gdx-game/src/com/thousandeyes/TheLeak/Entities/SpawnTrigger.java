@@ -1,6 +1,7 @@
 package com.thousandeyes.TheLeak.Entities;
 import com.thousandeyes.TheLeak.Base.*;
 import com.thousandeyes.TheLeak.State.*;
+import com.thousandeyes.TheLeak.Base.Enums.*;
 
 public class SpawnTrigger extends GameObject
 {
@@ -20,7 +21,7 @@ public class SpawnTrigger extends GameObject
 			GameResources.LocalLeftLimit = localLefLimit;
 			GameResources.LocalRightLimit = localRightLimit;
 			GameResources.DeleteObjects.add(this);
-			GameResources.LockingObjects.add(EnemyHelper.newEnemy());
+			GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.DataScavenger));
 			
 		}
 	}
