@@ -39,7 +39,7 @@ public class EnemyIdleState implements IState
 	{
 		stateTime = 0f;
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-idle-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName() + "-idle-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override

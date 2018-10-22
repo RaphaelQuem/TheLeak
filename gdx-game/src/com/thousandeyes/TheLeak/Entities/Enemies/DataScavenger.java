@@ -9,7 +9,7 @@ public DataScavenger(Transform _transform)
 {
 	this.setTransform (_transform);
 	this.getTransform().setOwner(this);
-	this.setState (new DataScavengerWalkingState(this));
+	this.setState (new EnemyWalkingState(this));
 	
 	}
 	
