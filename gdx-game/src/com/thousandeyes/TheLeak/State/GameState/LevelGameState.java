@@ -8,10 +8,7 @@ public class LevelGameState extends GameState
 	@Override
 	public void Update()
 	{
-		if(InputHandler.getActionPressed())
-		{
-			GameResources.CurrentGameState = new PauseGameState();
-		}
+		
 		GameResources.SpriteBatch.draw(GameResources.Level.getBackground(), 0, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
 		Collections.sort(GameResources.Objects); 
 		GameResources.Objects.addAll(GameResources.CreateObjects);
