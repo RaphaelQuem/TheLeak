@@ -22,6 +22,7 @@ public class SpawnTrigger extends GameObject
 			GameResources.LocalRightLimit = localRightLimit;
 			GameResources.DeleteObjects.add(this);
 			GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.DataScavenger));
+			GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.Default));
 			
 		}
 	}
