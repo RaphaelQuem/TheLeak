@@ -60,7 +60,7 @@ public class MyGdxGame  implements ApplicationListener
 	}
 	private void UpdateUI()
 	{
-		
+		GameResources.SpriteBatch.draw(actionTexture, InputHandler.getCharacterBounds().x,InputHandler.getCharacterBounds().y, InputHandler.getCharacterBounds().width, InputHandler.getCharacterBounds().height);
 		if(!InputHandler.getActionPressed())
 			GameResources.SpriteBatch.draw(actionTexture, InputHandler.getActionBounds().x, InputHandler.getActionBounds().y, InputHandler.getActionBounds().width, InputHandler.getActionBounds().height);
 		GameResources.Camera.update();
