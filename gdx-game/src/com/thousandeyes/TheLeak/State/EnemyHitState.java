@@ -59,8 +59,10 @@ public class EnemyHitState implements IState
 				gameObject.setState(new EmptyState(this.gameObject));
 				return;
 			}
+			
 			gameObject.setState(new EnemyIdleState(this.gameObject));
 		}
+		
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 	}

@@ -86,10 +86,12 @@ public class MyGdxGame  implements ApplicationListener
 				 		if(obj.getCollider().overlaps(objy.getTransform()))
 				 		{
 				 			GameResources.ShapeRenderer.setColor(0f,0f,1f,0f);
+							
 						}
 					}
 				 }
 				 GameResources.ShapeRenderer.rect(obj.getCollider().x,obj.getCollider().y,obj.getCollider().width, obj.getCollider().height);
+				 
 				
 			 }
 			 GameResources.ShapeRenderer.end();
