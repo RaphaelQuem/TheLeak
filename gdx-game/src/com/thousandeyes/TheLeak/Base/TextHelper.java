@@ -3,23 +3,36 @@ import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.math.*;
+import com.thousandeyes.TheLeak.Base.Enums.*;
 
 public class TextHelper
 {
 	static Texture sheet = new Texture(Gdx.files.internal("numeral-spritesheet.png"));
 	static TextureRegion[][] tmp = TextureRegion.split(sheet, sheet.getWidth() / 12, sheet.getHeight() / 1);
-	static TextureRegion[] frames = new TextureRegion[1 * 1];
-	
-	public static void Show(String txt, Transform t)
+	static TextureRegion[] frames = TextHelper.MatrixToVector(tmp);
+
+	static TextureRegion[] MatrixToVector(TextureRegion[][] matrix)
 	{
+		TextureRegion[] vector = new TextureRegion[matrix.length * matrix[0].length];
 		int index = 0;
 		for (int i = 0; i < 1; i++)
 		{
-			for (int j = 0; j < 1; j++)
+			for (int j = 0; j < 12; j++)
 			{
-				frames[index++] = tmp[i][j];
+				vector[index++] = matrix[i][j];
 			}
 		}
-		GameResources.SpriteBatch.draw(frames[0],t.x,t.y,t.width,t.height);
+		return vector;
+	}
+	public static void Show(String txt, Transform t)
+	{
+		int ix = TextEnum.valueOf(TextHelper.toSpritable(txt)).ordinal();
+		GameResources.SpriteBatch.draw(frames[ix],t.x,t.y,t.width,t.height);
+	}
+	public static String toSpritable(String value)
+	{
+		value = value.replace("+", "plus")
+					 .replace("-","minus");
+		return "value" + value;
 	}
 }
