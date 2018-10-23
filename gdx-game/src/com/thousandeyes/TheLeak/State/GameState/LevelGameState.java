@@ -20,7 +20,7 @@ public class LevelGameState extends GameState
 		GameResources.Objects.removeAll(GameResources.DeleteObjects);
 		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);
 		GameResources.DeleteObjects.clear();
-		TextHelper.Show("+",new Transform(0,0,20f,20f));
+		TextHelper.Show("+9-",new Transform(0,0,100f,20f),32,1);
 	}
 	
 }

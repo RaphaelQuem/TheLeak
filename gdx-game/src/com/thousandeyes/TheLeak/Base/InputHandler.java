@@ -10,6 +10,11 @@ public class InputHandler
 		float cameraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
 		return new Transform(cameraLeft + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
 	}
+	public static Rectangle getCharacterBounds ()
+	{
+		float cameraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
+		return new Transform(cameraLeft, GameResources.Camera.position.y + GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
+	}
 	
 	public static Vector2 OriginalTouch;
 	public static Vector2 InputVector(){

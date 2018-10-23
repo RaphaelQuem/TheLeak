@@ -7,6 +7,7 @@ import com.thousandeyes.TheLeak.Base.Enums.*;
 
 public class TextHelper
 {
+
 	static Texture sheet = new Texture(Gdx.files.internal("numeral-spritesheet.png"));
 	static TextureRegion[][] tmp = TextureRegion.split(sheet, sheet.getWidth() / 12, sheet.getHeight() / 1);
 	static TextureRegion[] frames = TextHelper.MatrixToVector(tmp);
@@ -24,10 +25,16 @@ public class TextHelper
 		}
 		return vector;
 	}
-	public static void Show(String txt, Transform t)
+	public static void Show(String txt, Transform t, int cols, int rows)
 	{
-		int ix = TextEnum.valueOf(TextHelper.toSpritable(txt)).ordinal();
-		GameResources.SpriteBatch.draw(frames[ix],t.x,t.y,t.width,t.height);
+		int pos = 0;
+		float charwidth = t.width / cols;
+		for(char  c: txt.toCharArray())
+		{
+			int ix = TextEnum.valueOf(TextHelper.toSpritable(Character.toString(c))).ordinal();
+			GameResources.SpriteBatch.draw(frames[ix],t.x + charwidth * pos,t.y,charwidth,t.height);
+			pos++;
+		}
 	}
 	public static String toSpritable(String value)
 	{
