@@ -5,6 +5,7 @@ import com.thousandeyes.TheLeak.Base.*;
 
 public class CharacterGameState extends GameState
 {
+	
 	Texture background;
 	public CharacterGameState()
 	{
@@ -14,9 +15,11 @@ public class CharacterGameState extends GameState
 	@Override
 	public void Update()
 	{
+		if(InputHandler.getCharacterressed())
+			GameResources.CurrentGameState = new LevelGameState();
 		if(InputHandler.getActionPressed())
 		{
-			GameResources.CurrentGameState = new LevelGameState();
+			GameResources.Player.setStrength( GameResources.Player.getStrength() +1);
 		}
 
 		GameResources.SpriteBatch.draw(background,GameResources.Camera.position.x - GameResources.Camera.viewportWidth /2f, GameResources.Camera.position.y - GameResources.Camera.viewportHeight / 2f,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
@@ -24,4 +27,4 @@ public class CharacterGameState extends GameState
 		
 	}
 	
-}
+}	
