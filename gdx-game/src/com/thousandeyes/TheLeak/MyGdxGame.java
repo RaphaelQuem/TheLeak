@@ -24,7 +24,7 @@ public class MyGdxGame  implements ApplicationListener
 	@Override
 	public void create()
 	{
-		actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
+		
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 10f, 40f,80f,80f));
 		GameResources.Objects.add(new CameraHolder());
@@ -43,8 +43,6 @@ public class MyGdxGame  implements ApplicationListener
 		
 		GameResources.CurrentGameState.Update();
 		
-		UpdateUI();
-		
 		GameResources.SpriteBatch.end();
 		UpdateDebug();
 		
@@ -58,13 +56,7 @@ public class MyGdxGame  implements ApplicationListener
 		GameResources.SpriteBatch.setProjectionMatrix(GameResources.Camera.combined);
 		GameResources.SpriteBatch.begin();
 	}
-	private void UpdateUI()
-	{
-		GameResources.SpriteBatch.draw(actionTexture, InputHandler.getCharacterBounds().x,InputHandler.getCharacterBounds().y, InputHandler.getCharacterBounds().width, InputHandler.getCharacterBounds().height);
-		if(!InputHandler.getActionPressed())
-			GameResources.SpriteBatch.draw(actionTexture, InputHandler.getActionBounds().x, InputHandler.getActionBounds().y, InputHandler.getActionBounds().width, InputHandler.getActionBounds().height);
-		GameResources.Camera.update();
-	}
+	
 	private void UpdateDebug()
 	{
 		if(GameResources.Debug) 

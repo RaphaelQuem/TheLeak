@@ -20,8 +20,7 @@ public class CharacterGameState extends GameState
 		}
 
 		GameResources.SpriteBatch.draw(background,GameResources.Camera.position.x - GameResources.Camera.viewportWidth /2f, GameResources.Camera.position.y - GameResources.Camera.viewportHeight / 2f,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
-		
-	
+		TextHelper.Show(Integer.toString(GameResources.Player.getStrength()),new Transform(0,0,10,10),2,1);
 		
 	}
 	

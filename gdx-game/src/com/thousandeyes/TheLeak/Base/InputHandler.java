@@ -5,6 +5,7 @@ public class InputHandler
 
 {
 	private static boolean lastActionVerification = false;
+	private static boolean lastCharacterVerification = false;
 	public static Rectangle getActionBounds ()
 	{
 		float cameraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
@@ -79,6 +80,25 @@ public class InputHandler
 		}
 		lastActionVerification = false;
 		return lastActionVerification;
+	}
+	public static Boolean getCharacterressed() 
+	{
+		Vector3 touchPoint = new Vector3();
+
+		for (int i=0; i<5; i++){
+			if (!Gdx.input.isTouched(i)) continue;
+			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
+			if (InputHandler.getCharacterBounds().contains(touchPoint.x, touchPoint.y)){
+				if(!lastActionVerification)
+				{
+					lastCharacterVerification =true; 
+					return lastCharacterVerification;
+				}
+				return false;
+			}
+		}
+		lastCharacterVerification = false;
+		return lastCharacterVerification;
 	}
 	
 }
