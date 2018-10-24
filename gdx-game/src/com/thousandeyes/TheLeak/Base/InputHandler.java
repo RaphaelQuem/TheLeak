@@ -4,6 +4,11 @@ import com.badlogic.gdx.*;
 public class InputHandler
 
 {
+	public static String Touches;
+
+
+
+	
 	private static boolean lastActionVerification = false;
 	private static boolean lastCharacterVerification = false;
 	public static Rectangle getActionBounds ()

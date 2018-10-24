@@ -9,9 +9,13 @@ public class LevelGameState extends GameState
 	Texture actionTexture = new Texture(Gdx.files.internal("bbutton.png"));
 	@Override
 	public void Update()
-	{
+	{ 
+		this.Touchables = new ArrayList<Touchable>();
+
+		this.Touchables.add(new Touchable("test","bbutton",0f,0f,10f,10f));
 		if(InputHandler.getCharacterressed())
 			GameResources.CurrentGameState = new CharacterGameState();
+			
 		GameResources.SpriteBatch.draw(GameResources.Level.getBackground(), 0, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
 		Collections.sort(GameResources.Objects); 
 		GameResources.Objects.addAll(GameResources.CreateObjects);
@@ -25,7 +29,8 @@ public class LevelGameState extends GameState
 		GameResources.DeleteObjects.clear();
 		TextHelper.Show("+9-",new Transform(0,0,100f,20f),32,1);
 	
-		UpdateUI();
+		
+		//UpdateUI();
 	}
 	private void UpdateUI()
 	{

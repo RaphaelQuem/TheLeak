@@ -10,8 +10,8 @@ public class Transform extends Rectangle
 {
 	private ListIterator<GameObject> objectIterator;
 	private GameObject owner; 
-	private float screenWidthPercentage;
-	private float screenHeightPercentage;
+	public float screenWidthPercentage;
+	public float screenHeightPercentage;
 	private float canvasWPct = 100f;
 	private float canvasHPct = 100f;
 	public GameObject getOwner()
