@@ -27,6 +27,10 @@ public class LevelGameState extends GameState
 		GameResources.Objects.removeAll(GameResources.DeleteObjects);
 		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);
 		GameResources.DeleteObjects.clear();
+		for(Touchable touchable : this.Touchables)
+		{
+			touchable.checkTouched();
+		}
 		TextHelper.Show("+9-",new Transform(0,0,100f,20f),32,1);
 	
 		

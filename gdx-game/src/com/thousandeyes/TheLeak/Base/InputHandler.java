@@ -4,7 +4,7 @@ import com.badlogic.gdx.*;
 public class InputHandler
 
 {
-	public static String Touches;
+	public static String Touches="";
 
 
 
