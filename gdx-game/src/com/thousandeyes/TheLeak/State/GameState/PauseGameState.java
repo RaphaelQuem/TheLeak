@@ -15,7 +15,7 @@ public class PauseGameState extends GameState
 	@Override
 	public void Update()
 	{
-		if(InputHandler.getActionPressed())
+		if(InputHandler.getTouched("action"))
 		{
 			GameResources.CurrentGameState = new LevelGameState();
 		}

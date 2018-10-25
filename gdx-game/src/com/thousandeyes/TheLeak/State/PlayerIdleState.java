@@ -42,14 +42,12 @@ public class PlayerIdleState implements IState
 	public void Update()
 	{
 		stateTime += Gdx.graphics.getDeltaTime();
-		if(InputHandler.getActionPressed())
-		{
+		if(InputHandler.getTouched("action"))
 			gameObject.setState(new PlayerAttackState(gameObject));
-		}
+		
 		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero))
-		{
 			gameObject.setState(new PlayerWalkingState(gameObject));
-		}
+		
 	
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
 			this.gameObject.setFlipped(true);

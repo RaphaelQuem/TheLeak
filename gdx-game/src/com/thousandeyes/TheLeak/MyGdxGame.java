@@ -44,7 +44,6 @@ public class MyGdxGame  implements ApplicationListener
 		Init();
 		
 		GameResources.CurrentGameState.Update();
-		GameResources.CurrentGameState.UpdateUi();
 		
 		GameResources.SpriteBatch.end();
 		UpdateDebug();

@@ -21,10 +21,9 @@ public class CharacterGameState extends GameState
 	{
 		if(InputHandler.getTouched("character"))
 			GameResources.CurrentGameState = new LevelGameState();
-		if(InputHandler.getActionPressed())
-		{
+		if(InputHandler.getTouched("action"))
 			GameResources.Player.setStrength( GameResources.Player.getStrength() +1);
-		}
+		
 
 		GameResources.SpriteBatch.draw(background,GameResources.Camera.position.x - GameResources.Camera.viewportWidth /2f, GameResources.Camera.position.y - GameResources.Camera.viewportHeight / 2f,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
 		TextHelper.Show(Integer.toString(GameResources.Player.getStrength()),new Transform(0,0,10,10),2,1);

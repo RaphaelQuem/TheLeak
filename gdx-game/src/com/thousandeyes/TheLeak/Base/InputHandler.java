@@ -5,22 +5,6 @@ public class InputHandler
 
 {
 	public static String Touches="";
-
-
-
-	
-	private static boolean lastActionVerification = false;
-	private static boolean lastCharacterVerification = false;
-	public static Rectangle getActionBounds ()
-	{
-		float cameraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
-		return new Transform(cameraLeft + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
-	}
-	public static Rectangle getCharacterBounds ()
-	{
-		float cameraLeft= GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
-		return new Transform(cameraLeft, GameResources.Camera.position.y + GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
-	}
 	
 	public static Vector2 OriginalTouch;
 	public static Vector2 InputVector(){
@@ -67,49 +51,6 @@ public class InputHandler
 		boolean result = InputHandler.Touches.contains(action);
 		InputHandler.Touches = InputHandler.Touches.replace("|" + action,"").replace(action,"");
 		return result;
-	}
-	private static Boolean actionPressed;
-	public static void setActionPressed(Boolean _actionPressed)
-	{
-		actionPressed = _actionPressed;
-	}
-	public static Boolean getActionPressed() 
-	{
-		Vector3 touchPoint = new Vector3();
-
-		for (int i=0; i<5; i++){
-			if (!Gdx.input.isTouched(i)) continue;
-			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
-			if (InputHandler.getActionBounds().contains(touchPoint.x, touchPoint.y)){
-				if(!lastActionVerification)
-				{
-					lastActionVerification =true; 
-					return lastActionVerification;
-				}
-				return false;
-			}
-		}
-		lastActionVerification = false;
-		return lastActionVerification;
-	}
-	public static Boolean getCharacterressed() 
-	{
-		Vector3 touchPoint = new Vector3();
-
-		for (int i=0; i<5; i++){
-			if (!Gdx.input.isTouched(i)) continue;
-			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
-			if (InputHandler.getCharacterBounds().contains(touchPoint.x, touchPoint.y)){
-				if(!lastActionVerification)
-				{
-					lastCharacterVerification =true; 
-					return lastCharacterVerification;
-				}
-				return false;
-			}
-		}
-		lastCharacterVerification = false;
-		return lastCharacterVerification;
 	}
 	
 }

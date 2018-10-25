@@ -10,6 +10,10 @@ import com.thousandeyes.TheLeak.State.GameState.*;
 public class GameResources
 {
 	public static OrthographicCamera Camera;
+	public static float getCameraLeft() 
+	{
+		return GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;
+	}
 	public static List<Transform> TransformInstances = new ArrayList<Transform>();
 	public static List<GameObject> Objects = new ArrayList<GameObject>();
 	public static List<GameObject> CreateObjects = new ArrayList<GameObject>();
@@ -21,7 +25,7 @@ public class GameResources
 	public static float LocalLeftLimit=0f;
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
-	public static GameState CurrentGameState;
+	public static GameState CurrentGameState; 
 	public static Level Level;
 	public static Level Level1()
 	{

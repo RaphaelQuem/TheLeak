@@ -26,15 +26,15 @@ public class Touchable extends Transform
 	public void checkTouched()
 	{
 	
-		GameResources.SpriteBatch.draw(this.texture, this.x,this.y, this.width, this.height);
+		GameResources.SpriteBatch.draw(this.texture, GameResources.getCameraLeft()+ this.x,this.y, this.width, this.height);
 		
 		
 		Vector3 touchPoint = new Vector3();
 		if(event == "") return;
 		for (int i=0; i<5; i++){
 			if (!Gdx.input.isTouched(i)) continue;
-			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
-			if (this.contains(touchPoint.x, touchPoint.y)){
+			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i) + GameResources.getCameraLeft(), Gdx.input.getY(i), 0));
+			if (this.contains(touchPoint.x , touchPoint.y)){
 				InputHandler.Touches += (InputHandler.Touches.equals("")?"":"|") + event;
 			}
 			else
