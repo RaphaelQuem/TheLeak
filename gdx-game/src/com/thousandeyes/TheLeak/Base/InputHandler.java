@@ -62,6 +62,12 @@ public class InputHandler
 		InputHandler.OriginalTouch = null;
 		return Vector2.Zero;
 	};
+	public static boolean getTouched(String action)
+	{
+		boolean result = InputHandler.Touches.contains(action);
+		InputHandler.Touches = InputHandler.Touches.replace("|" + action,"").replace(action,"");
+		return result;
+	}
 	private static Boolean actionPressed;
 	public static void setActionPressed(Boolean _actionPressed)
 	{

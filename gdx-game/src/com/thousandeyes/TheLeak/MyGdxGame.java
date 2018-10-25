@@ -33,6 +33,8 @@ public class MyGdxGame  implements ApplicationListener
 		
 		GameResources.Level1().Load();
 		GameResources.Objects.add(GameResources.Player);
+	
+		GameResources.CurrentGameState = new LevelGameState();
 			
 	}
 
@@ -42,6 +44,7 @@ public class MyGdxGame  implements ApplicationListener
 		Init();
 		
 		GameResources.CurrentGameState.Update();
+		GameResources.CurrentGameState.UpdateUi();
 		
 		GameResources.SpriteBatch.end();
 		UpdateDebug();

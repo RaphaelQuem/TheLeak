@@ -26,7 +26,7 @@ public class Touchable extends Transform
 	public void checkTouched()
 	{
 	
-		GameResources.SpriteBatch.draw(this.texture, InputHandler.getCharacterBounds().x,InputHandler.getCharacterBounds().y, InputHandler.getCharacterBounds().width, InputHandler.getCharacterBounds().height);
+		GameResources.SpriteBatch.draw(this.texture, this.x,this.y, this.width, this.height);
 		
 		
 		Vector3 touchPoint = new Vector3();

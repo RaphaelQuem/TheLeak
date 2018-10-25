@@ -21,7 +21,7 @@ public class GameResources
 	public static float LocalLeftLimit=0f;
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
-	public static GameState CurrentGameState = new LevelGameState();
+	public static GameState CurrentGameState;
 	public static Level Level;
 	public static Level Level1()
 	{

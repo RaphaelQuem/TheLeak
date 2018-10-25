@@ -2,6 +2,7 @@ package com.thousandeyes.TheLeak.State.GameState;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.*;
 import com.thousandeyes.TheLeak.Base.*;
+import java.util.*;
 
 public class CharacterGameState extends GameState
 {
@@ -10,12 +11,15 @@ public class CharacterGameState extends GameState
 	public CharacterGameState()
 	{
 		background = new Texture(Gdx.files.internal("character-background.png"));
+		this.Touchables = new ArrayList<Touchable>();
+		this.Touchables.add(new Touchable("character","bbutton",0f,0f,10f,10f));
+		
 	}
 
 	@Override
 	public void Update()
 	{
-		if(InputHandler.getCharacterressed())
+		if(InputHandler.getTouched("character"))
 			GameResources.CurrentGameState = new LevelGameState();
 		if(InputHandler.getActionPressed())
 		{
