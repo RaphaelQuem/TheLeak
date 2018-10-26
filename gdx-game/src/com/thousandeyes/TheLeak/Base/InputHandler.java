@@ -52,7 +52,8 @@ public class InputHandler
 		boolean result = InputHandler.Touches.contains(action);
 			if(result)
 			{
-				InputHandler.LastTouches += (InputHandler.LastTouches.equals("")?"":"|") + action;
+				if(!InputHandler.LastTouches.contains(action))
+					InputHandler.LastTouches += (InputHandler.LastTouches.equals("")?"":"|") + action;
 				InputHandler.Touches = InputHandler.Touches.replace("|" + action,"").replace(action,"");
 					
 			}

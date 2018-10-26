@@ -30,9 +30,14 @@ public class Touchable extends Transform
 		if(event == "") return;
 		Transform t = new Transform(this.x + GameResources.getCameraLeft(), this.y,this.getWidthPercentage(),this.getHeightPercentage());
 		GameResources.SpriteBatch.draw(this.texture, t.x,t.y, t.width, t.height);
-		
+		InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
+		int touched = 5;
 		for (int i=0; i<5; i++){
-			if (!Gdx.input.isTouched(i)) continue;
+			if (!Gdx.input.isTouched(i))
+			{
+				touched--;
+				continue;
+			}
 			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
 			
 			
@@ -40,14 +45,19 @@ public class Touchable extends Transform
 				if(!InputHandler.LastTouches.contains(event))
 				{
 					InputHandler.Touches += (InputHandler.Touches.equals("")?"":"|") + event;
-				}
-				
+				}		
 			}
 			else
 			{
 				InputHandler.LastTouches = InputHandler.LastTouches.replace("|" + event,"").replace(event,"");
 				InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
 			}
+		}
+		if(touched== 0)
+		{
+			InputHandler.LastTouches = InputHandler.LastTouches.replace("|" + event,"").replace(event,"");
+			InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
+			
 		}
 	}
 	
