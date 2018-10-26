@@ -5,6 +5,7 @@ public class InputHandler
 
 {
 	public static String Touches="";
+	public static String LastTouches="";
 	
 	public static Vector2 OriginalTouch;
 	public static Vector2 InputVector(){
@@ -49,7 +50,13 @@ public class InputHandler
 	public static boolean getTouched(String action)
 	{
 		boolean result = InputHandler.Touches.contains(action);
-		InputHandler.Touches = InputHandler.Touches.replace("|" + action,"").replace(action,"");
+			if(result)
+			{
+				InputHandler.LastTouches += (InputHandler.LastTouches.equals("")?"":"|") + action;
+				InputHandler.Touches = InputHandler.Touches.replace("|" + action,"").replace(action,"");
+					
+			}
+		
 		return result;
 	}
 	

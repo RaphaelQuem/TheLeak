@@ -25,8 +25,6 @@ public class Touchable extends Transform
 	
 	public void checkTouched()
 	{
-	
-		
 		
 		Vector3 touchPoint = new Vector3();
 		if(event == "") return;
@@ -38,14 +36,20 @@ public class Touchable extends Transform
 			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
 			
 			
-			if (t.contains(touchPoint.x , touchPoint.y)){
-				InputHandler.Touches += (InputHandler.Touches.equals("")?"":"|") + event;
+			if (t.contains(touchPoint.x , touchPoint.y)  ){
+				if(!InputHandler.LastTouches.contains(event))
+				{
+					InputHandler.Touches += (InputHandler.Touches.equals("")?"":"|") + event;
+				}
+				
 			}
 			else
 			{
+				InputHandler.LastTouches = InputHandler.LastTouches.replace("|" + event,"").replace(event,"");
 				InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
 			}
 		}
 	}
+	
 	
 }
