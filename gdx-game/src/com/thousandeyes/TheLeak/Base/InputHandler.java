@@ -15,24 +15,20 @@ public class InputHandler
 			{ 
 				if(Gdx.input.getX(i)<= Gdx.graphics.getWidth() / 2)
 				{
-				if(InputHandler.OriginalTouch == null)
-				{
-					
+					if(InputHandler.OriginalTouch == null)
+					{
 						InputHandler.OriginalTouch = new Vector2(Gdx.input.getX(i), Gdx.input.getY(i));
 						return Vector2.Zero;
-					
-					
-				}
-				else
-				{ 
-					Vector2 vec =new Vector2(Gdx.input.getX(i), Gdx.input.getY(i)).sub(InputHandler.OriginalTouch);
-					vec.y *= -1;
-					if(Math.abs(vec.x) > 25f || Math.abs(vec.y) > 25f)
-						return vec.nor();
+					}
 					else
-						return Vector2.Zero;
-				}
-				
+					{ 
+						Vector2 vec =new Vector2(Gdx.input.getX(i), Gdx.input.getY(i)).sub(InputHandler.OriginalTouch);
+						vec.y *= -1;
+						if(Math.abs(vec.x) > 25f || Math.abs(vec.y) > 25f)
+							return vec.nor();
+						else
+							return Vector2.Zero;
+					}
 				}
 				else
 				{

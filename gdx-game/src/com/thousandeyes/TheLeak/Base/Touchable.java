@@ -8,6 +8,7 @@ public class Touchable extends Transform
 	Texture texture;
 	private String event;
 	private String sprite;
+	Transform t;
 	public Touchable(String _event, String _sprite, float _x, float _y, float widthPct, float heightPct)
 	{
 		
@@ -20,16 +21,17 @@ public class Touchable extends Transform
 		this.screenWidthPercentage = widthPct;
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
-
+		t = new Transform(this.x + GameResources.getCameraLeft(), this.y,this.getWidthPercentage(),this.getHeightPercentage());
+		
 	}
 	
 	public void checkTouched()
 	{
-		
-		Vector3 touchPoint = new Vector3();
+		Rectangle rect = new Rectangle(this.x + GameResources.getCameraLeft(), this.y,this.width,this.height);
+	
+		Vector3 touchPoint = new Vector3(); 
 		if(event == "") return;
-		Transform t = new Transform(this.x + GameResources.getCameraLeft(), this.y,this.getWidthPercentage(),this.getHeightPercentage());
-		GameResources.SpriteBatch.draw(this.texture, t.x,t.y, t.width, t.height);
+			GameResources.SpriteBatch.draw(this.texture, rect.x,rect.y, rect.width, rect.height);
 		InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
 		int touched = 5;
 		for (int i=0; i<5; i++){
