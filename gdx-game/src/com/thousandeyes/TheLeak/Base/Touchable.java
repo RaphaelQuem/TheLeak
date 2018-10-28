@@ -31,7 +31,7 @@ public class Touchable extends Transform
 	
 		Vector3 touchPoint = new Vector3(); 
 		if(event == "") return;
-			GameResources.SpriteBatch.draw(this.texture, rect.x,rect.y, rect.width, rect.height);
+			GameResources.SpriteBatch.draw(this.texture, rect.x,rect.y, Math.max(rect.width,0f), rect.height);
 		InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
 		int touched = 5;
 		for (int i=0; i<5; i++){
