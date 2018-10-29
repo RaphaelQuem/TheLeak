@@ -43,7 +43,7 @@ public class Touchable extends Transform
 			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
 			
 			
-			if (t.contains(touchPoint.x , touchPoint.y)  ){
+			if (rect.contains(touchPoint.x , touchPoint.y)  ){
 				if(!InputHandler.LastTouches.contains(event))
 				{
 					InputHandler.Touches += (InputHandler.Touches.equals("")?"":"|") + event;
