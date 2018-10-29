@@ -3,6 +3,8 @@ import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.*;
 
 public class Enemy extends GameObject
 {
@@ -26,7 +28,13 @@ public class Enemy extends GameObject
 	@Override
 	public void Update()
 	{
-		super.Update();
+		Texture healthTex =new Texture(Gdx.files.internal("red.png"));
+	
+		float hpPct = Math.max(Float.parseFloat(String.valueOf(getHealth())) / Float.parseFloat(String.valueOf(getMaxHealth())),0f);
+		
+		GameResources.SpriteBatch.draw(healthTex, this.getTransform().getCanvas().x, this.getTransform().getCanvas().y + this.getTransform().getCanvas().height + 20f, this.getTransform().getCanvas().width * hpPct, 8f);
+		
+		this.getState().Update();
 	}
 
 	

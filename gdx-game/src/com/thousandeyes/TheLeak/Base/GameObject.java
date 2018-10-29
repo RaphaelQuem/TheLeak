@@ -82,7 +82,7 @@ public abstract class GameObject implements Comparable<GameObject>
 	//
 
 
-	
+	private int maxHealth= 100;
 	private int health=100;
 	private int strength = 3;
 	private int dexterity=2;
@@ -95,6 +95,10 @@ public abstract class GameObject implements Comparable<GameObject>
 	public int getHealth()
 	{
 		return health;
+	}
+	public int getMaxHealth()
+	{
+		return maxHealth;
 	}
 	public void setHealth(int _health)
 	{

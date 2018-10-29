@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.*;
 
 public class EnemyWalkingState implements IState
 {
-	Texture healthTex =new Texture(Gdx.files.internal("red.png"));
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private String name;
@@ -76,7 +75,7 @@ public class EnemyWalkingState implements IState
 			gameObject.setState(new EnemyIdleState(gameObject));
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
-		GameResources.SpriteBatch.draw(healthTex, this.gameObject.getTransform().x,this.gameObject.getTransform().y + this.gameObject.getTransform().height, Math.max(this.gameObject.getTransform().width,0f), 10f);
+		
 		
 		
 	}
