@@ -6,18 +6,28 @@ import com.badlogic.gdx.graphics.g2d.*;
 
 public class Enemy extends GameObject
 {
+	 
 	public Enemy() 
 	{
 		this.setTransform(new Transform());
 		this.setState (new EnemyWalkingState(this));
 		this.getTransform().setOwner(this);
+	
 	}
 	
 
 	public Enemy(Transform _transform){
+		
 		this.setTransform (_transform);
 		this.getTransform().setOwner(this);
 		this.setState (new EnemyWalkingState(this));
-
 	}
+
+	@Override
+	public void Update()
+	{
+		super.Update();
+	}
+
+	
 }

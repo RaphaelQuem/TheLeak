@@ -70,6 +70,7 @@ public abstract class GameObject implements Comparable<GameObject>
 	//Methods
     public void Update()
 	{
+		
 		state.Update();
 	};
 	

@@ -5,9 +5,11 @@ import com.badlogic.gdx.*;
 import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
 import java.util.*;
+import com.badlogic.gdx.graphics.*;
 
 public class EnemyWalkingState implements IState
 {
+	Texture healthTex =new Texture(Gdx.files.internal("red.png"));
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private String name;
@@ -44,6 +46,8 @@ public class EnemyWalkingState implements IState
 	@Override
 	public void Update()
 	{
+		
+		
 		stateTime += Gdx.graphics.getDeltaTime();
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
 		if(Math.abs(movVector.x)<=200f)
@@ -72,6 +76,8 @@ public class EnemyWalkingState implements IState
 			gameObject.setState(new EnemyIdleState(gameObject));
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(healthTex, this.gameObject.getTransform().x,this.gameObject.getTransform().y + this.gameObject.getTransform().height, Math.max(this.gameObject.getTransform().width,0f), 10f);
+		
 		
 	}
 
