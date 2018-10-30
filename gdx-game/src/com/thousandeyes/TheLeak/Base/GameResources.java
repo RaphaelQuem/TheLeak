@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Entities.*;
 import com.badlogic.gdx.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
+import com.thousandeyes.TheLeak.Base.Enums.*;
 
 public class GameResources
 {
@@ -35,7 +36,21 @@ public class GameResources
 		level.setHeight(GameResources.Camera.viewportHeight);
 		level.setLeftLimit(0f);
 		level.setRightLimit(3000f);
-		GameResources.Objects.add(new SpawnTrigger(new Transform(1500f,0f,10f,100f)));
+		level.setSpawnTriggers
+		(
+			new SpawnTrigger
+			(
+				1300,100f,
+				new EnemySpawn(1, EnemyEnum.Default),
+				new EnemySpawn(1, EnemyEnum.DataScavenger)
+			),
+			new SpawnTrigger
+			(
+				1700,100f,
+				new EnemySpawn(1, EnemyEnum.Default),
+				new EnemySpawn(1, EnemyEnum.DataScavenger)
+			)
+		);
 		
 		return level;
 	};

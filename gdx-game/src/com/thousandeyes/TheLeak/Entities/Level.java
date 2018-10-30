@@ -6,6 +6,7 @@ import com.thousandeyes.TheLeak.Base.*;
 
 public class Level
 { 
+	private SpawnTrigger[] spawnTriggers;
 	private float leftLimit;
 	private float rightLimit;
 	private float width;
@@ -31,6 +32,10 @@ public class Level
 	{
 		this.backgroud = _background;
 	}
+	public void setSpawnTriggers(SpawnTrigger... triggers)
+	{
+		this.spawnTriggers = triggers;
+	}
 	public float getLeftLimit()
 	{
 		return this.leftLimit;
@@ -51,12 +56,14 @@ public class Level
 	{
 		return this.backgroud;
 	}
-	private List<SpawnTrigger> spawnTriggers;
+	public SpawnTrigger[] getSpawnTriggers()
+	{
+		return this.spawnTriggers;
+	}
 
 	public  void Load()
 	{
-		spawnTriggers = new ArrayList<SpawnTrigger>();
-		GameResources.Objects.addAll(spawnTriggers);
+		//GameResources.Objects.addAll(ListArray(spawnTriggers));
 		GameResources.Level = this;
 		
 	}
