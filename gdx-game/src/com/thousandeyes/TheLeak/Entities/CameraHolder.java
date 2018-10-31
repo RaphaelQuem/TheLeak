@@ -42,7 +42,7 @@ public class CameraHolder extends GameObject
 		GameResources.Camera.position.x = Math.max(limitL+ GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
 		GameResources.Camera.position.x = Math.min(limitR - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
 		GameResources.Camera.update();
-		GameResources.CurrentGameState.UpdateUi();
+		
 		
 	}
 	

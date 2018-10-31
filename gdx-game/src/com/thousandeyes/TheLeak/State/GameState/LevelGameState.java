@@ -13,7 +13,7 @@ public class LevelGameState extends GameState
 	public LevelGameState()
 	{
 		this.Touchables = new ArrayList<Touchable>();
-		uiAction = new Touchable("action","bbutton",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
+		uiAction = new Touchable("action","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
 		uiCharacter= new Touchable("character","facewip",GameResources.getCameraLeft(), GameResources.Camera.viewportHeight/100f*85f, 15f, 15f);
 		uiHealth = new Touchable("hp","red",GameResources.getCameraLeft() + uiCharacter.width , GameResources.Camera.viewportHeight/100f*97f, 50f, 2f);
 		

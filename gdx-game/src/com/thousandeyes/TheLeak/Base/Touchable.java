@@ -11,7 +11,8 @@ public class Touchable extends Transform
 	Transform t;
 	public Touchable(String _event, String _sprite, float _x, float _y, float widthPct, float heightPct)
 	{
-		
+	
+	
 		this.event = _event;
 		this.sprite = _sprite;
 		this.texture = new Texture(Gdx.files.internal(_sprite+".png"));
@@ -27,12 +28,17 @@ public class Touchable extends Transform
 	
 	public void checkTouched()
 	{
+		
 		Rectangle rect = new Rectangle(this.x + GameResources.getCameraLeft(), this.y,this.width,this.height);
-	
+		GameResources.SpriteBatch.draw(this.texture, rect.x,rect.y, Math.max(rect.width,0f), rect.height);
+		if(this.event == "strength")
+		{
+			String x=this.sprite;
+			String y = this.event;
+		}
 		Vector3 touchPoint = new Vector3(); 
-		if(event == "") return;
-			GameResources.SpriteBatch.draw(this.texture, rect.x,rect.y, Math.max(rect.width,0f), rect.height);
-		InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
+		if(event == "") return; 
+			InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
 		int touched = 5;
 		for (int i=0; i<5; i++){
 			if (!Gdx.input.isTouched(i))
