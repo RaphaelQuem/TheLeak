@@ -12,21 +12,19 @@ public class CharacterGameState extends GameState
 	{
 		background = new Texture(Gdx.files.internal("character-background.png"));
 		this.Touchables = new ArrayList<Touchable>();
-		this.Touchables.add(new Touchable("character","bbutton",0f,0f,10f,10f));
+		this.Touchables.add(new Touchable("strength","facewip",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f));
+		
 		
 	}
 
 	@Override
 	public void Update()
 	{
-		if(InputHandler.getTouched("character"))
-			GameResources.CurrentGameState = new LevelGameState();
-		if(InputHandler.getTouched("action"))
-			GameResources.Player.setStrength( GameResources.Player.getStrength() +1);
+		//GameResources.SpriteBatch.draw(background,GameResources.Camera.position.x - GameResources.Camera.viewportWidth /2f, GameResources.Camera.position.y - GameResources.Camera.viewportHeight / 2f,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
+	
 		
-
-		GameResources.SpriteBatch.draw(background,GameResources.Camera.position.x - GameResources.Camera.viewportWidth /2f, GameResources.Camera.position.y - GameResources.Camera.viewportHeight / 2f,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
-		TextHelper.Show(Integer.toString(GameResources.Player.getStrength()),new Transform(0,0,10,10),2,1);
+		if(InputHandler.getTouched("strength"))
+			GameResources.Player.setStrength( GameResources.Player.getStrength() +1);
 		
 	}
 	
