@@ -8,14 +8,20 @@ public class CharacterGameState extends GameState
 {
 	
 	Texture background;
+	Touchable strengthPlus;
+	Touchable strengthMinus;
+	Transform tStrength;
+	
 	public CharacterGameState()
 	{
 		background = new Texture(Gdx.files.internal("character-background.png"));
 		this.Touchables = new ArrayList<Touchable>();
-		this.Touchables.add(new Touchable("strengthplus","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*65f, GameResources.Camera.viewportHeight/100f*15f, 5f, 10f));
-		this.Touchables.add(new Touchable("strengthminus","ui-button-minus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*45f, GameResources.Camera.viewportHeight/100f*15f, 5f, 10f));
+		strengthPlus = new Touchable("strengthplus","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*65f, GameResources.Camera.viewportHeight/100f*15f, 5f, 10f);
+		strengthMinus = new Touchable("strengthminus","ui-button-minus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*45f, GameResources.Camera.viewportHeight/100f*15f, 5f, 10f);
+		this.Touchables.add(strengthPlus);
+		this.Touchables.add(strengthMinus);
 		
-		
+		tStrength = new Transform(strengthMinus.x + strengthMinus.width,strengthMinus.y,5f,strengthMinus.getHeightPercentage());
 	}
 
 	@Override
@@ -30,7 +36,7 @@ public class CharacterGameState extends GameState
 			GameResources.Player.setStrength( GameResources.Player.getStrength() +1);
 		//GameResources.SpriteBatch.draw(new Texture(Gdx.files.internal("ui-button-minus.png")),0f,0f,30f,30f);
 		
-		//TextHelper.Show(GameResources.CurrentGameState.getClass().getSimpleName(),new Transform(0f,0f,50f,50f),1,32);
+		TextHelper.Show(String.valueOf(GameResources.Player.getStrength()),tStrength,1,3);
 	}
 	
 }	
