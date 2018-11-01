@@ -8,20 +8,57 @@ public class CharacterGameState extends GameState
 {
 	
 	Texture background;
+	
 	Touchable strengthPlus;
 	Touchable strengthMinus;
 	Transform tStrength;
+
+	Touchable dexterityPlus;
+	Touchable dexterityMinus;
+	Transform tDexterity;
+	
+	Touchable resistencePlus;
+	Touchable resistenceMinus;
+	Transform tResistence;
+	
+	Touchable firePowerPlus;
+	Touchable firePowerMinus;
+	Transform tFirePower;
+	
+	
 	
 	public CharacterGameState()
 	{
 		background = new Texture(Gdx.files.internal("character-background.png"));
 		this.Touchables = new ArrayList<Touchable>();
-		strengthPlus = new Touchable("strengthplus","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*65f, GameResources.Camera.viewportHeight/100f*15f, 5f, 10f);
-		strengthMinus = new Touchable("strengthminus","ui-button-minus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*45f, GameResources.Camera.viewportHeight/100f*15f, 5f, 10f);
+	
+		strengthPlus = new Touchable("strengthplus","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*80f, GameResources.Camera.viewportHeight/100f*25f, 5f, 10f);
+		strengthMinus = new Touchable("strengthminus","ui-button-minus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*60f, GameResources.Camera.viewportHeight/100f*25f, 5f, 10f);
 		this.Touchables.add(strengthPlus);
 		this.Touchables.add(strengthMinus);
+	
+		dexterityPlus = new Touchable("dexterityplus","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*80f, GameResources.Camera.viewportHeight/100f*40f, 5f, 10f);
+		dexterityMinus = new Touchable("dexterityminus","ui-button-minus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*60f, GameResources.Camera.viewportHeight/100f*40f, 5f, 10f);
+		this.Touchables.add(dexterityPlus);
+		this.Touchables.add(dexterityMinus);
+	
+		resistencePlus = new Touchable("resistenceplus","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*80f, GameResources.Camera.viewportHeight/100f*55f, 5f, 10f);
+		resistenceMinus = new Touchable("resistenceminus","ui-button-minus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*60f, GameResources.Camera.viewportHeight/100f*55f, 5f, 10f);
+		this.Touchables.add(resistencePlus);
+		this.Touchables.add(resistenceMinus);
+	
+		firePowerPlus = new Touchable("firepowerplus","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*80f, GameResources.Camera.viewportHeight/100f*70f, 5f, 10f);
+		firePowerMinus = new Touchable("firepowerminus","ui-button-minus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*60f, GameResources.Camera.viewportHeight/100f*70f, 5f, 10f);
+		this.Touchables.add(firePowerPlus);
+		this.Touchables.add(firePowerMinus);
+	
+		
 		
 		tStrength = new Transform(strengthMinus.x + strengthMinus.width,strengthMinus.y,5f,strengthMinus.getHeightPercentage());
+		tDexterity = new Transform(dexterityMinus.x + dexterityMinus.width,dexterityMinus.y,5f,dexterityMinus.getHeightPercentage());
+		tResistence = new Transform(resistenceMinus.x + resistenceMinus.width,resistenceMinus.y,5f,resistenceMinus.getHeightPercentage());
+		tFirePower= new Transform(firePowerMinus.x + firePowerMinus.width,firePowerMinus.y,5f,firePowerMinus.getHeightPercentage());
+	
 	}
 
 	@Override
@@ -34,6 +71,13 @@ public class CharacterGameState extends GameState
 		
 		if(InputHandler.getTouched("strengthplus"))
 			GameResources.Player.setStrength( GameResources.Player.getStrength() +1);
+		
+		if(InputHandler.getTouched("dexterityminus"))
+			GameResources.CurrentGameState = new LevelGameState();
+
+		if(InputHandler.getTouched("dexterityhplus"))
+			GameResources.Player.setStrength( GameResources.Player.getStrength() +1);
+		
 		//GameResources.SpriteBatch.draw(new Texture(Gdx.files.internal("ui-button-minus.png")),0f,0f,30f,30f);
 		
 		TextHelper.Show(String.valueOf(GameResources.Player.getStrength()),tStrength,1,3);
