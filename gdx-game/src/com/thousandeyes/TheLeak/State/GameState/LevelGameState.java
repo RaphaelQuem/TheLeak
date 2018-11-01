@@ -27,11 +27,9 @@ public class LevelGameState extends GameState
 	@Override
 	public void Update()
 	{ 
-	    float health = GameResources.Player.getHealth();
-		float x = healthW;
 		
 		uiHealth.setWidth( GameResources.Player.getHealth() / 100f * healthW);
-		float y = uiHealth.width;
+
 		if(InputHandler.getTouched(("character")))
 			GameResources.CurrentGameState = new CharacterGameState();
 			

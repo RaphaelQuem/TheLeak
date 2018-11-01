@@ -21,7 +21,11 @@ public class Transform extends Rectangle
 	public void setOwner(GameObject _owner){
 		this.owner = _owner;
 	}
-	
+	public Transform addX(float _x)
+	{
+		this.x += _x;
+		return this;
+	}
 	public boolean IsColliding()
 	{
 		for(Transform t : GameResources.TransformInstances)
