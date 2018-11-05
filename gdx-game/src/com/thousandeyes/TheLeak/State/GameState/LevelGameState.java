@@ -31,7 +31,7 @@ public class LevelGameState extends GameState
 		uiHealth.setWidth( GameResources.Player.getHealth() / 100f * healthW);
 
 		if(InputHandler.getTouched(("character")))
-			GameResources.CurrentGameState = new CharacterGameState();
+			GameResources.CurrentGameState = new CharacterGameState(this);
 			
 		GameResources.SpriteBatch.draw(GameResources.Level.getBackground(), 0, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
 		Collections.sort(GameResources.Objects); 

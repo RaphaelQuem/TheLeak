@@ -6,7 +6,7 @@ import java.util.*;
 
 public class CharacterGameState extends GameState
 {
-	
+	GameState previousState;
 	Texture background;
 	
 	Touchable strengthPlus;
@@ -27,8 +27,10 @@ public class CharacterGameState extends GameState
 	
 	
 	
-	public CharacterGameState()
+	public CharacterGameState(GameState _previousState)
 	{
+		previousState = _previousState;
+		
 		background = new Texture(Gdx.files.internal("character-background.png"));
 		this.Touchables = new ArrayList<Touchable>();
 	
@@ -80,10 +82,10 @@ public class CharacterGameState extends GameState
 
 		
 		if(InputHandler.getTouched("strengthminus"))
-			GameResources.CurrentGameState = new LevelGameState();
+			GameResources.CurrentGameState = previousState;
 		
 		if(InputHandler.getTouched("dexterityminus"))
-			GameResources.CurrentGameState = new LevelGameState();
+			GameResources.CurrentGameState = previousState;
 
 		
 		//GameResources.SpriteBatch.draw(new Texture(Gdx.files.internal("ui-button-minus.png")),0f,0f,30f,30f);
