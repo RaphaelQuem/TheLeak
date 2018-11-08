@@ -56,16 +56,19 @@ public class CharacterGameState extends GameState
 	
 		
 		
-		tStrength = new Transform(strengthMinus.x + strengthMinus.width,strengthMinus.y,5f,strengthMinus.getHeightPercentage());
-		tDexterity = new Transform(dexterityMinus.x + dexterityMinus.width,dexterityMinus.y,5f,dexterityMinus.getHeightPercentage());
-		tResistence = new Transform(resistenceMinus.x + resistenceMinus.width,resistenceMinus.y,5f,resistenceMinus.getHeightPercentage());
-		tFirePower= new Transform(firePowerMinus.x + firePowerMinus.width,firePowerMinus.y,5f,firePowerMinus.getHeightPercentage());
-	
+		
 	}
 
 	@Override
 	public void Update()
 	{
+		tStrength = new Transform( strengthMinus.x + strengthMinus.width + GameResources.getCameraLeft(),strengthMinus.y,5f,strengthMinus.getHeightPercentage());
+		tDexterity = new Transform(dexterityMinus.x + dexterityMinus.width + GameResources.getCameraLeft(),dexterityMinus.y,5f,dexterityMinus.getHeightPercentage());
+		tResistence = new Transform(resistenceMinus.x + resistenceMinus.width + GameResources.getCameraLeft(),resistenceMinus.y,5f,resistenceMinus.getHeightPercentage());
+		tFirePower= new Transform(firePowerMinus.x + firePowerMinus.width + GameResources.getCameraLeft(),firePowerMinus.y,5f,firePowerMinus.getHeightPercentage());
+		
+	
+		
 		GameResources.SpriteBatch.draw(background,GameResources.Camera.position.x - GameResources.Camera.viewportWidth /2f, GameResources.Camera.position.y - GameResources.Camera.viewportHeight / 2f,GameResources.Camera.viewportWidth, GameResources.Camera.viewportHeight);
 	
 		if(InputHandler.getTouched("strengthplus"))

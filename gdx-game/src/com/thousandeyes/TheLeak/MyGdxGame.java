@@ -33,7 +33,7 @@ public class MyGdxGame  implements ApplicationListener
 		
 		GameResources.Level1().Load();
 		GameResources.Objects.add(GameResources.Player);
-	
+		
 		GameResources.CurrentGameState = new LevelGameState();
 			
 	}
@@ -105,6 +105,7 @@ public class MyGdxGame  implements ApplicationListener
 	@Override
 	public void pause()
 	{
+		GameResources.CurrentGameState = new CharacterGameState(GameResources.CurrentGameState);
 	}
 
 	@Override
