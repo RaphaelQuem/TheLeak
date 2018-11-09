@@ -56,6 +56,7 @@ public class EnemyHitState implements IState
 		{
 			if(this.gameObject.getHealth() <= 0)
 			{
+				gameObject.getTransform().setTrigger(true);
 				gameObject.setState(new EmptyState(this.gameObject));
 				return;
 			}

@@ -14,6 +14,14 @@ public class Transform extends Rectangle
 	public float screenHeightPercentage;
 	private float canvasWPct = 100f;
 	private float canvasHPct = 100f;
+	private boolean trigger = false;
+	public boolean getTrigger() {
+		return trigger;
+	}
+	public void setTrigger(boolean _trigger)
+	{
+		trigger = _trigger;
+	}
 	public GameObject getOwner()
 	{
 		return owner;
@@ -49,7 +57,7 @@ public class Transform extends Rectangle
 		
 		
 		GameResources.TransformInstances.add(this);
-	}
+	} 
 
 	public Transform(float _x, float _y, float widthPct, float heightPct){
 		this.x = _x;
@@ -61,6 +69,19 @@ public class Transform extends Rectangle
 
 		GameResources.TransformInstances.add(this);
 	}
+	
+	public Transform(float _x, float _y, float widthPct, float heightPct, boolean _trigger){
+		this.x = _x;
+		this.y = _y;
+		this.screenHeightPercentage = heightPct;
+		this.screenWidthPercentage = widthPct;
+		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
+		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+		this.trigger = _trigger;
+
+		GameResources.TransformInstances.add(this);
+	}
+
 	public float getWidthPercentage() 
 	{
 		return this.screenWidthPercentage;
@@ -98,12 +119,15 @@ public class Transform extends Rectangle
 	
 		if(this.owner.equals(GameResources.Player))
 		{
-			if(this.x < GameResources.Level.getLeftLimit()
+			if( 
+				this.x < GameResources.Level.getLeftLimit()
 				|| this.x + this.width > GameResources.Level.getRightLimit()
 				|| this.y < 0
 				|| this.y + this.height > GameResources.Camera.viewportHeight
 				|| this.x < GameResources.LocalLeftLimit && GameResources.LockingObjects.size()> 0
-				|| this.x + this.width > GameResources.LocalRightLimit && GameResources.LockingObjects.size() > 0)
+				|| this.x + this.width > GameResources.LocalRightLimit && GameResources.LockingObjects.size() > 0
+				
+			)
 			{
 				this.y = yprevious;
 				this.x = xprevious;
@@ -119,6 +143,8 @@ public class Transform extends Rectangle
 			if(this.owner != null && this.owner != obj && this.overlaps(obj.getTransform())
 				&&
 				(this.y >= obj.getTransform().y - 50f) && (this.y <= obj.getTransform().y + 50f)
+				&&
+				(!this.trigger && !obj.getTransform().getTrigger())
 				)
 			{
 				this.y = yprevious;

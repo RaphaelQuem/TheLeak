@@ -4,6 +4,7 @@ import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.Base.Enums.*;
 import java.util.*;
 import com.thousandeyes.TheLeak.Entities.Enemies.*;
+import android.graphics.*;
 
 public class SpawnTrigger extends GameObject
 {
@@ -12,7 +13,7 @@ public class SpawnTrigger extends GameObject
 	private EnemySpawn[] spawns;
 	
 	public SpawnTrigger(int _x, float _tolerance, EnemySpawn... _spawns){
-		this.setTransform (new Transform(_x,0,10f,100f));
+		this.setTransform (new Transform(_x,0,10f,100f,true));
 		this.localRightLimit = _x + _tolerance + GameResources.Camera.viewportWidth / 2;
 		this.localLefLimit = _x - _tolerance -  GameResources.Camera.viewportWidth / 2;
 		this.spawns = _spawns;
@@ -29,15 +30,24 @@ public class SpawnTrigger extends GameObject
 			GameResources.LocalLeftLimit = localLefLimit;
 			GameResources.LocalRightLimit = localRightLimit;
 			GameResources.DeleteObjects.add(this);
+			float y = 0f;
 			for(EnemySpawn spawn : spawns)
 			{
-				if(spawn.getType().equals(EnemyEnum.DataScavenger))
+				for(int i = 0;i<spawn.getNumber();i++)
 				{
-					GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.DataScavenger));
-				}
-				if(spawn.getType().equals(EnemyEnum.Default))
-				{
-					GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.Default));
+					float x = spawn.getLeft()?GameResources.getCameraLeft():GameResources.getCameraLeft()+GameResources.Camera.viewportWidth;
+					if(spawn.getType().equals(EnemyEnum.DataScavenger))
+					{
+					
+						GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.DataScavenger,x,y));
+						
+					}
+					if(spawn.getType().equals(EnemyEnum.Default))
+					{
+						GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.Default,x,y));
+					
+					}
+					y += GameResources.Camera.viewportHeight/6;
 					
 				}
 			}

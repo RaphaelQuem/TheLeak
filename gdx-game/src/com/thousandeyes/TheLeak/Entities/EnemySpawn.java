@@ -5,6 +5,7 @@ public class EnemySpawn
 {
 	private int number;
 	private EnemyEnum type;
+	private boolean left;
 	public int getNumber()
 	{
 		return number;
@@ -13,9 +14,14 @@ public class EnemySpawn
 	{
 		return type;
 	};
-	public EnemySpawn(int _number, EnemyEnum _type)
+	public boolean getLeft()
+	{
+		return left;
+	}
+	public EnemySpawn(int _number, EnemyEnum _type, boolean _left)
 	{
 		number = _number;
 		type = _type;
+		left = _left;
 	}
 }
