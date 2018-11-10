@@ -10,7 +10,7 @@ public class FirstBoss extends Enemy
 		this.setHealth(this.getHealth() + 200);
 		this.setTransform (_transform);
 		this.getTransform().setOwner(this);
-		this.setState (new EnemyWalkingState(this));
+		this.setState (new FirstBossWalkingState(this));
 
 	}
 }
