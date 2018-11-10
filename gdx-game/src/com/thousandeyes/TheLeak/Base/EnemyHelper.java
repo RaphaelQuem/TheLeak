@@ -10,6 +10,12 @@ public class EnemyHelper
 		Enemy enemy = new Enemy();
 		if(enemyType == EnemyEnum.DataScavenger)
 		{
+			enemy = new FirstBoss(new Transform(x, y,25f,40f,80f,80f));
+
+		}
+		else
+		if(enemyType == EnemyEnum.DataScavenger)
+		{
 			enemy = new DataScavenger(new Transform(x, y,10f,30f,80f,80f));
 			
 		}
