@@ -36,17 +36,9 @@ public class SpawnTrigger extends GameObject
 				for(int i = 0;i<spawn.getNumber();i++)
 				{
 					float x = spawn.getLeft()?GameResources.getCameraLeft():GameResources.getCameraLeft()+GameResources.Camera.viewportWidth;
-					if(spawn.getType().equals(EnemyEnum.DataScavenger))
-					{
 					
-						GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.DataScavenger,x,y));
-						
-					}
-					if(spawn.getType().equals(EnemyEnum.Default))
-					{
-						GameResources.LockingObjects.add(EnemyHelper.newEnemy(EnemyEnum.Default,x,y));
+					GameResources.LockingObjects.add(EnemyHelper.newEnemy(spawn.getType(),x,y));
 					
-					}
 					y += GameResources.Camera.viewportHeight/6;
 					
 				}
