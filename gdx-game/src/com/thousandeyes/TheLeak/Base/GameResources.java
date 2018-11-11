@@ -55,12 +55,12 @@ public class GameResources
 				3700,100f,
 				new EnemySpawn(1, EnemyEnum.Default,true),
 				new EnemySpawn(1, EnemyEnum.DataScavenger,false)
-			)/*,
+			),
 			new SpawnTrigger
 			(
 				3900,100f,
 				new EnemySpawn(1, EnemyEnum.FirstBoss,false)
-			)*/
+			)
 		);
 		
 		return level;

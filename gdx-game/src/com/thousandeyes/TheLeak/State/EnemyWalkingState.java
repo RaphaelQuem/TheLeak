@@ -39,6 +39,7 @@ public class EnemyWalkingState implements IState
 
 	public EnemyWalkingState(GameObject _gameObject){
 		gameObject = _gameObject;
+		
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.gameObject.getName() + "-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
