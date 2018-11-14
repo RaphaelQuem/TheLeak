@@ -35,9 +35,10 @@ public class FirstBossWalkingState implements IState
 		return name;
 	}
 
-	public FirstBossWalkingState(GameObject _gameObject){
+	public FirstBossWalkingState(GameObject _gameObject)
+	{
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-walking-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
