@@ -97,7 +97,6 @@ public class Transform extends Rectangle
 		this.width = 0;
 		this.height = 0;
 		
-		GameResources.TransformInstances.add(this);
 	}
 	public Vector3 getVector()
 	{
@@ -107,7 +106,6 @@ public class Transform extends Rectangle
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
 
-		GameResources.TransformInstances.add(this);
 	}
 	public Transform AddTransform(Vector2 transform, float multiplier)
 	{
@@ -117,7 +115,7 @@ public class Transform extends Rectangle
 		this.y += transform.y * multiplier;
 		this.x += transform.x * multiplier;
 	
-		if(this.owner.equals(GameResources.Player))
+		if(this.owner != null && this.owner.equals(GameResources.Player))
 		{
 			if( 
 				this.x < GameResources.Level.getLeftLimit()
@@ -152,6 +150,16 @@ public class Transform extends Rectangle
 			}
 		}
 		return this;
+	}
+	public Transform Copy()
+	{
+		return new Transform
+		(
+			this.x,
+			this.y,
+			this.getWidthPercentage(),
+			this.getHeightPercentage()
+		);
 	}
 	public Transform getCanvas()
 	{
