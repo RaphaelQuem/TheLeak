@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.math.*;
+import com.thousandeyes.TheLeak.Base.Enums.*;
+import com.thousandeyes.TheLeak.Entities.*;
 
 public class FirstBossWalkingState implements IState
 {
@@ -49,7 +51,7 @@ public class FirstBossWalkingState implements IState
 		stateTime += Gdx.graphics.getDeltaTime();
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
 		if(Math.abs(movVector.x)<=200f)
-			this.gameObject.setState(new EnemyAttackState(this.gameObject));
+			new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
 
 		if(!this.gameObject.getFlipped() && movVector.x < 0)
 			this.gameObject.setFlipped(true);
@@ -69,9 +71,6 @@ public class FirstBossWalkingState implements IState
 
 
 		this.gameObject.getTransform().AddTransform(movVector.nor(),2);
-
-		if(movVector.equals(Vector2.Zero))
-			gameObject.setState(new EnemyIdleState(gameObject));
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 

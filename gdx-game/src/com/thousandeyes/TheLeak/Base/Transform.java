@@ -109,7 +109,7 @@ public class Transform extends Rectangle
 
 		GameResources.TransformInstances.add(this);
 	}
-	public void AddTransform(Vector2 transform, float multiplier)
+	public Transform AddTransform(Vector2 transform, float multiplier)
 	{
 		float xprevious = this.x;
 		float yprevious = this.y;
@@ -131,7 +131,7 @@ public class Transform extends Rectangle
 			{
 				this.y = yprevious;
 				this.x = xprevious;
-				return;
+				return this;
 			}
 		}
 	
@@ -151,6 +151,7 @@ public class Transform extends Rectangle
 				this.x = xprevious;
 			}
 		}
+		return this;
 	}
 	public Transform getCanvas()
 	{
