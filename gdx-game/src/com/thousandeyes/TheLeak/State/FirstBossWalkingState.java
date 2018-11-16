@@ -50,9 +50,10 @@ public class FirstBossWalkingState implements IState
 
 		stateTime += Gdx.graphics.getDeltaTime();
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
-		if(Math.abs(movVector.x)<=200f)
+		if(Math.abs(movVector.x)<=700f)
 			new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
-
+		else
+		{
 		if(!this.gameObject.getFlipped() && movVector.x < 0)
 			this.gameObject.setFlipped(true);
 		if(this.gameObject.getFlipped() && movVector.x > 0)
@@ -74,7 +75,7 @@ public class FirstBossWalkingState implements IState
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
-
+		}
 
 	}
 

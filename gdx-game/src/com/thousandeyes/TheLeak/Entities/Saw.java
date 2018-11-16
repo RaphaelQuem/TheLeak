@@ -11,14 +11,19 @@ public class Saw extends GameObject
 	{
 		this.direction = _direction;
 		this.setState(new EmptyState(this));
-		this.setTransform(new Transform(GameResources.getCameraLeft(),0,10,10));
+		this.setTransform(new Transform(_transform.x - this.getTransform().width,_transform.y,10,10));
 		GameResources.CreateObjects.add(this);
 	}
 
 	@Override
 	public void Update()
 	{
-		this.getTransform().AddTransform(new Vector2(0,1),2);
+		this.getTransform().AddTransform(Vectors.Left,2);
+	
+		if(this.getTransform().x + this.getTransform().width < GameResources.getCameraLeft() || this.getTransform().x > GameResources.getCameraRight()) 
+		{
+			GameResources.DeleteObjects.add(this);
+		}
 		
 	}
 	
