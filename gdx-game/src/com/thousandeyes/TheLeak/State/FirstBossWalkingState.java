@@ -13,6 +13,7 @@ public class FirstBossWalkingState implements IState
 	private GameObject gameObject;
 	private String name;
 	private float stateTime;
+	private float cooldown;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -49,9 +50,16 @@ public class FirstBossWalkingState implements IState
 
 
 		stateTime += Gdx.graphics.getDeltaTime();
+		cooldown += Gdx.graphics.getDeltaTime();
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
 		if(Math.abs(movVector.x)<=700f)
-			new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
+		{
+			if(cooldown > 2.5f) 
+			{
+				cooldown =0;
+				new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
+			}
+		}
 		else
 		{
 		if(!this.gameObject.getFlipped() && movVector.x < 0)
@@ -72,10 +80,10 @@ public class FirstBossWalkingState implements IState
 
 
 		this.gameObject.getTransform().AddTransform(movVector.nor(),2);
-
+}
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
-		}
+		
 
 	}
 
