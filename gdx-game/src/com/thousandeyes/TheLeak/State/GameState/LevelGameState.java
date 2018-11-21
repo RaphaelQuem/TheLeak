@@ -44,6 +44,6 @@ public class LevelGameState extends GameState
 		GameResources.Objects.removeAll(GameResources.DeleteObjects);
 		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);
 		GameResources.DeleteObjects.clear();
-		TextHelper.Show(String.valueOf(GameResources.Objects.size()),new Transform(GameResources.getCameraLeft(),0,100f,20f),32,1);
+		TextHelper.Show(String.valueOf(GameResources.Objects.size() ),new Transform(GameResources.getCameraLeft(),0,100f,20f),32,1);
 	}
 }
