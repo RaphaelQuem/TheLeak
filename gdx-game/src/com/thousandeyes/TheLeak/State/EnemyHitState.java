@@ -39,7 +39,7 @@ public class EnemyHitState implements IState
 		stateTime = 0f;
 		this.gameObject = _gameObject;
 		this.hitter = _hitter;
-		this.gameObject.DecreaseHealthBy(MathUtils.random(hitter.getStrength(),hitter.getStrength()*5));
+		this.gameObject.DecreaseHealthBy(MathUtils.random((int)(hitter.getStrength() - hitter.getStrength() * 0.1f),(int)(hitter.getStrength()+ hitter.getStrength()*0.1f)));
 		
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName() + "-hit-spritesheet.png",5,1,0.1f);
 		name = this.getClass().getName();

@@ -11,8 +11,10 @@ public class Saw extends GameObject
 	{
 		this.direction = _direction;
 		this.setState(new EmptyState(this));
-		this.setTransform(new Transform(_transform.x - this.getTransform().width,_transform.y,10,10));
-		GameResources.CreateObjects.add(this);
+		this.setTransform(new Transform(_transform.x,_transform.y,10f,10f));
+		this.getTransform().x -= this.getTransform().width + 1f;
+		this.setStrength(7);
+		GameResources.CreateObjects.add(this); 
 	}
 
 	@Override
@@ -25,6 +27,16 @@ public class Saw extends GameObject
 			GameResources.DeleteObjects.add(this);
 		}
 		
+		for(GameObject objy : GameResources.Objects)
+		{ 
+			if(this != objy )
+			{
+				if(this.getTransform().overlaps(objy.getTransform()))
+				{
+					objy.getState().onTriggerEnter(this);
+				}
+			}
+		}
 	}
 	
 }

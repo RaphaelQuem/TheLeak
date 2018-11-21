@@ -45,10 +45,9 @@ public class GameResources
 			new SpawnTrigger
 			(
 				1300,100f,
-				/*new EnemySpawn(2, EnemyEnum.Default,true),
-				new EnemySpawn(3, EnemyEnum.DataScavenger,false),*/
-				new EnemySpawn(1, EnemyEnum.FirstBoss,false)
-			
+				new EnemySpawn(2, EnemyEnum.Default,true),
+				new EnemySpawn(3, EnemyEnum.DataScavenger,false)
+						
 			),
 			new SpawnTrigger
 			(
