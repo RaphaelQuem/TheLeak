@@ -3,6 +3,7 @@ import com.thousandeyes.TheLeak.Base.*;
 import java.util.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.assets.*;
 
 public class LevelGameState extends GameState
 {
@@ -12,6 +13,11 @@ public class LevelGameState extends GameState
 	float healthW;
 	public LevelGameState()
 	{
+		if(this.Manager != null)
+			this.Manager.dispose();
+		this.Manager = new AssetManager();
+	
+		
 		this.Touchables = new ArrayList<Touchable>();
 		uiAction = new Touchable("action","ui-button-plus",GameResources.getCameraLeft() + GameResources.Camera.viewportWidth /100f*85f, GameResources.Camera.viewportHeight/100f*15f, 15f, 15f);
 		uiCharacter= new Touchable("character","facewip",GameResources.getCameraLeft(), GameResources.Camera.viewportHeight/100f*85f, 15f, 15f);

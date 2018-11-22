@@ -5,6 +5,7 @@ import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.*;
+import com.thousandeyes.TheLeak.State.Enemy.*;
 
 public class Enemy extends GameObject
 {

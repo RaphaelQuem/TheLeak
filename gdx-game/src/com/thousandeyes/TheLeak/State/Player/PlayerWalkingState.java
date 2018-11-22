@@ -1,10 +1,11 @@
-package com.thousandeyes.TheLeak.State;
+package com.thousandeyes.TheLeak.State.Player;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
 import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.graphics.*;
+import com.thousandeyes.TheLeak.State.*;
 
 public class PlayerWalkingState implements IState
 {

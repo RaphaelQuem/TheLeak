@@ -1,8 +1,9 @@
-package com.thousandeyes.TheLeak.State;
+package com.thousandeyes.TheLeak.State.Enemy;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.math.*;
+import com.thousandeyes.TheLeak.State.*;
 
 public class EnemyHitState implements IState
 {

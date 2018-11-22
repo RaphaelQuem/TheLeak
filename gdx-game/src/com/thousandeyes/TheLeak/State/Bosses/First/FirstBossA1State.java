@@ -1,4 +1,4 @@
-
+package com.thousandeyes.TheLeak.State.Bosses.First;
 import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
@@ -6,6 +6,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.Base.Enums.*;
 import com.thousandeyes.TheLeak.Entities.*;
+import com.thousandeyes.TheLeak.State.Enemy.*;
 
 public class FirstBossA1State implements IState
 {

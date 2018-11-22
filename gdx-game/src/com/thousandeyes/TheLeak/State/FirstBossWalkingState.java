@@ -6,6 +6,8 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.Base.Enums.*;
 import com.thousandeyes.TheLeak.Entities.*;
+import com.thousandeyes.TheLeak.State.Bosses.First.*;
+import com.thousandeyes.TheLeak.State.Enemy.*;
 
 public class FirstBossWalkingState implements IState
 {
@@ -35,7 +37,7 @@ public class FirstBossWalkingState implements IState
 	@Override
 	public String getName ()
 	{
-		FirstBossA1State a = new FirstBossA1State();
+		FirstBossA1State a = new FirstBossA1State(this.gameObject);
 		return name;
 	}
 

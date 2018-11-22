@@ -19,6 +19,7 @@ public class GameResources
 	{
 		return (GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f)+ GameResources.Camera.viewportWidth;
 	}
+	
 	public static List<Transform> TransformInstances = new ArrayList<Transform>();
 	public static List<GameObject> Objects = new ArrayList<GameObject>();
 	public static List<GameObject> CreateObjects = new ArrayList<GameObject>();

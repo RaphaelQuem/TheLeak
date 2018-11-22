@@ -1,10 +1,12 @@
 package com.thousandeyes.TheLeak.State.GameState;
 import com.thousandeyes.TheLeak.Base.*;
 import java.util.*;
+import com.badlogic.gdx.assets.*;
 
 
 public class GameState
 { 
+	public AssetManager Manager;
 	public void Update(){ }
 	public List<Touchable> Touchables;
 	public void UpdateUi()

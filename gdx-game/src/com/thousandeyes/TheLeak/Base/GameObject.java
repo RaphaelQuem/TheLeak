@@ -3,14 +3,15 @@ import com.badlogic.gdx.utils.reflect.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
-public abstract class GameObject implements Comparable<GameObject>
-{
+import com.badlogic.gdx.utils.*;
+public abstract class GameObject  implements Comparable<GameObject>, Disposable {
 	// Attributes
 	private Transform transform = new Transform();
 	private IState state;
 	private boolean flipped;
 	private float speed;
-	//
+	
+	
 	
 	// Getters
 	public String getName()
@@ -79,6 +80,14 @@ public abstract class GameObject implements Comparable<GameObject>
 	{
 		return Float.compare(other.getTransform().y,this.transform.y);
 	}
+
+	@Override
+	public void dispose()
+	{
+		this.getState().getStateAnimation();
+	}
+
+	
 	//
 
 
