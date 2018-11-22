@@ -35,7 +35,6 @@ public class FirstBossWalkingState implements IState
 	@Override
 	public String getName ()
 	{
-		FirstBossA1State a = new FirstBossA1State();
 		return name;
 	}
 

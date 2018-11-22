@@ -136,4 +136,6 @@ public abstract class GameObject implements Comparable<GameObject>
 	{
 		firePower = _firePower;
 	}
+	
 }
+
