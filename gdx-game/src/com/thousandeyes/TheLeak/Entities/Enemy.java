@@ -9,7 +9,7 @@ import com.thousandeyes.TheLeak.State.Enemy.*;
 
 public class Enemy extends GameObject
 {
-	 
+	public Texture healthTex;
 	public Enemy() 
 	{
 		this.setTransform(new Transform());
@@ -24,18 +24,24 @@ public class Enemy extends GameObject
 		this.setTransform (_transform);
 		this.getTransform().setOwner(this);
 		this.setState (new EnemyWalkingState(this));
+		GameResources.CurrentGameState.Manager.load( "red.png", Texture.class);
+		GameResources.CurrentGameState.Manager.finishLoading();
+
+		healthTex =GameResources.CurrentGameState.Manager.get( "red.png");
 	}
 
 	@Override
 	public void Update()
 	{
-		Texture healthTex =new Texture(Gdx.files.internal("red.png"));
-	
-		float hpPct = Math.max(Float.parseFloat(String.valueOf(getHealth())) / Float.parseFloat(String.valueOf(getMaxHealth())),0f);
 		
-		GameResources.SpriteBatch.draw(healthTex, this.getTransform().getCanvas().x, this.getTransform().getCanvas().y + this.getTransform().getCanvas().height + 20f, this.getTransform().getCanvas().width * hpPct, 8f);
+		if(healthTex != null)
+		{
+			float hpPct = Math.max(Float.parseFloat(String.valueOf(getHealth())) / Float.parseFloat(String.valueOf(getMaxHealth())),0f);
 		
-		this.getState().Update();
+			GameResources.SpriteBatch.draw(healthTex, this.getTransform().getCanvas().x, this.getTransform().getCanvas().y + this.getTransform().getCanvas().height + 20f, this.getTransform().getCanvas().width * hpPct, 8f);
+		
+			this.getState().Update();
+		}
 	}
 
 	
