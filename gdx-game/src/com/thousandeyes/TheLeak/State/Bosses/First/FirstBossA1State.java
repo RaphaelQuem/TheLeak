@@ -14,7 +14,7 @@ public class FirstBossA1State implements IState
 	private GameObject gameObject;
 	private String name;
 	private float stateTime;
-	private float cooldown;
+	private float yup;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -42,46 +42,25 @@ public class FirstBossA1State implements IState
 	public FirstBossA1State(GameObject _gameObject)
 	{
 		gameObject = _gameObject;
+		yup = 300f;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
 	public void Update()
 	{
-
-
-		stateTime += Gdx.graphics.getDeltaTime();
-		cooldown += Gdx.graphics.getDeltaTime();
-		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
-		if(Math.abs(movVector.x)<=700f)
-		{
-			if(cooldown > 2.5f) 
-			{
-				cooldown =0;
-				new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
-			}
-		}
-		else
-		{
-			if(!this.gameObject.getFlipped() && movVector.x < 0)
-				this.gameObject.setFlipped(true);
-			if(this.gameObject.getFlipped() && movVector.x > 0)
-				this.gameObject.setFlipped(false);
-
-			boolean flipFrame = false;
-			if
-			(
-				this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
-				||
-				!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
-				)
-				flipFrame = true;
-
-			this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
-
-
-			this.gameObject.getTransform().AddTransform(movVector.nor(),2);
-		}
+		
+		float ybefore = this.gameObject.getTransform().y;
+		
+		this.gameObject.getTransform().AddTransform(Vectors.Up,3);
+		
+		float yafter = this.gameObject.getTransform().y;
+	
+		yup -= yafter - ybefore;
+		
+		if(yup<= 0f)
+			this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
+		
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 

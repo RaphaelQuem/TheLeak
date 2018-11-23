@@ -3,6 +3,7 @@ import com.thousandeyes.TheLeak.Entities.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.graphics.*;
+import com.thousandeyes.TheLeak.State.Bosses.First.*;
 
 public class FirstBoss extends Enemy
 {

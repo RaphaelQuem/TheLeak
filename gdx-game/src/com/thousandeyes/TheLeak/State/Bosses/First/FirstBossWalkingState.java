@@ -58,7 +58,8 @@ public class FirstBossWalkingState implements IState
 			if(cooldown > 2.5f) 
 			{
 				cooldown =0;
-				new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
+				this.gameObject.setState(new FirstBossA1State(this.gameObject));
+				//new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
 			}
 		}
 		else
