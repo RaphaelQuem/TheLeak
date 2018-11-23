@@ -12,9 +12,7 @@ public class FirstBoss extends Enemy
 		this.setTransform (_transform);
 		this.getTransform().setOwner(this);
 		this.setState (new FirstBossWalkingState(this));
-		GameResources.CurrentGameState.Manager.load( "red.png", Texture.class);
-		GameResources.CurrentGameState.Manager.finishLoading();
 
-		super.healthTex =GameResources.CurrentGameState.Manager.get( "red.png");
+		super.healthTex = AssetHelper.getTexture("red.png");
 	}
 }

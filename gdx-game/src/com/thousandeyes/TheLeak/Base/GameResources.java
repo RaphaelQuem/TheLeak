@@ -36,7 +36,7 @@ public class GameResources
 	public static Level Level1()
 	{
 		Level level = new Level(); 
-		level.setBackground( new Texture(Gdx.files.internal("map-1.png")));
+		level.setBackground( AssetHelper.getTexture("map-1.png"));
 		level.setWidth(GameResources.Camera.viewportWidth*5);
 		level.setHeight(GameResources.Camera.viewportHeight);
 		level.setLeftLimit(0f);

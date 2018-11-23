@@ -24,10 +24,8 @@ public class Enemy extends GameObject
 		this.setTransform (_transform);
 		this.getTransform().setOwner(this);
 		this.setState (new EnemyWalkingState(this));
-		GameResources.CurrentGameState.Manager.load( "red.png", Texture.class);
-		GameResources.CurrentGameState.Manager.finishLoading();
-
-		healthTex =GameResources.CurrentGameState.Manager.get( "red.png");
+		
+		healthTex = AssetHelper.getTexture("red.png");
 	}
 
 	@Override
