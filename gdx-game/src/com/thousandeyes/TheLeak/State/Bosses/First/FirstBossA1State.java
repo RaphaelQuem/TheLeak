@@ -16,6 +16,7 @@ public class FirstBossA1State implements IState
 	private Animation yupAnimation;
 	private Animation ydownAnimation;
 	private Animation attackAnimation;
+	int jumps;
 	private String name;
 	private float stateTime;
 	private float animTime;
@@ -51,6 +52,8 @@ public class FirstBossA1State implements IState
 		yup = 150f;
 		ydown = 0;
 		animTime = 0f;
+		jumps = 0;
+		
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
 		yupAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstbossyup.png",5,2,0.1f);
 		ydownAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstbossydown.png",5,2,0.1f);
@@ -62,6 +65,8 @@ public class FirstBossA1State implements IState
 	{  
 
 		animTime += Gdx.graphics.getDeltaTime();
+		if(jumps > 3 )
+			this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
 	
 		if (ydown <= 0f)
 		{
@@ -76,6 +81,7 @@ public class FirstBossA1State implements IState
 		
 			if(yup<= 0f) 
 			{
+				jumps++;
 				ydown =50f;
 				animTime = 0f;
 			}
