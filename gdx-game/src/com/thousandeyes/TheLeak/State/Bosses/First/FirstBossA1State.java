@@ -65,7 +65,7 @@ public class FirstBossA1State implements IState
 	
 		if (ydown <= 0f)
 		{
-			stateAnimation = ydownAnimation;
+			stateAnimation = yupAnimation;
 			float ybefore = this.gameObject.getTransform().y;
 		
 			this.gameObject.getTransform().AddTransform(Vectors.Up,7);
@@ -82,7 +82,7 @@ public class FirstBossA1State implements IState
 		}
 		else
 		{
-			stateAnimation = yupAnimation;
+			stateAnimation = ydownAnimation;
 			float ybefore = this.gameObject.getTransform().y;
 
 			this.gameObject.getTransform().AddTransform(Vectors.Down,10);
