@@ -15,6 +15,7 @@ public class FirstBossA1State implements IState
 	private String name;
 	private float stateTime;
 	private float yup;
+	private float ydown;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -42,24 +43,44 @@ public class FirstBossA1State implements IState
 	public FirstBossA1State(GameObject _gameObject)
 	{
 		gameObject = _gameObject;
-		yup = 300f;
+		yup = 150f;
+		ydown = 0;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
 	public void Update()
 	{
+		if (ydown <= 0f)
+		{
+			float ybefore = this.gameObject.getTransform().y;
 		
-		float ybefore = this.gameObject.getTransform().y;
+			this.gameObject.getTransform().AddTransform(Vectors.Up,7);
 		
-		this.gameObject.getTransform().AddTransform(Vectors.Up,3);
-		
-		float yafter = this.gameObject.getTransform().y;
+			float yafter = this.gameObject.getTransform().y;
 	
-		yup -= yafter - ybefore;
+			yup -= yafter - ybefore;
 		
-		if(yup<= 0f)
-			this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
+			if(yup<= 0f) 
+				ydown =100f;
+		}
+		else
+		{
+			float ybefore = this.gameObject.getTransform().y;
+
+			this.gameObject.getTransform().AddTransform(Vectors.Down,10);
+
+			float yafter = this.gameObject.getTransform().y;
+
+			ydown -=  ybefore - yafter;
+		
+			if(ydown<= 0f) 
+			{
+				new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
+				yup =150f;
+			}
+		}
+			//this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
 		
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
