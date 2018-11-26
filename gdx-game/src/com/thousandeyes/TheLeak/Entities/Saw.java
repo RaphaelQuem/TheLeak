@@ -20,6 +20,7 @@ public class Saw extends GameObject
 		this.setState(new EmptyState(this));
 		this.setTransform(new Transform(_transform.x,_transform.y,10f,10f));
 		this.getTransform().x -= this.getTransform().width + 1f;
+		this.getTransform().setTrigger(true);
 		this.setStrength(7);
 		GameResources.CreateObjects.add(this); 
 	}
@@ -34,12 +35,17 @@ public class Saw extends GameObject
 		{
 			GameResources.DeleteObjects.add(this);
 		}
-		
+		Transform reduced = this.getTransform().Copy();
+		reduced.height = reduced.height * 0.2f;
 		for(GameObject objy : GameResources.Objects)
 		{ 
 			if(this != objy )
 			{
-				if(this.getTransform().overlaps(objy.getTransform()))
+				Transform objcollision = objy.getTransform().Copy();
+				objcollision.height = objcollision.height * 0.1f;
+			
+				
+				if(reduced.overlaps(objcollision))
 				{
 					objy.getState().onTriggerEnter(this);
 				}
