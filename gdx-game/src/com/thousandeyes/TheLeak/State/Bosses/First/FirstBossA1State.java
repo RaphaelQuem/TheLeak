@@ -112,8 +112,12 @@ public class FirstBossA1State implements IState
 		else
 		{
 			this.gameObject.getTransform().AddTransform(Vectors.Down,5f);
-			if(this.gameObject.getTransform().y <=  15f)
+			if(this.gameObject.getTransform().y <=  MathUtils.random(0,50))
+			{
+				new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
+				
 				bottom = true;
+			}
 		}
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(animTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
