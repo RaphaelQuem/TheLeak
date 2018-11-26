@@ -22,6 +22,7 @@ public class FirstBossA1State implements IState
 	private float animTime;
 	private float yup;
 	private float ydown;
+	private boolean bottom;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -53,7 +54,7 @@ public class FirstBossA1State implements IState
 		ydown = 0;
 		animTime = 0f;
 		jumps = 0;
-		
+		bottom = false;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
 		yupAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstbossyup.png",5,2,0.1f);
 		ydownAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstbossydown.png",5,2,0.1f);
@@ -63,49 +64,57 @@ public class FirstBossA1State implements IState
 	@Override
 	public void Update()
 	{  
-
+		
 		animTime += Gdx.graphics.getDeltaTime();
-		if(jumps > 3 )
-			this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
-	
-		if (ydown <= 0f)
+		if(bottom)
 		{
-			stateAnimation = yupAnimation;
-			float ybefore = this.gameObject.getTransform().y;
-		
-			this.gameObject.getTransform().AddTransform(Vectors.Up,7);
-		
-			float yafter = this.gameObject.getTransform().y;
+			if(jumps > 3 )
+				this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
 	
-			yup -= yafter - ybefore;
-		
-			if(yup<= 0f) 
+			if (ydown <= 0f)
 			{
-				jumps++;
-				ydown =50f;
-				animTime = 0f;
+				stateAnimation = yupAnimation;
+				float ybefore = this.gameObject.getTransform().y;
+		
+				this.gameObject.getTransform().AddTransform(Vectors.Up,7);
+		
+				float yafter = this.gameObject.getTransform().y;
+	
+				yup -= yafter - ybefore;
+			
+				if(yup<= 0f) 
+				{
+					jumps++;
+					ydown =50f;
+					animTime = 0f;
+				}
 			}
+			else
+			{
+				stateAnimation = ydownAnimation;
+				float ybefore = this.gameObject.getTransform().y;
+
+				this.gameObject.getTransform().AddTransform(Vectors.Down,10);
+
+				float yafter = this.gameObject.getTransform().y;
+
+				ydown -=  ybefore - yafter;
+		
+				if(ydown<= 0f) 
+				{
+					animTime = 0f;
+					new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
+					yup =150f;
+				}
+			}
+			//this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
 		}
 		else
 		{
-			stateAnimation = ydownAnimation;
-			float ybefore = this.gameObject.getTransform().y;
-
-			this.gameObject.getTransform().AddTransform(Vectors.Down,10);
-
-			float yafter = this.gameObject.getTransform().y;
-
-			ydown -=  ybefore - yafter;
-		
-			if(ydown<= 0f) 
-			{
-				animTime = 0f;
-				new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
-				yup =150f;
-			}
+			this.gameObject.getTransform().AddTransform(Vectors.Down,5f);
+			if(this.gameObject.getTransform().y <=  15f)
+				bottom = true;
 		}
-			//this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
-		
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(animTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 

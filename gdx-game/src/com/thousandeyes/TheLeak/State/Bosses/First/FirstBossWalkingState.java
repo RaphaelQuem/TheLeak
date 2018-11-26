@@ -14,7 +14,7 @@ public class FirstBossWalkingState implements IState
 	private GameObject gameObject;
 	private String name;
 	private float stateTime;
-	private float cooldown;
+	private float a1cooldown; 
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -51,16 +51,15 @@ public class FirstBossWalkingState implements IState
 
 
 		stateTime += Gdx.graphics.getDeltaTime();
-		cooldown += Gdx.graphics.getDeltaTime();
+		a1cooldown += Gdx.graphics.getDeltaTime();
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
-		if(Math.abs(movVector.x)<=700f)
+		if(Math.abs(movVector.x)<=700f && a1cooldown > 3f)
 		{
-			if(cooldown > 2.5f) 
-			{
-				cooldown =0;
+			
+				a1cooldown =0;
 				this.gameObject.setState(new FirstBossA1State(this.gameObject));
 				//new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
-			}
+			
 		}
 		else
 		{
