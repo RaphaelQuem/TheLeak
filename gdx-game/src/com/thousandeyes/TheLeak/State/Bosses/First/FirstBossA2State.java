@@ -1,14 +1,12 @@
 package com.thousandeyes.TheLeak.State.Bosses.First;
-import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
-import com.badlogic.gdx.*;
-import com.badlogic.gdx.math.*;
-import com.thousandeyes.TheLeak.Base.Enums.*;
 import com.thousandeyes.TheLeak.Entities.*;
+import com.thousandeyes.TheLeak.Base.Enums.*;
 import com.thousandeyes.TheLeak.State.Enemy.*;
+import com.thousandeyes.TheLeak.State.*;
 
-public class FirstBossA1State implements IState
+public class FirstBossA2State implements IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;  
@@ -18,7 +16,7 @@ public class FirstBossA1State implements IState
 	private Animation attackAnimation;
 	int jumps;
 	private String name;
-	private float stateTime;
+
 	private float animTime;
 	private float yup;
 	private float ydown;
@@ -48,7 +46,7 @@ public class FirstBossA1State implements IState
 		return name;
 	}
 
-	public FirstBossA1State(GameObject _gameObject)
+	public FirstBossA2State(GameObject _gameObject)
 	{
 		gameObject = _gameObject;
 		yup = 150f;
@@ -66,7 +64,7 @@ public class FirstBossA1State implements IState
 	@Override
 	public void Update()
 	{  
-		
+
 		animTime += Gdx.graphics.getDeltaTime();
 		if(!launchSaw)
 		{
@@ -74,18 +72,18 @@ public class FirstBossA1State implements IState
 			{
 				if(jumps > 3 )
 					this.gameObject.setState(new FirstBossWalkingState(this.gameObject));
-	
+
 				if (ydown <= 0f)
 				{
 					stateAnimation = yupAnimation;
 					float ybefore = this.gameObject.getTransform().y;
-		
+
 					this.gameObject.getTransform().AddTransform(Vectors.Up,7);
-		
+
 					float yafter = this.gameObject.getTransform().y;
-	
+
 					yup -= yafter - ybefore;
-			
+
 					if(yup<= 0f) 
 					{
 						jumps++;
@@ -101,9 +99,9 @@ public class FirstBossA1State implements IState
 					this.gameObject.getTransform().AddTransform(Vectors.Down,10);
 
 					float yafter = this.gameObject.getTransform().y;
-	
+
 					ydown -=  ybefore - yafter;
-		
+
 					if(ydown<= 0f) 
 					{
 						animTime = 0f;
@@ -120,7 +118,7 @@ public class FirstBossA1State implements IState
 				if(this.gameObject.getTransform().y <=  MathUtils.random(0,50))
 				{
 					new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
-				
+
 					bottom = true;
 				}
 			}
@@ -133,7 +131,7 @@ public class FirstBossA1State implements IState
 				launchSaw = false;
 				new Saw(DirectionEnum.Left, this.getGameObject().getTransform());
 			}
-			
+
 		}
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(animTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
@@ -145,5 +143,6 @@ public class FirstBossA1State implements IState
 	public void onTriggerEnter(GameObject other)
 	{
 		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
+	}
 	}
 }
