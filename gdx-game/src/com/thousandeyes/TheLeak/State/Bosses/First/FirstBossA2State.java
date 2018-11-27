@@ -5,6 +5,8 @@ import com.thousandeyes.TheLeak.Entities.*;
 import com.thousandeyes.TheLeak.Base.Enums.*;
 import com.thousandeyes.TheLeak.State.Enemy.*;
 import com.thousandeyes.TheLeak.State.*;
+import com.badlogic.gdx.*;
+import com.badlogic.gdx.math.*;
 
 public class FirstBossA2State implements IState
 {
@@ -145,5 +147,5 @@ public class FirstBossA2State implements IState
 	{
 		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
 	}
-	}
+	
 }
