@@ -26,7 +26,7 @@ public class MyGdxGame  implements ApplicationListener
 	{
 		
 		GameResources.Objects.add(new CameraHolder());
-		GameResources.Player = new Player(new Transform(0f, 0f, 60f, 40f,80f,80f));
+		GameResources.Player = new Player(new Transform(0f, 0f, 40f,100f,100f));
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
