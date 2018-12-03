@@ -31,6 +31,7 @@ public class GameResources
 	public static List<GameObject> LockingObjects = new ArrayList<GameObject>();
 	public static boolean Debug = true;
 	public static Player Player;
+	public static float debugme;
 	public static float LocalRightLimit=0f;
 	public static float LocalLeftLimit=0f;
 	public static ShapeRenderer ShapeRenderer;

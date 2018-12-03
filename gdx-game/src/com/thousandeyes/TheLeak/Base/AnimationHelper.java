@@ -20,7 +20,8 @@ public class AnimationHelper
 				frames[index++] = tmp[i][j];
 			}
 		}
-	
+		
 		return new Animation(time, frames);
 	}
+	
 }
