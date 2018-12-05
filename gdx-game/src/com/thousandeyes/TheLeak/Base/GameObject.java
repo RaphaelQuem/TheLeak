@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.utils.*;
+import com.thousandeyes.TheLeak.State.GameState.*;
 public abstract class GameObject  implements Comparable<GameObject>, Disposable {
 	// Attributes
 	private Transform transform = new Transform();

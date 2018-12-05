@@ -45,7 +45,7 @@ public class Transform extends Rectangle
 		}
 		return false;
 	}
-	public Transform(float _x, float _y, float widthPct, float heightPct, float _canvasWPct,float _canvasHPct){
+	/*public Transform(float _x, float _y, float widthPct, float heightPct, float _canvasWPct,float _canvasHPct){
 		this.x = _x;
 		this.y = _y;
 		this.screenHeightPercentage = heightPct;
@@ -57,16 +57,16 @@ public class Transform extends Rectangle
 		
 		
 		GameResources.TransformInstances.add(this);
-	} 
+	} */
 	
-	public Transform(float _x, float _y, float heightPct, float _canvasWPct,float _canvasHPct){
+	public Transform(float _x, float _y, float heightPct,float ratio, float _canvasWPct,float _canvasHPct){
 		this.x = _x;
 		this.y = _y;
 		this.screenHeightPercentage = heightPct;
 		
 		
 		this.height = (GameResources.Camera.viewportHeight/100f*heightPct)/100f*_canvasHPct;
-		this.width = this.height * GameResources.getScreenProportion();
+		this.width = this.height * ratio;
 		this.canvasWPct = _canvasWPct;
 		this.canvasHPct = _canvasHPct;
 		this.screenWidthPercentage = this.width/ GameResources.Camera.viewportWidth*100f;
