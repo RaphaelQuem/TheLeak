@@ -36,8 +36,8 @@ public class PlayerIdleState implements IState
 	
 	public PlayerIdleState(GameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",3,2,0.08f);
-		GameResources.debugme = TextureRegionHelper.getAspectRatio("hero-idle-spritesheet.png",3,2);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",3,2,0.16f);
+
 		//TextHelper.Show(String.valueOf(test),new Transform(0,0,10,10),3,3);
 		name = this.getClass().getName();
 	}
