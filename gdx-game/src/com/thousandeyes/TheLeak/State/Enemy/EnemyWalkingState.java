@@ -14,6 +14,7 @@ public class EnemyWalkingState implements IState
 	private GameObject gameObject;
 	private String name;
 	private float stateTime;
+	private boolean offensive;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -72,12 +73,17 @@ public class EnemyWalkingState implements IState
 		
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
-	
-		this.gameObject.getTransform().AddTransform(movVector.nor(),2);
+		if(offensive)
+			this.gameObject.getTransform().AddTransform(movVector.nor(),2);
+		else
+			this.gameObject.getTransform().AddTransform(Vectors.Invert(movVector.nor()) ,2);
+		
+			
 		
 		if(movVector.equals(Vector2.Zero))
 			gameObject.setState(new EnemyIdleState(gameObject));
-
+			
+		
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 		
