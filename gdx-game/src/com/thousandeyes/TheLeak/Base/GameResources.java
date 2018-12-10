@@ -29,7 +29,7 @@ public class GameResources
 	public static List<GameObject> CreateObjects = new ArrayList<GameObject>();
 	public static List<GameObject> DeleteObjects = new ArrayList<GameObject>();
 	public static List<GameObject> LockingObjects = new ArrayList<GameObject>();
-	public static boolean Debug = true;
+	public static boolean Debug = false;
 	public static Player Player;
 	public static float debugme;
 	public static float LocalRightLimit=0f;
