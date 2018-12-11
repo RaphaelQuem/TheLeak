@@ -14,6 +14,7 @@ public class EnemyWalkingState implements IState
 	private GameObject gameObject;
 	private String name;
 	private float stateTime;
+	private float substateTime;
 	private boolean offensive;
 	@Override
 	public Animation getStateAnimation()
@@ -40,7 +41,8 @@ public class EnemyWalkingState implements IState
 	}
 
 	public EnemyWalkingState(GameObject _gameObject){
-		gameObject = _gameObject;
+		gameObject = _gameObject; 
+	
 		if(!this.gameObject.getName().equals("firstboss"))
 		{
 			stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.gameObject.getName() + "-walking-spritesheet.png",5,2,0.1f);
@@ -51,8 +53,15 @@ public class EnemyWalkingState implements IState
 	public void Update()
 	{
 		
+		substateTime -= Gdx.graphics.getDeltaTime();
+		stateTime += Gdx.graphics.getDeltaTime(); 
+	
+		if(substateTime<= 0f)
+		{
+			substateTime = MathUtils.random(2f, 7f);
+			offensive =!offensive;
+		}
 		
-		stateTime += Gdx.graphics.getDeltaTime();
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
 		if(Math.abs(movVector.x)<=200f)
 			this.gameObject.setState(new EnemyAttackState(this.gameObject));
