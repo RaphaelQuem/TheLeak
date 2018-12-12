@@ -48,11 +48,7 @@ public class GameResources
 		level.setRightLimit(5000f);
 		level.setSpawnTriggers
 		(
-			new SpawnTrigger
-			(
-				900,100f,
-				new EnemySpawn(1, EnemyEnum.FirstBoss,false)
-			),
+			
 			new SpawnTrigger
 			(
 				1300,100f,
