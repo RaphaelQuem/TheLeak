@@ -48,7 +48,7 @@ public class PlayerAttack2State implements IState
 	public PlayerAttack2State(GameObject _gameObject){
 		stateTime = 0f;
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",3,1,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack2-spritesheet.png",3,1,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
 		colliders = new ArrayList<Transform>();
