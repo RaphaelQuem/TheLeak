@@ -10,16 +10,16 @@ public class EnemyHelper
 		Enemy enemy = null;
 		if(enemyType == EnemyEnum.FirstBoss)
 		{
-			enemy = new FirstBoss(new Transform(x, y,45f,1f,80f,80f));
+			enemy = new FirstBoss(new Transform(x, y,45f,1f,30f,100f));
 
 		}
 		if(enemyType == EnemyEnum.DataScavenger)
 		{
-			enemy = new DataScavenger(new Transform(x, y,45f,1f,80f,80f));
+			enemy = new DataScavenger(new Transform(x, y,45f,1f,30f,100f));
 			
 		}
 		if(enemy == null)
-			enemy = new Enemy(new Transform(x, y,45f,1f,80f,80f));
+			enemy = new Enemy(new Transform(x, y,45f,1f,30f,100f));
 	
 		GameResources.CreateObjects.add
 		(

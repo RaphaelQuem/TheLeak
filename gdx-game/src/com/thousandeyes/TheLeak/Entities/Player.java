@@ -12,7 +12,8 @@ import com.thousandeyes.TheLeak.State.Player.*;
 
 public class Player extends GameObject
 {
-	
+	private int experience;
+	private int abilityPoints;
 	public Player(Transform _transform){
 		this.setSpeed(5f);
 		this.setTransform ( _transform);
@@ -20,6 +21,27 @@ public class Player extends GameObject
 		this.setState( new PlayerIdleState(this));
 		
 	}
+
+	public void setAbilityPoints(int abilityPoints)
+	{
+		this.abilityPoints = abilityPoints;
+	}
+
+	public int getAbilityPoints()
+	{
+		return abilityPoints;
+	}
+
+	public void increaseExperience(int experience)
+	{
+		this.experience += experience;
+	}
+
+	public int getExperience()
+	{
+		return experience;
+	}
+	
 	
 	
 }

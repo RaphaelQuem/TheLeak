@@ -15,6 +15,7 @@ public class PlayerAttack2State implements IState
 	private String name;
 	private List<Transform> colliders;
 	private List<GameObject> collisions;
+	private boolean combo;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -63,9 +64,16 @@ public class PlayerAttack2State implements IState
 	public void Update()
 	{
 		stateTime  += Gdx.graphics.getDeltaTime();
+		if(InputHandler.getTouched("action"))
+			combo = true;
+
+
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{
-			gameObject.setState(new PlayerIdleState(gameObject));
+			if(combo)
+				gameObject.setState(new PlayerAttack3State(gameObject));
+			else
+				gameObject.setState(new PlayerIdleState(gameObject));
 		}
 		boolean flipFrame = false;
 		if
@@ -92,6 +100,7 @@ public class PlayerAttack2State implements IState
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
+		
 	}
 
 	@Override

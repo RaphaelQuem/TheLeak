@@ -42,13 +42,13 @@ public class EnemyHitState implements IState
 		this.hitter = _hitter;
 		this.gameObject.DecreaseHealthBy(MathUtils.random((int)(hitter.getStrength() - hitter.getStrength() * 0.1f),(int)(hitter.getStrength()+ hitter.getStrength()*0.1f)));
 		
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName() + "-hit-spritesheet.png",5,1,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName() + "-hit-spritesheet.png",6,1,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
 	public void Update()
 	{
-		Vector2 pushback = new Vector2(3f,0f);
+		Vector2 pushback = new Vector2(1f,0f);
 		if(!this.gameObject.getFlipped())
 			pushback.x *= -1f;
 		this.gameObject.getTransform().AddTransform(pushback,1f);
@@ -58,6 +58,7 @@ public class EnemyHitState implements IState
 			if(this.gameObject.getHealth() <= 0)
 			{
 				gameObject.getTransform().setTrigger(true);
+				GameResources.Player.increaseExperience(75);
 				gameObject.setState(new EmptyState(this.gameObject));
 				return;
 			}
