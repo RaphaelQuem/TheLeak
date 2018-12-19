@@ -41,6 +41,12 @@ public class CameraHolder extends GameObject
 		GameResources.Camera.position.set(camx + cammov.x * Gdx.graphics.getDeltaTime(),720f/2f,10f);
 		GameResources.Camera.position.x = Math.max(limitL+ GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
 		GameResources.Camera.position.x = Math.min(limitR - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
+		if(GameResources.ShakeTime >0f)
+		{
+			GameResources.Camera.position.x += MathUtils.random(-10f, 10f);
+			GameResources.Camera.position.y += MathUtils.random(-0.1f, 0.1f);
+			
+		}
 		GameResources.Camera.update();
 		
 		
