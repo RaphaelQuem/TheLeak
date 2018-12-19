@@ -34,10 +34,14 @@ public class GameResources
 	public static float debugme;
 	public static float LocalRightLimit=0f;
 	public static float LocalLeftLimit=0f;
-	public static float ShakeTime = 1f;
+	public static float ShakeTime = 0f;
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
 	public static GameState CurrentGameState; 
+	public static void ScreenShake(float time)
+	{
+		GameResources.ShakeTime= time;
+	}
 	public static Level Level;
 	public static Level Level1()
 	{
