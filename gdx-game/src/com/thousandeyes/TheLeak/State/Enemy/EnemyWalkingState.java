@@ -85,7 +85,13 @@ public class EnemyWalkingState implements IState
 		if(offensive)
 			this.gameObject.getTransform().AddTransform(movVector.nor(),2);
 		else
+		{
+			if(Math.abs(this.gameObject.getTransform().x - GameResources.Player.getTransform().x) > 700f)
+				this.gameObject.setState(new EnemyIdleState(this.gameObject));
+				
 			this.gameObject.getTransform().AddTransform(Vectors.Invert(movVector.nor()) ,2);
+			
+		}
 		
 			
 		
