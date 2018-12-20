@@ -50,14 +50,7 @@ public class CameraHolder extends GameObject
 			
 		}
 	
-		/*for(Touchable tc : GameResources.CurrentGameState.Touchables)
-		{
-			Rectangle rect = new Rectangle(tc.x + GameResources.Camera.position.x, tc.y,tc.width,tc.height);
-			GameResources.SpriteBatch.draw(tc.getTexture(), rect.x,rect.y, Math.max(rect.width,0f), rect.height);
-			
-		}
-	
-	*/
+		
 	
 		
 		
