@@ -14,12 +14,13 @@ import android.preference.*;
 import com.badlogic.gdx.graphics.glutils.*;
 import android.os.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
+import com.badlogic.gdx.scenes.scene2d.*;
 
 
 public class MyGdxGame  implements ApplicationListener
 {
 	Texture actionTexture;
-	
+	Stage stage;
 	float time;
 	@Override
 	public void create()
@@ -29,13 +30,14 @@ public class MyGdxGame  implements ApplicationListener
 		GameResources.Player = new Player(new Transform(0f, 0f, 45f, 1f, 30f,100f));
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.SpriteBatch = new SpriteBatch();
+		GameResources.HudBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
 		
 		GameResources.Level1().Load();
 		GameResources.Objects.add(GameResources.Player);
 		
 		GameResources.CurrentGameState = new LevelGameState();
-			
+		
 	}
 
 	@Override
@@ -44,8 +46,9 @@ public class MyGdxGame  implements ApplicationListener
 		Init();
 		
 		GameResources.CurrentGameState.Update();
-		GameResources.CurrentGameState.UpdateUi();
 		GameResources.SpriteBatch.end();
+		GameResources.CurrentGameState.UpdateUi();
+		//GameResources.HudBatch.end();
 		UpdateDebug();
 		
 	}
@@ -55,8 +58,10 @@ public class MyGdxGame  implements ApplicationListener
 		time += Gdx.graphics.getDeltaTime();
 	    Gdx.gl.glClearColor(1, 1, 1, 1);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		GameResources.Camera.update();
 		GameResources.SpriteBatch.setProjectionMatrix(GameResources.Camera.combined);
 		GameResources.SpriteBatch.begin();
+		//GameResources.HudBatch.begin();
 	}
 	
 	private void UpdateDebug()

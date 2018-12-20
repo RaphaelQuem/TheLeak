@@ -48,4 +48,5 @@ public class LevelGameState extends GameState
 		GameResources.DeleteObjects.clear();
 		TextHelper.Show(String.valueOf(GameResources.Player.getLevel()).replace(".","+"),new Transform(GameResources.getCameraLeft(),0,100f,20f),32,1);
 	}
+	
 }

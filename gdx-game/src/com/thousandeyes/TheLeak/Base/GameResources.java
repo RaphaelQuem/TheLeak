@@ -37,6 +37,7 @@ public class GameResources
 	public static float ShakeTime = 0f;
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
+	public static SpriteBatch HudBatch;
 	public static GameState CurrentGameState; 
 	public static void ScreenShake(float time)
 	{

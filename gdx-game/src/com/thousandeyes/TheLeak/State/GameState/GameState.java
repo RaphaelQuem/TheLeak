@@ -10,9 +10,13 @@ public class GameState
 	public List<Touchable> Touchables;
 	public void UpdateUi()
 	{
+		GameResources.HudBatch.begin();
 		for(Touchable touchable : this.Touchables)
 		{
 			touchable.checkTouched();
 		}
+		GameResources.HudBatch.draw(GameResources.Level.getBackground(),0,0);
+		
+		GameResources.HudBatch.end();
 	}
 }

@@ -25,12 +25,22 @@ public class Touchable extends Transform
 		t = new Transform(this.x + GameResources.getCameraLeft(), this.y,this.getWidthPercentage(),this.getHeightPercentage());
 		
 	}
+
+	public void setTexture(Texture texture)
+	{
+		this.texture = texture;
+	}
+
+	public Texture getTexture()
+	{
+		return texture;
+	}
 	
 	public void checkTouched()
 	{
 		
 		Rectangle rect = new Rectangle(this.x + GameResources.getCameraLeft(), this.y,this.width,this.height);
-		GameResources.SpriteBatch.draw(this.texture, rect.x,rect.y, Math.max(rect.width,0f), rect.height);
+		//GameResources.SpriteBatch.draw(this.texture, rect.x,rect.y, Math.max(rect.width,0f), rect.height);
 		if(this.event == "strength")
 		{
 			String x=this.sprite;

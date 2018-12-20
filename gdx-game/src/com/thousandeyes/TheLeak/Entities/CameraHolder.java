@@ -49,7 +49,21 @@ public class CameraHolder extends GameObject
 			//Gdx.input.vibrate(1);
 			
 		}
-		GameResources.Camera.update();
+	
+		/*for(Touchable tc : GameResources.CurrentGameState.Touchables)
+		{
+			Rectangle rect = new Rectangle(tc.x + GameResources.Camera.position.x, tc.y,tc.width,tc.height);
+			GameResources.SpriteBatch.draw(tc.getTexture(), rect.x,rect.y, Math.max(rect.width,0f), rect.height);
+			
+		}
+	
+	*/
+	
+		
+		
+		//GameResources.SpriteBatch.draw(GameResources.Level.getBackground(),GameResources.Camera.position.x,GameResources.Camera.position.y);
+		//GameResources.Camera.update();
+	//
 		
 		
 	}
