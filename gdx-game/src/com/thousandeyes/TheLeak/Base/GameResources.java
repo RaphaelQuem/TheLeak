@@ -32,7 +32,7 @@ public class GameResources
 	public static List<GameObject> LockingObjects = new ArrayList<GameObject>();
 	public static boolean Debug = true;
 	public static Player Player;
-	public static Viewport HudVP = new StretchViewport(1600,900);
+	public static Viewport HudVP = new StretchViewport(1280,720);
 	public static float debugme;
 	public static float LocalRightLimit=0f;
 	public static float LocalLeftLimit=0f;

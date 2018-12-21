@@ -20,9 +20,9 @@ public class Touchable extends Transform
 		this.y = _y;
 		this.screenHeightPercentage = heightPct;
 		this.screenWidthPercentage = widthPct;
-		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
-		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
-		t = new Transform(this.x + GameResources.getCameraLeft(), this.y,this.getWidthPercentage(),this.getHeightPercentage());
+		this.width = Gdx.graphics.getWidth()/100f*widthPct;
+		this.height = Gdx.graphics.getHeight()/100f*heightPct;
+		t = new Transform(this.x, this.y,this.getWidthPercentage(),this.getHeightPercentage());
 		
 	}
 
