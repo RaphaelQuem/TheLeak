@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.*;
 public class GameResources
 {
 	public static OrthographicCamera Camera;
+	public static OrthographicCamera HudCamera;
 	public static float getCameraLeft() 
 	{
 		return GameResources.Camera.position.x - GameResources.Camera.viewportWidth/2f;

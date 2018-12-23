@@ -20,7 +20,7 @@ public class Touchable extends Transform
 		this.y = _y;
 		this.screenHeightPercentage = heightPct;
 		this.screenWidthPercentage = widthPct;
-		this.width = Gdx.graphics.getWidth()/100f*widthPct;
+		this.width = Gdx.graphics.getWidth();
 		this.height = Gdx.graphics.getHeight()/100f*heightPct;
 		t = new Transform(this.x, this.y,this.getWidthPercentage(),this.getHeightPercentage());
 		

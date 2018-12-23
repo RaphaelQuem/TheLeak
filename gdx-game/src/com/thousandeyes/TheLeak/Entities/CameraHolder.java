@@ -13,6 +13,8 @@ public class CameraHolder extends GameObject
 		GameResources.Camera = new OrthographicCamera(1280f, 720f);
 		GameResources.Camera.position.set(1280f/2f,720f/2f,10f);
 		GameResources.Camera.update();
+		GameResources.HudCamera.position.set(1280f/2f,720f/2f,10f);
+		GameResources.HudCamera.update();
 		this.setState(new EmptyState(this));
 	}
 
