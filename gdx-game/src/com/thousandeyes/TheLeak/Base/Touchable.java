@@ -39,8 +39,8 @@ public class Touchable extends Transform
 	public void checkTouched()
 	{
 		
-		Rectangle rect = new Rectangle(this.x, this.y,this.width,this.height);
-		GameResources.HudBatch.draw(this.texture, rect.x,rect.y, GameResources.Camera.viewportWidth, rect.height);
+		Rectangle rect = new Rectangle(this.x , this.y,this.width,this.height);
+		GameResources.HudBatch.draw(this.texture, rect.x,rect.y, rect.width, rect.height);
 		if(this.event == "strength")
 		{
 			String x=this.sprite;
