@@ -10,7 +10,7 @@ public class GameState
 	public List<Touchable> Touchables;
 	public void UpdateUi()
 	{
-		
+		GameResources.HudBatch.setProjectionMatrix(GameResources.Camera.combined);
 		GameResources.HudBatch.begin();
 		for(Touchable touchable : this.Touchables)
 		{

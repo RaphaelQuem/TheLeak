@@ -20,8 +20,8 @@ public class Touchable extends Transform
 		this.y = _y;
 		this.screenHeightPercentage = heightPct;
 		this.screenWidthPercentage = widthPct;
-		this.width = Gdx.graphics.getWidth();
-		this.height = Gdx.graphics.getHeight()/100f*heightPct;
+		this.width = GameResources.Camera.viewportWidth/100f*widthPct;
+		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
 		t = new Transform(this.x, this.y,this.getWidthPercentage(),this.getHeightPercentage());
 		
 	}
@@ -40,7 +40,7 @@ public class Touchable extends Transform
 	{
 		
 		Rectangle rect = new Rectangle(this.x, this.y,this.width,this.height);
-		GameResources.HudBatch.draw(this.texture, rect.x,rect.y, Math.max(rect.width,0f), rect.height);
+		GameResources.HudBatch.draw(this.texture, rect.x,rect.y, GameResources.Camera.viewportWidth, rect.height);
 		if(this.event == "strength")
 		{
 			String x=this.sprite;
