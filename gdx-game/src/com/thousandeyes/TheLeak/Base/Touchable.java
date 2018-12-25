@@ -41,11 +41,7 @@ public class Touchable extends Transform
 		
 		Rectangle rect = new Rectangle(this.x , this.y,this.width,this.height);
 		GameResources.HudBatch.draw(this.texture, rect.x,rect.y, rect.width, rect.height);
-		if(this.event == "strength")
-		{
-			String x=this.sprite;
-			String y = this.event;
-		}
+		
 		Vector3 touchPoint = new Vector3(); 
 		if(event == "") return; 
 			InputHandler.Touches = InputHandler.Touches.replace("|" + event,"").replace(event,"");
@@ -56,7 +52,7 @@ public class Touchable extends Transform
 				touched--;
 				continue;
 			}
-			GameResources.Camera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
+			GameResources.HudCamera.unproject(touchPoint.set(Gdx.input.getX(i), Gdx.input.getY(i), 0));
 			
 			
 			if (rect.contains(touchPoint.x , touchPoint.y)  ){
