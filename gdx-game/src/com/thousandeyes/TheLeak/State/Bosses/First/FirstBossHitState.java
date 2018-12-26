@@ -8,7 +8,7 @@ import com.thousandeyes.TheLeak.Base.Enums.*;
 import com.thousandeyes.TheLeak.Entities.*;
 import com.thousandeyes.TheLeak.State.Enemy.*;
 
-public class FirstBossWalkingState implements IState
+public class FirstBossHitState implements IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
@@ -39,10 +39,10 @@ public class FirstBossWalkingState implements IState
 		return name;
 	}
 
-	public FirstBossWalkingState(GameObject _gameObject)
+	public FirstBossHitState(GameObject _gameObject, GameObject _other)
 	{
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("enemy-hit-spritesheet.png",5,2,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
@@ -91,6 +91,6 @@ public class FirstBossWalkingState implements IState
 	@Override
 	public void onTriggerEnter(GameObject other)
 	{
-		this.gameObject.setState(new FirstBossHitState(this.gameObject, other));
+		
 	}
 }
