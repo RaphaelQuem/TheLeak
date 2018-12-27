@@ -45,7 +45,7 @@ public class EnemyWalkingState implements IState
 	
 		if(!this.gameObject.getName().equals("firstboss"))
 		{
-			stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.gameObject.getName() + "-idle-spritesheet.png",6,1,0.1f);
+			stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.gameObject.getName() + "-idle-spritesheet.png",3,2,0.1f);
 			name = this.getClass().getName();
 		}
 	}

@@ -40,7 +40,7 @@ public class PlayerWalkingState implements IState
 
 	public PlayerWalkingState(GameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",3,2,0.1f);
 		name = this.getClass().getName();
 		stateTime = 0f;
 	}
