@@ -15,6 +15,7 @@ public class Enemy extends GameObject
 		this.setTransform(new Transform());
 		this.setState (new EnemyWalkingState(this));
 		this.getTransform().setOwner(this);
+		
 	
 	}
 	
