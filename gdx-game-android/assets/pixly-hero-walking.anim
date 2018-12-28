@@ -1,6 +1,6 @@
 <PixlyAnimation version="1.5">
 	<Info sheetWidth="189" sheetHeight="192" totalCollumns="3" totalRows="3" frameWidth="63" frameHeight="64" layerCount="1"/>
-	<Frames length="7">
+	<Frames length="8">
 		<Frame duration="120" visible="true">
 			<Region x="0" y="0" width="63" height="64"/>
 			<Index linear="0" collumn="0" row="0"/>
@@ -28,6 +28,10 @@
 		<Frame duration="120" visible="true">
 			<Region x="0" y="128" width="63" height="64"/>
 			<Index linear="6" collumn="0" row="2"/>
+		</Frame>
+		<Frame duration="120" visible="true">
+			<Region x="63" y="128" width="63" height="64"/>
+			<Index linear="7" collumn="1" row="2"/>
 		</Frame>
 	</Frames>
 </PixlyAnimation>
