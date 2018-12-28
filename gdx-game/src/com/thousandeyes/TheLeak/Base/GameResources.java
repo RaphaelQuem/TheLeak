@@ -86,5 +86,11 @@ public class GameResources
 		
 		return level;
 	};
+
+
+
+	//MODIFIERS INITIALIZES TO THE DEFAULT VALUES(NORMAL DIFICULTY)
+	public static int MDamage=5;
+	
 	
 }
