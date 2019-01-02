@@ -13,7 +13,7 @@ import com.thousandeyes.TheLeak.State.Player.*;
 public class Player extends GameObject
 {
 	private int experience;
-	private int abilityPoints;
+	private int skillPoints;
 	private int level = 1;
 	private int threshold = 200;
 	public Player(Transform _transform){
@@ -44,14 +44,14 @@ public class Player extends GameObject
 		return threshold;
 	}
 
-	public void setAbilityPoints(int abilityPoints)
+	public void setSkillPoints(int abilityPoints)
 	{
-		this.abilityPoints = abilityPoints;
+		this.skillPoints = abilityPoints;
 	}
 
-	public int getAbilityPoints()
+	public int getSkillPoints()
 	{
-		return abilityPoints;
+		return skillPoints;
 	}
 
 	public void increaseExperience(int experience)
@@ -60,6 +60,7 @@ public class Player extends GameObject
 	
 		if(this.experience > this.threshold)
 		{
+			this.skillPoints++;
 			this.experience -= this.threshold;
 			this.threshold = (int) (this.threshold*1.5f);
 			this.level++;

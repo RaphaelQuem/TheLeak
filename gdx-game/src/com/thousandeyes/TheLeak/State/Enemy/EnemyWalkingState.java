@@ -63,7 +63,7 @@ public class EnemyWalkingState implements IState
 		}
 		
 		Vector2 movVector = new Vector2(GameResources.Player.getTransform().x,GameResources.Player.getTransform().y).sub(new Vector2(this.gameObject.getTransform().x, this.gameObject.getTransform().y));
-		if(Math.abs(movVector.x)<=200f)
+		if(Math.abs(movVector.x)<=200f && offensive)
 			this.gameObject.setState(new EnemyAttackState(this.gameObject));
 		
 		if(!this.gameObject.getFlipped() && movVector.x < 0)
@@ -86,7 +86,7 @@ public class EnemyWalkingState implements IState
 			this.gameObject.getTransform().AddTransform(movVector.nor(),2);
 		else
 		{
-			if(Math.abs(this.gameObject.getTransform().x - GameResources.Player.getTransform().x) > 700f)
+			if(Math.abs(this.gameObject.getTransform().x - GameResources.Player.getTransform().x) > 500f)
 				this.gameObject.setState(new EnemyIdleState(this.gameObject));
 				
 			this.gameObject.getTransform().AddTransform(Vectors.Invert(movVector.nor()) ,2);

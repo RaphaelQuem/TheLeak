@@ -41,7 +41,8 @@ public class GameResources
 	public static ShapeRenderer ShapeRenderer;
 	public static SpriteBatch SpriteBatch;
 	public static SpriteBatch HudBatch;
-	public static GameState CurrentGameState; 
+	public static GameState CurrentGameState;
+	public static int SkillPoints;
 	public static void ScreenShake(float time)
 	{
 		GameResources.ShakeTime= time;
