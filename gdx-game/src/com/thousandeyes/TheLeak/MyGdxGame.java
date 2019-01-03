@@ -2,6 +2,7 @@ package com.thousandeyes.TheLeak;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.*;
+
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.Base.*;
@@ -45,8 +46,15 @@ public class MyGdxGame  implements ApplicationListener
 	{       
 		Init();
 		
+		
 		GameResources.CurrentGameState.Update();
-		GameResources.SpriteBatch.end();
+	
+		//implementar Lightning
+		//GameResources.SpriteBatch.setBlendFunction(GL20.GL_DST_COLOR, GL20.GL_SRC_ALPHA);
+		//GameResources.SpriteBatch.draw(GameResources.Level.getBackground(),2,1);
+		//GameResources.SpriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+		
+		GameResources.SpriteBatch.end(); 
 		GameResources.CurrentGameState.UpdateUi();
 		//GameResources.HudBatch.end();
 		UpdateDebug();
