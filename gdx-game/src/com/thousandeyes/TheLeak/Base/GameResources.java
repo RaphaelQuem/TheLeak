@@ -52,6 +52,19 @@ public class GameResources
 	{
 		Level level = new Level(); 
 		level.setBackground( AssetHelper.getTexture("map-1.png"));
+	
+	
+		MapLayer layer = new MapLayer();
+		layer.setParalaxSpeed(2);
+		layer.setTexture(AssetHelper.getTexture("map-1.png"));
+	
+		
+		
+		LayeredMap map = new LayeredMap();
+		map.setLayers(new ArrayList<MapLayer>()); 
+		map.getLayers().add(layer);
+		
+		level.setMap(map);
 		level.setWidth(GameResources.Camera.viewportWidth*5);
 		level.setHeight(GameResources.Camera.viewportHeight);
 		level.setLeftLimit(0f);

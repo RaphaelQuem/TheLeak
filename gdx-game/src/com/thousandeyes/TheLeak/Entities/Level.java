@@ -12,6 +12,17 @@ public class Level
 	private float width;
 	private float height;
 	private Texture backgroud;
+	private LayeredMap map;
+
+	public void setMap(LayeredMap map)
+	{
+		this.map = map;
+	}
+
+	public LayeredMap getMap()
+	{
+		return map;
+	}
 	public void setLeftLimit(float _leftLimit)
 	{
 		this.leftLimit = _leftLimit;

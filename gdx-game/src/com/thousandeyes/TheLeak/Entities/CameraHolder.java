@@ -42,6 +42,10 @@ public class CameraHolder extends GameObject
 		GameResources.Camera.position.set(camx + cammov.x * Gdx.graphics.getDeltaTime(),720f/2f,10f);
 		GameResources.Camera.position.x = Math.max(limitL+ GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
 		GameResources.Camera.position.x = Math.min(limitR - GameResources.Camera.viewportWidth/2f,GameResources.Camera.position.x);
+	
+		float deltaX =GameResources.Camera.position.x - cammov.x;
+	
+		
 		if(GameResources.ShakeTime >0f)
 		{
 			GameResources.ShakeTime-=Gdx.graphics.getDeltaTime();
@@ -51,7 +55,7 @@ public class CameraHolder extends GameObject
 			
 		}
 	
-		
+		GameResources.Level.getMap().getLayers().get(0).setPositionX(GameResources.Level.getMap().getLayers().get(0).getPositionX() + cammov.x *-1);
 	
 		
 		
