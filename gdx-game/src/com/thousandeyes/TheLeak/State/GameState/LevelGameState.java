@@ -35,7 +35,7 @@ public class LevelGameState extends GameState
 		if(InputHandler.getTouched(("character")))
 			GameResources.CurrentGameState = new CharacterGameState(this);
 			
-		//GameResources.SpriteBatch.draw(GameResources.Level.getBackground(), 0, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
+		GameResources.SpriteBatch.draw(GameResources.Level.getBackground(), 0, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
 		Collections.sort(GameResources.Objects); 
 		GameResources.Objects.addAll(GameResources.CreateObjects);
 		GameResources.CreateObjects.clear();

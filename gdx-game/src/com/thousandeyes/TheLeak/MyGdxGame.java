@@ -23,6 +23,7 @@ public class MyGdxGame  implements ApplicationListener
 	Texture actionTexture;
 	Stage stage;
 	float time;
+	
 	@Override
 	public void create()
 	{
