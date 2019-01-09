@@ -58,7 +58,7 @@ public class CameraHolder extends GameObject
 		for(MapLayer layer : GameResources.Level.getMap().getLayers())
 		{
 			if(layer.getParalaxSpeed() >0)
-				layer.setPositionX( GameResources.getCameraLeft()* layer.getParalaxSpeed()*-1);
+				layer.setPositionX( GameResources.getCameraLeft()* layer.getParalaxSpeed());
 		}
 		
 		

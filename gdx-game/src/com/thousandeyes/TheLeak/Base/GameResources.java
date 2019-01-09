@@ -55,11 +55,11 @@ public class GameResources
 	
 	
 		MapLayer layer = new MapLayer();
-		layer.setParalaxSpeed(0.01f);
+		layer.setParalaxSpeed(0.5f);
 		layer.setTexture(AssetHelper.getTexture("map-1-1.png"));
 	
 		MapLayer layer2 = new MapLayer();
-		layer2.setParalaxSpeed(0.3f);
+		layer2.setParalaxSpeed(0f);
 		layer2.setTexture(AssetHelper.getTexture("map-1-2.png"));
 		
 		
