@@ -55,7 +55,7 @@ public class CameraHolder extends GameObject
 			
 		}
 	
-		GameResources.Level.getMap().getLayers().get(0).setPositionX(GameResources.Level.getMap().getLayers().get(0).getPositionX() + cammov.x *-1);
+		GameResources.Level.getMap().getLayers().get(0).setPositionX( camvec.x *-1);
 	
 		
 		

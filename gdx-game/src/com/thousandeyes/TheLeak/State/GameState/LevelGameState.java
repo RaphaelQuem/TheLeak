@@ -34,9 +34,9 @@ public class LevelGameState extends GameState
 
 		if(InputHandler.getTouched(("character")))
 			GameResources.CurrentGameState = new CharacterGameState(this);
-			
-		GameResources.SpriteBatch.draw(GameResources.Level.getMap().getLayers().get(0).getTexture(), GameResources.Level.getMap().getLayers().get(0).getPositionX(), 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
-		Collections.sort(GameResources.Objects); 
+		GameResources.SpriteBatch.draw(GameResources.Level.getMap().getLayers().get(0).getTexture(), GameResources.Level.getMap().getLayers().get(0).getPositionX(), -100,GameResources.Level.getWidth(), GameResources.Level.getHeight());
+		GameResources.SpriteBatch.draw(GameResources.Level.getMap().getLayers().get(0).getTexture(), GameResources.Level.getMap().getLayers().get(0).getPositionX()*2f, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
+				Collections.sort(GameResources.Objects); 
 		GameResources.Objects.addAll(GameResources.CreateObjects);
 		GameResources.CreateObjects.clear();
 		for(GameObject object : GameResources.Objects)
