@@ -1,5 +1,6 @@
 package com.thousandeyes.TheLeak.State.GameState;
 import com.thousandeyes.TheLeak.Base.*;
+import com.thousandeyes.TheLeak.Entities.*;
 import java.util.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.*;
@@ -34,9 +35,13 @@ public class LevelGameState extends GameState
 
 		if(InputHandler.getTouched(("character")))
 			GameResources.CurrentGameState = new CharacterGameState(this);
-		GameResources.SpriteBatch.draw(GameResources.Level.getMap().getLayers().get(0).getTexture(), GameResources.Level.getMap().getLayers().get(0).getPositionX(), -100,GameResources.Level.getWidth(), GameResources.Level.getHeight());
-		GameResources.SpriteBatch.draw(GameResources.Level.getMap().getLayers().get(0).getTexture(), GameResources.Level.getMap().getLayers().get(0).getPositionX()*2f, 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
-				Collections.sort(GameResources.Objects); 
+		
+		for(MapLayer layer : GameResources.Level.getMap().getLayers())
+		{
+			GameResources.SpriteBatch.draw(layer.getTexture(), layer.getPositionX(), 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
+			
+		}
+		Collections.sort(GameResources.Objects); 
 		GameResources.Objects.addAll(GameResources.CreateObjects);
 		GameResources.CreateObjects.clear();
 		for(GameObject object : GameResources.Objects)

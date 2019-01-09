@@ -54,9 +54,12 @@ public class CameraHolder extends GameObject
 			//Gdx.input.vibrate(1);
 			
 		}
-	
-		GameResources.Level.getMap().getLayers().get(0).setPositionX( camvec.x *-1);
-	
+
+		for(MapLayer layer : GameResources.Level.getMap().getLayers())
+		{
+			if(layer.getParalaxSpeed() >0)
+				layer.setPositionX( GameResources.getCameraLeft()* layer.getParalaxSpeed());
+		}
 		
 		
 		//GameResources.SpriteBatch.draw(GameResources.Level.getBackground(),GameResources.Camera.position.x,GameResources.Camera.position.y);

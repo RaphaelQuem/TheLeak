@@ -55,9 +55,12 @@ public class GameResources
 	
 	
 		MapLayer layer = new MapLayer();
-		layer.setParalaxSpeed(2);
-		layer.setTexture(AssetHelper.getTexture("map-1.png"));
+		layer.setParalaxSpeed(1);
+		layer.setTexture(AssetHelper.getTexture("map-1-1.png"));
 	
+		MapLayer layer2 = new MapLayer();
+		layer2.setParalaxSpeed(0);
+		layer2.setTexture(AssetHelper.getTexture("map-1-2.png"));
 		
 		
 		LayeredMap map = new LayeredMap();
