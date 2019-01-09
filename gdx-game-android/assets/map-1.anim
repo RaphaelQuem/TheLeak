@@ -1,7 +1,7 @@
 <PixlyAnimation version="1.5">
 	<Info sheetWidth="1498" sheetHeight="142" totalCollumns="2" totalRows="1" frameWidth="749" frameHeight="142" layerCount="2"/>
 	<Frames length="2">
-		<Frame duration="120" visible="true">
+		<Frame duration="120" visible="false">
 			<Region x="0" y="0" width="749" height="142"/>
 			<Index linear="0" collumn="0" row="0"/>
 		</Frame>

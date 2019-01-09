@@ -55,7 +55,7 @@ public class GameResources
 	
 	
 		MapLayer layer = new MapLayer();
-		layer.setParalaxSpeed(1);
+		layer.setParalaxSpeed(0.3f);
 		layer.setTexture(AssetHelper.getTexture("map-1-1.png"));
 	
 		MapLayer layer2 = new MapLayer();
@@ -66,6 +66,7 @@ public class GameResources
 		LayeredMap map = new LayeredMap();
 		map.setLayers(new ArrayList<MapLayer>()); 
 		map.getLayers().add(layer);
+		map.getLayers().add(layer2);
 		
 		level.setMap(map);
 		level.setWidth(GameResources.Camera.viewportWidth*5);
