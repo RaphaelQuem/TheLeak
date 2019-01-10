@@ -59,14 +59,20 @@ public class GameResources
 		layer.setTexture(AssetHelper.getTexture("map-1-1.png"));
 	
 		MapLayer layer2 = new MapLayer();
-		layer2.setParalaxSpeed(0f);
-		layer2.setTexture(AssetHelper.getTexture("map-1-2.png"));
+		layer2.setParalaxSpeed(0.25f);
+		layer2.setTexture(AssetHelper.getTexture("map-1-3.png"));
+		
+	
+		MapLayer layer3 = new MapLayer();
+		layer3.setParalaxSpeed(0f);
+		layer3.setTexture(AssetHelper.getTexture("map-1-2.png"));
 		
 		
 		LayeredMap map = new LayeredMap();
 		map.setLayers(new ArrayList<MapLayer>()); 
 		map.getLayers().add(layer);
 		map.getLayers().add(layer2);
+		map.getLayers().add(layer3);
 		
 		level.setMap(map);
 		level.setWidth(GameResources.Camera.viewportWidth*5);
