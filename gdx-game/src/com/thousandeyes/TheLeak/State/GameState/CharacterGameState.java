@@ -105,6 +105,10 @@ public class CharacterGameState extends GameState
 			
 			
 		}
+		if(InputHandler.getTouched("strengthminus"))
+
+			GameResources.CurrentGameState = previousState;
+		
 		
 		//GameResources.SpriteBatch.draw(new Texture(Gdx.files.internal("ui-button-minus.png")),0f,0f,30f,30f);
 		
