@@ -5,6 +5,7 @@ import com.thousandeyes.TheLeak.State.GameState.*;
 public class InputHandler
 
 {
+	private static  boolean swipe = false;
 	public static String Touches="";
 	public static String LastTouches="";
 	
@@ -28,9 +29,11 @@ public class InputHandler
 					{  
 						
 						InputHandler.TouchDeltaTime += Gdx.graphics.getDeltaTime();
-						if(Gdx.input.getDeltaX(i)/InputHandler.TouchDeltaTime>350)
-							GameResources.CurrentGameState  = new CharacterGameState(GameResources.CurrentGameState);
-				
+						if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350)
+						{
+							InputHandler.Touches += "|" + "Swipe" + (Gdx.input.getDeltaX(i)> 0? "Right":"Left");
+							swipe = true;
+						}
 					
 						Vector2 vec =new Vector2(Gdx.input.getX(i), Gdx.input.getY(i)).sub(InputHandler.OriginalTouch);
 						vec.y *= -1;

@@ -33,6 +33,10 @@ public class LevelGameState extends GameState
 		
 		uiHealth.setWidth( GameResources.Player.getHealth() / 100f * healthW);
 
+		if(InputHandler.getTouched("SwipeRight") || InputHandler.getTouched("SwipeLeft"))
+			GameResources.CurrentGameState  = new CharacterGameState(GameResources.CurrentGameState);
+		
+		
 		if(InputHandler.getTouched(("character")))
 			GameResources.CurrentGameState = new CharacterGameState(this);
 		
