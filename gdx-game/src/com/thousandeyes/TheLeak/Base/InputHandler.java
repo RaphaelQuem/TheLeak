@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.*;
 public class InputHandler
 
 {
-	private static  boolean swipe = false;
+	
 	public static String Touches="";
 	public static String LastTouches="";
 	
