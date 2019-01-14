@@ -31,8 +31,12 @@ public class InputHandler
 						InputHandler.TouchDeltaTime += Gdx.graphics.getDeltaTime();
 						if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350)
 						{
-							InputHandler.Touches += "|" + "Swipe" + (Gdx.input.getDeltaX(i)> 0? "Right":"Left");
-							swipe = true;
+							String action="Swipe" + (Gdx.input.getDeltaX(i)> 0? "Right":"Left");
+							if(!InputHandler.Touches.contains(action))
+							{
+								InputHandler.Touches += "|" + action;
+								swipe = true;
+							}
 						}
 					
 						Vector2 vec =new Vector2(Gdx.input.getX(i), Gdx.input.getY(i)).sub(InputHandler.OriginalTouch);
