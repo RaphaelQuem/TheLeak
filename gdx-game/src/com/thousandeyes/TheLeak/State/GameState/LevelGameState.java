@@ -5,6 +5,7 @@ import java.util.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.*;
+import com.thousandeyes.TheLeak.State.Player.*;
 
 public class LevelGameState extends GameState
 {
@@ -34,7 +35,7 @@ public class LevelGameState extends GameState
 		uiHealth.setWidth( GameResources.Player.getHealth() / 100f * healthW);
 
 		if(InputHandler.getTouched("SwipeRight") || InputHandler.getTouched("SwipeLeft"))
-			GameResources.CurrentGameState  = new CharacterGameState(GameResources.CurrentGameState);
+			GameResources.Player.setState(new PlayerRunningState(GameResources.Player));
 		
 		
 		if(InputHandler.getTouched(("character")))
