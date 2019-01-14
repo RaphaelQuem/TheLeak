@@ -2,6 +2,8 @@ package com.thousandeyes.TheLeak.Base;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
+import com.badlogic.gdx.input.*;
+import com.badlogic.gdx.utils.*;
 public class InputHandler
 
 {
@@ -29,16 +31,7 @@ public class InputHandler
 					{  
 						
 						InputHandler.TouchDeltaTime += Gdx.graphics.getDeltaTime();
-						if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350)
-						{
-							String action="Swipe" + (Gdx.input.getDeltaX(i)> 0? "Right":"Left");
-							if(!InputHandler.Touches.contains(action))
-							{
-								InputHandler.Touches += "|" + action;
-								swipe = true;
-							}
-						}
-					
+						
 						Vector2 vec =new Vector2(Gdx.input.getX(i), Gdx.input.getY(i)).sub(InputHandler.OriginalTouch);
 						vec.y *= -1;
 						if(Math.abs(vec.x) > 25f || Math.abs(vec.y) > 25f)
@@ -60,8 +53,26 @@ public class InputHandler
 		InputHandler.OriginalTouch = null;
 		return Vector2.Zero;
 	};
+	
 	public static boolean getTouched(String action)
 	{
+		if(action.contains("Swipe"))
+		{
+			for (int i=0; i<5; i++)
+			{
+				if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350 && Gdx.input.getDeltaX(i) > 50)
+				{
+					
+					if(action.contains("Right") && Gdx.input.getDeltaX(i)>0)
+						return true;
+					else if(Gdx.input.getDeltaX(i)<0)
+						return true;
+					
+					return false;
+				}
+			}
+		}
+	
 		boolean result = InputHandler.Touches.contains(action);
 			if(result)
 			{ 
