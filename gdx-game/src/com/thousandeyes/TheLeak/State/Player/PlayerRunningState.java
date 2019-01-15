@@ -12,6 +12,7 @@ public class PlayerRunningState implements IState
 	private GameObject gameObject;
 	private String name;
 	private float stateTime;
+	private boolean left;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -34,8 +35,9 @@ public class PlayerRunningState implements IState
 		return new Transform();
 	}
 
-	public PlayerRunningState(GameObject _gameObject){
+	public PlayerRunningState(GameObject _gameObject, boolean _left){
 		gameObject = _gameObject;
+		left = _left;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-running-spritesheet.png",2,1,0.5f);
 
 		//TextHelper.Show(String.valueOf(test),new Transform(0,0,10,10),3,3);
@@ -51,7 +53,15 @@ public class PlayerRunningState implements IState
 		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero) && stateTime > 1f)
 			gameObject.setState(new PlayerWalkingState(gameObject));
 		
-		this.gameObject.getTransform().AddTransform(new Vector2(3,0),this.gameObject.getSpeed());
+		if(InputHandler.getTouched("SwipeRight") )
+			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,false));
+
+		if(InputHandler.getTouched("SwipeLeft")) 
+			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,true));
+		
+		
+			
+		this.gameObject.getTransform().AddTransform(new Vector2(3*(left?-1:1),0),this.gameObject.getSpeed());
 		
 		
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
