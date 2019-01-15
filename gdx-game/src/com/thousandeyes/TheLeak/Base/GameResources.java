@@ -79,7 +79,7 @@ public class GameResources
 		level.setHeight(GameResources.Camera.viewportHeight);
 		level.setLeftLimit(0f);
 		level.setRightLimit(5000f);
-		level.setSpawnTriggers
+		/*level.setSpawnTriggers
 		(
 			
 			new SpawnTrigger
@@ -106,7 +106,7 @@ public class GameResources
 				3900,100f,
 				new EnemySpawn(1, EnemyEnum.FirstBoss,false)
 			)
-		);
+		);*/
 		
 		return level;
 	};

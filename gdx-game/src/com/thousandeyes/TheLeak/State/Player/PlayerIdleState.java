@@ -50,6 +50,8 @@ public class PlayerIdleState implements IState
 		
 		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero))
 			gameObject.setState(new PlayerWalkingState(gameObject));
+		if(InputHandler.getTouched("SwipeRight") || InputHandler.getTouched("SwipeLeft"))
+			GameResources.Player.setState(new PlayerRunningState(GameResources.Player));
 		
 	
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)

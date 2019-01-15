@@ -48,10 +48,12 @@ public class PlayerRunningState implements IState
 		if(InputHandler.getTouched("action"))
 			gameObject.setState(new PlayerAttackState(gameObject));
 
-		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero))
+		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero) && stateTime > 1f)
 			gameObject.setState(new PlayerWalkingState(gameObject));
-
-
+		
+		this.gameObject.getTransform().AddTransform(new Vector2(3,0),this.gameObject.getSpeed());
+		
+		
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
 			this.gameObject.setFlipped(true);
 		if(this.gameObject.getFlipped() && InputHandler.InputVector().x > 0)

@@ -60,7 +60,7 @@ public class InputHandler
 		{
 			for (int i=0; i<5; i++)
 			{
-				if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350 && Gdx.input.getDeltaX(i) > 50)
+				if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350 && Math.abs(Gdx.input.getDeltaX(i)) > 50)
 				{
 					
 					if(action.contains("Right") && Gdx.input.getDeltaX(i)>0)
