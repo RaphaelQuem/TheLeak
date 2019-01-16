@@ -53,10 +53,10 @@ public class PlayerRunningState implements IState
 		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero) && stateTime > 1f)
 			gameObject.setState(new PlayerWalkingState(gameObject));
 		
-		if(InputHandler.getTouched("SwipeRight") )
+		if(InputHandler.getTouched("SwipeRightForward") )
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,false));
 
-		if(InputHandler.getTouched("SwipeLeft")) 
+		if(InputHandler.getTouched("SwipeRightBack")) 
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,true));
 		
 		
