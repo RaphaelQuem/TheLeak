@@ -40,7 +40,7 @@ public class PlayerRunningState implements IState
 		left = _left;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-running-spritesheet.png",2,1,0.5f);
 
-		//TextHelper.Show(String.valueOf(test),new Transform(0,0,10,10),3,3);
+
 		name = this.getClass().getName();
 	}
 	@Override
@@ -53,10 +53,10 @@ public class PlayerRunningState implements IState
 		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero) && stateTime > 1f)
 			gameObject.setState(new PlayerWalkingState(gameObject));
 		
-		if(InputHandler.getTouched("SwipeRightForward") )
+		if(InputHandler.getTouched("LeftSwipeForward") )
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,false));
 
-		if(InputHandler.getTouched("SwipeRightBack")) 
+		if(InputHandler.getTouched("LeftSwipeBack")) 
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,true));
 		
 		

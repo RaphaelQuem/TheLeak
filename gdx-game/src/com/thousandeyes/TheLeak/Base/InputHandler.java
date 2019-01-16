@@ -56,32 +56,24 @@ public class InputHandler
 	
 	public static boolean getTouched(String action)
 	{
-		
+		try
+		{
 		if(action.contains("Swipe"))
 		{
 			for (int i=0; i<5; i++)
 			{
-				if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350 && Math.abs(Gdx.input.getDeltaX(i)) > 50)
+				if(action.contains("Left"))
 				{
-					
-					
-					if(Gdx.input.getX(i)<= Gdx.graphics.getWidth() / 2 && action.contains("Right"))
+					if(Gdx.input.getX(i)<= Gdx.graphics.getWidth() / 2)
 					{
-						
-						if(action.contains("Forward") && Gdx.input.getDeltaX(i)>0)
-							return true;
-						else if(Gdx.input.getDeltaX(i)<0)
-							return true;
+						if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350 && Math.abs(Gdx.input.getDeltaX(i)) > 50)
+						{
+							if(action.contains("Forward") && Gdx.input.getDeltaX(i)>0)
+								return true;
+							if(action.contains("Back") && Gdx.input.getDeltaX(i)<0)
+								return true;
+						}
 					}
-					else if(Gdx.input.getX(i) > Gdx.graphics.getWidth() / 2 && action.contains("Left"))
-					{
-						if(action.contains("Forward") && Gdx.input.getDeltaX(i)>0)
-							return true;
-						else if(Gdx.input.getDeltaX(i)<0)
-							return true;
-					}
-					 
-					
 				}
 			}
 			return false;
@@ -98,6 +90,11 @@ public class InputHandler
 			}
 		
 		return result;
+		}
+		catch(Exception ex)
+		{
+			return false;
+		}
 	}
 	
 }

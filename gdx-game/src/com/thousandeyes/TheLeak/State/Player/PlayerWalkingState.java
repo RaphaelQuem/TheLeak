@@ -67,10 +67,10 @@ public class PlayerWalkingState implements IState
 			gameObject.setState(new PlayerIdleState(gameObject));
 		
 		
-		if(InputHandler.getTouched("SwipeRight") )
+		if(InputHandler.getTouched("LeftSwipeForward") )
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,false));
-	
-		if(InputHandler.getTouched("SwipeLeft")) 
+
+		if(InputHandler.getTouched("LeftSwipeBack")) 
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,true));
 		
 		
