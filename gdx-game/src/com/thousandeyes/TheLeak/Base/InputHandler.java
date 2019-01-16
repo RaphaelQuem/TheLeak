@@ -56,22 +56,24 @@ public class InputHandler
 	
 	public static boolean getTouched(String action)
 	{
+		
 		if(action.contains("Swipe"))
 		{
 			for (int i=0; i<5; i++)
 			{
 				if(Math.abs(Gdx.input.getDeltaX(i))/InputHandler.TouchDeltaTime>350 && Math.abs(Gdx.input.getDeltaX(i)) > 50)
 				{
-				
-				
-					if(Gdx.input.getX(i)+Gdx.input.getDeltaX(i) <= Gdx.graphics.getWidth() / 2 && action.contains("Right"))
+					
+					
+					if(Gdx.input.getX(i)<= Gdx.graphics.getWidth() / 2 && action.contains("Right"))
 					{
+						
 						if(action.contains("Forward") && Gdx.input.getDeltaX(i)>0)
 							return true;
 						else if(Gdx.input.getDeltaX(i)<0)
 							return true;
 					}
-					else if(Gdx.input.getX(i)+Gdx.input.getDeltaX(i) > Gdx.graphics.getWidth() / 2 && action.contains("Left"))
+					else if(Gdx.input.getX(i) > Gdx.graphics.getWidth() / 2 && action.contains("Left"))
 					{
 						if(action.contains("Forward") && Gdx.input.getDeltaX(i)>0)
 							return true;
