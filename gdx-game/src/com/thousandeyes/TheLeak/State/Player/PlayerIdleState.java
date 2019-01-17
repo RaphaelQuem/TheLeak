@@ -5,6 +5,7 @@ import com.badlogic.gdx.*;
 import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
+import com.thousandeyes.TheLeak.State.GameState.*;
 
 public class PlayerIdleState implements IState
 {
@@ -56,6 +57,9 @@ public class PlayerIdleState implements IState
 
 		if(InputHandler.getTouched("LeftSwipeBack")) 
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,true));
+	
+		if(InputHandler.getTouched("RightSwipeForward"))
+			GameResources.CurrentGameState = new CharacterGameState(GameResources.CurrentGameState);
 		
 	
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
