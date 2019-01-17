@@ -75,7 +75,7 @@ public class InputHandler
 					if(Gdx.input.getX(i) > Gdx.graphics.getWidth() / 2)
 					{
 
-						if(Math.abs(Gdx.input.getDeltaX(i))/Gdx.graphics.getDeltaTime()>50 && Math.abs(Gdx.input.getDeltaX(i)) > 50)
+						if(Math.abs(Gdx.input.getDeltaX(i))/Gdx.graphics.getDeltaTime()>700 && Math.abs(Gdx.input.getDeltaX(i)) > 125)
 						{
 							if(action.contains("Forward") && Gdx.input.getDeltaX(i)>0)
 								return true;
@@ -88,9 +88,9 @@ public class InputHandler
 				
 				if(action.contains("Left"))
 				{
-					if(Gdx.input.getX(i)<= Gdx.graphics.getWidth() / 2)
+					if(Gdx.input.getX(i) <= Gdx.graphics.getWidth() / 2)
 					{
-						if(Math.abs(Gdx.input.getDeltaX(i))/Gdx.graphics.getDeltaTime()>50 && Math.abs(Gdx.input.getDeltaX(i)) > 50)
+						if(Math.abs(Gdx.input.getDeltaX(i))/Gdx.graphics.getDeltaTime()>700 && Math.abs(Gdx.input.getDeltaX(i)) > 125)
 						{
 							if(action.contains("Forward") && Gdx.input.getDeltaX(i)>0)
 								return true;
