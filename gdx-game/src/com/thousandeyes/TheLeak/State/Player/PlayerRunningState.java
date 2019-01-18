@@ -39,7 +39,7 @@ public class PlayerRunningState implements IState
 	public PlayerRunningState(GameObject _gameObject, boolean _left){
 		gameObject = _gameObject;
 		left = _left;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-running-spritesheet.png",2,1,0.5f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-running-spritesheet.png",3,3,0.09f,8);
 
 
 		name = this.getClass().getName();
