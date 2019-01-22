@@ -39,11 +39,24 @@ public class LevelGameState extends GameState
 		if(InputHandler.getTouched(("character")))
 			GameResources.CurrentGameState = new CharacterGameState(this);
 		
+		int i = 0;
 		for(MapLayer layer : GameResources.Level.getMap().getLayers())
 		{
+		
+			
+			/*if(i ==1)
+				GameResources.SpriteBatch.setBlendFunction(GL20.GL_DST_COLOR, GL20.GL_SRC_ALPHA);
+			*/
 			GameResources.SpriteBatch.draw(layer.getTexture(), layer.getPositionX(), 0,GameResources.Level.getWidth(), GameResources.Level.getHeight());
+		
+		
+			i++;
+		
+			//GameResources.SpriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+			
 			
 		}
+		
 		Collections.sort(GameResources.Objects); 
 		GameResources.Objects.addAll(GameResources.CreateObjects);
 		GameResources.CreateObjects.clear();
