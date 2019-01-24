@@ -61,8 +61,8 @@ public class PlayerRunningState implements IState
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,true));
 		
 		if(InputHandler.getTouched("RightSwipeForward"))
-			GameResources.CurrentGameState = new CharacterGameState(GameResources.CurrentGameState);
-			
+			GameResources.Player.setState(new PlayerRollingState(GameResources.Player,false));
+		
 		this.gameObject.getTransform().AddTransform(new Vector2(3*(left?-1:1),0),this.gameObject.getSpeed());
 		
 		
