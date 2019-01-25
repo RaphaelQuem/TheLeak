@@ -61,7 +61,9 @@ public class PlayerIdleState implements IState
 		if(InputHandler.getTouched("RightSwipeForward"))
 			GameResources.Player.setState(new PlayerRollingState(GameResources.Player,false));
 		
-	
+		if(InputHandler.getTouched("RightSwipeBack"))
+			GameResources.Player.setState(new PlayerRollingState(GameResources.Player,true));
+		
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
 			this.gameObject.setFlipped(true);
 		if(this.gameObject.getFlipped() && InputHandler.InputVector().x > 0)

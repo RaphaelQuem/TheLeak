@@ -37,7 +37,7 @@ public class MyGdxGame  implements ApplicationListener
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.HudBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
-		music.play();
+		//music.play();
 		GameResources.Level1().Load();
 		GameResources.Objects.add(GameResources.Player);
 		

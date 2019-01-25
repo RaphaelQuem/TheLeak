@@ -37,11 +37,13 @@ public class PlayerRollingState implements IState
 	}
 
 	public PlayerRollingState(GameObject _gameObject, boolean _left){
+		
 		gameObject = _gameObject;
+		
 		left = _left;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-running-spritesheet.png",3,3,0.09f,8);
-
-
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-rolling-spritesheet.png",3,3,0.05f,7);
+		gameObject.getTransform().setTrigger(true);
+		
 		name = this.getClass().getName();
 	}
 	@Override
@@ -52,6 +54,8 @@ public class PlayerRollingState implements IState
 	
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{		
+			gameObject.getTransform().setTrigger(false);
+			
 			gameObject.setState(new PlayerIdleState(gameObject));
 		}
 	
