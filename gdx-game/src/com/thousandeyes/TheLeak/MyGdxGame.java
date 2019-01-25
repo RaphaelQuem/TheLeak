@@ -16,6 +16,7 @@ import com.badlogic.gdx.graphics.glutils.*;
 import android.os.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
 import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.audio.*;
 
 
 public class MyGdxGame  implements ApplicationListener
@@ -23,10 +24,12 @@ public class MyGdxGame  implements ApplicationListener
 	Texture actionTexture;
 	Stage stage;
 	float time;
-	
+	Sound music;
 	@Override
 	public void create()
 	{
+		
+		music = Gdx.audio.newSound(Gdx.files.internal("teste.mp3"));
 		
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 45f, 1f, 30f,100f));
@@ -34,7 +37,7 @@ public class MyGdxGame  implements ApplicationListener
 		GameResources.SpriteBatch = new SpriteBatch();
 		GameResources.HudBatch = new SpriteBatch();
 		GameResources.ShapeRenderer = new ShapeRenderer();
-		
+		music.play();
 		GameResources.Level1().Load();
 		GameResources.Objects.add(GameResources.Player);
 		
