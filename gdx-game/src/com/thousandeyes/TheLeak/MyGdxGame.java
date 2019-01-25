@@ -24,12 +24,12 @@ public class MyGdxGame  implements ApplicationListener
 	Texture actionTexture;
 	Stage stage;
 	float time;
-	Sound music;
+	Music music;
 	@Override
 	public void create()
 	{
 		
-		music = Gdx.audio.newSound(Gdx.files.internal("teste.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("teste.mp3"));
 		
 		GameResources.Objects.add(new CameraHolder());
 		GameResources.Player = new Player(new Transform(0f, 0f, 45f, 1f, 30f,100f));
