@@ -14,15 +14,15 @@ public class Transform extends Rectangle
 	public float screenHeightPercentage;
 	private float canvasWPct = 100f;
 	private float canvasHPct = 100f;
-	private List<Transform> collisions =  new ArrayList<Transform>();
+	private List<GameObject> collisions =  new ArrayList<GameObject>();
 	private boolean trigger = false;
 
-	public void setCollisions(List<Transform> collisions)
+	public void setCollisions(List<GameObject> collisions)
 	{
 		this.collisions = collisions;
 	}
 
-	public List<Transform> getCollisions()
+	public List<GameObject> getCollisions()
 	{
 		return collisions;
 	}
@@ -121,7 +121,9 @@ public class Transform extends Rectangle
 		
 		this.y += transform.y * multiplier;
 		this.x += transform.x * multiplier;
+		
 	
+		//implementaçao do limite do level q tem q ser mudada
 		if(this.owner != null && this.owner.equals(GameResources.Player))
 		{
 			if( 
@@ -140,7 +142,7 @@ public class Transform extends Rectangle
 			}
 		}
 	
-		
+		collisions = new ArrayList<GameObject>();
 		objectIterator = GameResources.Objects.listIterator();
 		while(objectIterator.hasNext())
 		{
@@ -148,12 +150,14 @@ public class Transform extends Rectangle
 			if(this.owner != null && this.owner != obj && this.overlaps(obj.getTransform())
 				&&
 				(this.y >= obj.getTransform().y - 50f) && (this.y <= obj.getTransform().y + 50f)
-				&&
-				(!this.trigger && !obj.getTransform().getTrigger())
 				)
 			{
-				this.y = yprevious;
-				this.x = xprevious;
+				if(!this.trigger && !obj.getTransform().getTrigger())
+				{
+					this.y = yprevious;
+					this.x = xprevious;
+				}
+				collisions.add(obj);
 			}
 		}
 		return this;

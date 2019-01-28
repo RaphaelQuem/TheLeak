@@ -6,6 +6,8 @@ import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
+import com.thousandeyes.TheLeak.Entities.*;
+import com.thousandeyes.TheLeak.State.Enemy.*;
 
 public class PlayerRollingState implements IState
 {
@@ -80,8 +82,11 @@ public class PlayerRollingState implements IState
 
 
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
-
-
+	
+		for(GameObject obj :this.gameObject.getTransform().getCollisions())
+		{
+			obj.setState(new EnemyConfusedState(obj));
+		}
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 	}
