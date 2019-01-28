@@ -157,7 +157,10 @@ public class Transform extends Rectangle
 					this.y = yprevious;
 					this.x = xprevious;
 				}
-				collisions.add(obj);
+		
+				if(!this.trigger && obj.getTransform().getTrigger())
+					this.owner.getState().onTriggerEnter(obj);
+				collisions.add(obj);;
 			}
 		}
 		return this;

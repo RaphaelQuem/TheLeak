@@ -84,7 +84,7 @@ public class PlayerAttackState implements IState
 		)
 			flipFrame = true;
 			
-		for(GameObject objy : GameResources.Objects)
+		/*for(GameObject objy : GameResources.Objects)
 		{ 
 			if(this.gameObject != objy && !collisions.contains(objy))
 			{
@@ -94,7 +94,7 @@ public class PlayerAttackState implements IState
 					collisions.add(objy);
 				}
 			}
-		}
+		}*/
 		
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		
