@@ -14,7 +14,18 @@ public class Transform extends Rectangle
 	public float screenHeightPercentage;
 	private float canvasWPct = 100f;
 	private float canvasHPct = 100f;
+	private List<Transform> collisions =  new ArrayList<Transform>();
 	private boolean trigger = false;
+
+	public void setCollisions(List<Transform> collisions)
+	{
+		this.collisions = collisions;
+	}
+
+	public List<Transform> getCollisions()
+	{
+		return collisions;
+	}
 	public boolean getTrigger() {
 		return trigger;
 	}
@@ -34,30 +45,7 @@ public class Transform extends Rectangle
 		this.x += _x;
 		return this;
 	}
-	public boolean IsColliding()
-	{
-		for(Transform t : GameResources.TransformInstances)
-		{
-			if(t != this && this.overlaps(t))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	/*public Transform(float _x, float _y, float widthPct, float heightPct, float _canvasWPct,float _canvasHPct){
-		this.x = _x;
-		this.y = _y;
-		this.screenHeightPercentage = heightPct;
-		this.screenWidthPercentage = widthPct;
-		this.width = (GameResources.Camera.viewportWidth /100f*widthPct)/100f*_canvasWPct;
-		this.height = (GameResources.Camera.viewportHeight/100f*heightPct)/100f*_canvasHPct;
-		this.canvasWPct = _canvasWPct;
-		this.canvasHPct = _canvasHPct;
-		
-		
-		GameResources.TransformInstances.add(this);
-	} */
+	
 	
 	public Transform(float _x, float _y, float heightPct,float ratio, float _canvasWPct,float _canvasHPct){
 		this.x = _x;
