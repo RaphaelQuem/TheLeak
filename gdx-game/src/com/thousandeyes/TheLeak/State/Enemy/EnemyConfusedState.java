@@ -66,7 +66,5 @@ public class EnemyConfusedState implements IState
 	@Override
 	public void onTriggerEnter(GameObject other)
 	{
-
-		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
 	}
 }
