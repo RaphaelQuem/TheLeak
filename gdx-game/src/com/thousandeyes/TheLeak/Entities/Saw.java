@@ -47,7 +47,7 @@ public class Saw extends GameObject
 				
 				if(reduced.overlaps(objcollision))
 				{
-					objy.getState().onTriggerEnter(this);
+					objy.getState().onTriggerEnter(this.getCollider());
 				}
 			}
 		}

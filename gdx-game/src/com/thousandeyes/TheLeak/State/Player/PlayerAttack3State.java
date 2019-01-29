@@ -66,7 +66,7 @@ public class PlayerAttack3State implements IState
 
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{
-				gameObject.setState(new PlayerIdleState(gameObject));
+			gameObject.setState(new PlayerIdleState(gameObject));
 		}
 		boolean flipFrame = false;
 		if
@@ -74,20 +74,10 @@ public class PlayerAttack3State implements IState
 			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
 			||
 			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
-			)
+		)
 			flipFrame = true;
 
-		for(GameObject objy : GameResources.Objects)
-		{ 
-			if(this.gameObject != objy && !collisions.contains(objy))
-			{
-				if(this.gameObject.getCollider().overlaps(objy.getTransform()))
-				{
-					objy.getState().onTriggerEnter(this.gameObject);
-					collisions.add(objy);
-				}
-			}
-		}
+		
 
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 
@@ -97,7 +87,7 @@ public class PlayerAttack3State implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
 		// TODO: Implement this method
 	}

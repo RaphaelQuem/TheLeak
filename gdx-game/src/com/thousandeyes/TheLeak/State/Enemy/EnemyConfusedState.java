@@ -64,7 +64,7 @@ public class EnemyConfusedState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
 	}
 }

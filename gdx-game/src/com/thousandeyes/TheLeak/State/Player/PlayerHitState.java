@@ -68,7 +68,7 @@ public class PlayerHitState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
 		// TODO: Implement this method
 	}

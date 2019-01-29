@@ -92,7 +92,7 @@ public class PlayerRollingState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
 	
 	}

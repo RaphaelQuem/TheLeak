@@ -142,8 +142,8 @@ public class FirstBossA1State implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
-		this.gameObject.setState(new EnemyHitState(this.gameObject, other));
+		this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
 	}
 }

@@ -10,12 +10,24 @@ public class Transform extends Rectangle
 {
 	private ListIterator<GameObject> objectIterator;
 	private GameObject owner; 
+	private String tag;
+	private float multiplier;
 	public float screenWidthPercentage;
 	public float screenHeightPercentage;
 	private float canvasWPct = 100f;
 	private float canvasHPct = 100f;
 	private List<GameObject> collisions =  new ArrayList<GameObject>();
 	private boolean trigger = false;
+
+	public void setTag(String tag)
+	{
+		this.tag = tag;
+	}
+
+	public String getTag()
+	{
+		return tag;
+	}
 
 	public void setCollisions(List<GameObject> collisions)
 	{
@@ -159,8 +171,8 @@ public class Transform extends Rectangle
 				}
 		
 				if(!this.trigger && obj.getTransform().getTrigger())
-					this.owner.getState().onTriggerEnter(obj);
-				collisions.add(obj);;
+					this.owner.getState().onTriggerEnter(obj.getTransform());
+				collisions.add(obj);
 			}
 		}
 		return this;

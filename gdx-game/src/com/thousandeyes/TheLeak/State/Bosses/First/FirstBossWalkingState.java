@@ -89,8 +89,8 @@ public class FirstBossWalkingState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
-		this.gameObject.setState(new FirstBossHitState(this.gameObject, other));
+		this.gameObject.setState(new FirstBossHitState(this.gameObject, other.getOwner()));
 	}
 }

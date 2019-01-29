@@ -39,7 +39,7 @@ public class EmptyState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
 		
 	}

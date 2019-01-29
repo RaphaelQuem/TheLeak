@@ -81,21 +81,10 @@ public class PlayerAttack2State implements IState
 			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
 			||
 			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
-			)
+		)
 			flipFrame = true;
 
-		for(GameObject objy : GameResources.Objects)
-		{ 
-			if(this.gameObject != objy && !collisions.contains(objy))
-			{
-				if(this.gameObject.getCollider().overlaps(objy.getTransform()))
-				{
-					objy.getState().onTriggerEnter(this.gameObject);
-					collisions.add(objy);
-				}
-			}
-		}
-
+		
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
@@ -104,7 +93,7 @@ public class PlayerAttack2State implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
 		// TODO: Implement this method
 	}

@@ -84,9 +84,9 @@ public class PlayerWalkingState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
-		this.gameObject.setState(new PlayerHitState(this.gameObject,other));
+		this.gameObject.setState(new PlayerHitState(this.gameObject,other.getOwner()));
 		
 	}
 

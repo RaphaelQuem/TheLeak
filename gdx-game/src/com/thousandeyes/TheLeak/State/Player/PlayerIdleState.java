@@ -6,6 +6,7 @@ import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
+import com.badlogic.gdx.scenes.scene2d.utils.*;
 
 public class PlayerIdleState implements IState
 {
@@ -87,9 +88,9 @@ public class PlayerIdleState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
-		this.gameObject.setState(new PlayerHitState(this.gameObject,other));
+		this.gameObject.setState(new PlayerHitState(this.gameObject,other.getOwner()));
 	}
 	
 

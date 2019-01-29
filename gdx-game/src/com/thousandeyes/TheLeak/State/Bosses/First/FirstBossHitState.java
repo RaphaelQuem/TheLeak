@@ -89,7 +89,7 @@ public class FirstBossHitState implements IState
 	}
 
 	@Override
-	public void onTriggerEnter(GameObject other)
+	public void onTriggerEnter(Transform other)
 	{
 		
 	}
