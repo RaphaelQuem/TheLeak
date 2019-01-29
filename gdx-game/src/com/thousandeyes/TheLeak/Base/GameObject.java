@@ -13,6 +13,17 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 	private boolean flipped;
 	private float speed;
 	private ListIterator<GameObject> objectIterator;
+	private List<GameObject> collisions = new ArrayList<GameObject>();
+
+	public void setCollisions(List<GameObject> collisions)
+	{
+		this.collisions = collisions;
+	}
+
+	public List<GameObject> getCollisions()
+	{
+		return collisions;
+	}
 	
 	
 	// Getters
@@ -81,11 +92,11 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 
 				if(!this.transform.getTrigger() && obj.getTransform().getTrigger()) 
 					this.getState().onTriggerEnter(obj.getTransform());
-				//this.collisions.add(obj);
+				this.collisions.add(obj);
 			}
 		}
 	}
-	//
+	
 	
 	//Methods
     public void Update()
