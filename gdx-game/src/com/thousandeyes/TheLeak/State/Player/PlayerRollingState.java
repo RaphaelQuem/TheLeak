@@ -83,10 +83,7 @@ public class PlayerRollingState implements IState
 
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 	
-		for(GameObject obj :this.gameObject.getTransform().getCollisions())
-		{
-			obj.setState(new EnemyConfusedState(obj));
-		}
+		
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 	}

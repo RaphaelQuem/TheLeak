@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Transform extends Rectangle
 {
-	private ListIterator<GameObject> objectIterator;
+	
 	private GameObject owner; 
 	private String tag;
 	private float multiplier;
@@ -180,27 +180,6 @@ public class Transform extends Rectangle
 			}
 		}
 	
-		collisions = new ArrayList<GameObject>();
-		objectIterator = GameResources.Objects.listIterator();
-		while(objectIterator.hasNext())
-		{
-			GameObject obj = objectIterator.next();
-			if(this.owner != null && this.owner != obj && this.overlaps(obj.getTransform())
-				&&
-				(this.y >= obj.getTransform().y - 50f) && (this.y <= obj.getTransform().y + 50f)
-				)
-			{
-				if(!this.trigger && !obj.getTransform().getTrigger())
-				{
-					this.y = yprevious;
-					this.x = xprevious;
-				}
-		
-				if(!this.trigger && obj.getTransform().getTrigger())
-					this.owner.getState().onTriggerEnter(obj.getTransform());
-				collisions.add(obj);
-			}
-		}
 		return this;
 	}
 	public Transform Copy()

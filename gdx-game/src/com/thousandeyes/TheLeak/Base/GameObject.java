@@ -5,13 +5,14 @@ import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.utils.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
+import java.util.*;
 public abstract class GameObject  implements Comparable<GameObject>, Disposable {
 	// Attributes
 	private Transform transform = new Transform();
 	private IState state;
 	private boolean flipped;
 	private float speed;
-	
+	private ListIterator<GameObject> objectIterator;
 	
 	
 	// Getters
@@ -67,6 +68,23 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 	{
 		this.speed = _speed;
 	};
+
+	public void CollisionHandle()
+	{
+		this.transform.setCollisions(new ArrayList<GameObject>());
+		objectIterator = GameResources.Objects.listIterator();
+		while(objectIterator.hasNext())
+		{
+			GameObject obj = objectIterator.next();
+			if(this != obj && this.transform.overlaps(obj.getTransform()))
+			{
+
+				if(!this.transform.getTrigger() && obj.getTransform().getTrigger()) 
+					this.getState().onTriggerEnter(obj.getTransform());
+				//this.collisions.add(obj);
+			}
+		}
+	}
 	//
 	
 	//Methods

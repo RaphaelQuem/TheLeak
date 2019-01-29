@@ -63,6 +63,8 @@ public class LevelGameState extends GameState
 		for(GameObject object : GameResources.Objects)
 		{
 			object.Update();
+			object.CollisionHandle();
+			
 		}
 		GameResources.Objects.removeAll(GameResources.DeleteObjects);
 		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);

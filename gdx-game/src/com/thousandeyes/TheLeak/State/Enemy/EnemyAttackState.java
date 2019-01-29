@@ -75,17 +75,6 @@ public class EnemyAttackState implements IState
 		)
 			flipFrame = true;
 		
-		for(GameObject objy : GameResources.Objects)
-		{ 
-			if(this.gameObject != objy && !collisions.contains(objy))
-			{
-				if(this.gameObject.getCollider().overlaps(objy.getTransform()))
-				{
-					objy.getState().onTriggerEnter(this.gameObject.getCollider());
-					collisions.add(objy);
-				}
-			}
-		}
 
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		

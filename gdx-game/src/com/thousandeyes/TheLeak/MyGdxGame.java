@@ -78,6 +78,8 @@ public class MyGdxGame  implements ApplicationListener
 	
 	private void UpdateDebug()
 	{
+		try
+		{
 		if(GameResources.Debug) 
 		{
 
@@ -106,6 +108,11 @@ public class MyGdxGame  implements ApplicationListener
 				
 			 }
 			 GameResources.ShapeRenderer.end();
+		}
+		}
+		catch(Exception ex)
+		{
+			
 		}
 	}
 	@Override

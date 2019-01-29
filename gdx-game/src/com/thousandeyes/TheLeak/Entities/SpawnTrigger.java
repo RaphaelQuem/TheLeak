@@ -25,6 +25,7 @@ public class SpawnTrigger extends GameObject
 	@Override
 	public void Update()
 	{
+		/*
 		if(this.getTransform().overlaps(GameResources.Player.getTransform()))
 		{
 			GameResources.LocalLeftLimit = localLefLimit;
@@ -44,7 +45,7 @@ public class SpawnTrigger extends GameObject
 				}
 			}
 				
-		}
+		}*/
 	}
 	
 	
