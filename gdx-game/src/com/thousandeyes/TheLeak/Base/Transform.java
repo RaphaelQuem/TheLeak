@@ -78,7 +78,20 @@ public class Transform extends Rectangle
 		GameResources.TransformInstances.add(this);
 	} 
 	
+
 	public Transform(float _x, float _y, float widthPct, float heightPct){
+		
+		this.x = _x;
+		this.y = _y;
+		this.screenHeightPercentage = heightPct;
+		this.screenWidthPercentage = widthPct;
+		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
+		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+
+		GameResources.TransformInstances.add(this);
+	}
+	public Transform(GameObject _owner,float _x, float _y, float widthPct, float heightPct){
+		this.owner =_owner;
 		this.x = _x;
 		this.y = _y;
 		this.screenHeightPercentage = heightPct;
@@ -100,7 +113,20 @@ public class Transform extends Rectangle
 
 		GameResources.TransformInstances.add(this);
 	}
+	public Transform(GameObject _owner,float _x, float _y, float widthPct, float heightPct, boolean _trigger){
+		this.owner =_owner;
+		this.x = _x;
+		this.y = _y; 
+		this.screenHeightPercentage = heightPct;
+		this.screenWidthPercentage = widthPct;
+		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
+		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+		this.trigger = _trigger;
 
+		GameResources.TransformInstances.add(this);
+	}
+	
+	
 	public float getWidthPercentage() 
 	{
 		return this.screenWidthPercentage;
