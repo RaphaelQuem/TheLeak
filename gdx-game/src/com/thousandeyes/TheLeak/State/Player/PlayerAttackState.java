@@ -83,7 +83,7 @@ public class PlayerAttackState implements IState
 			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
 		)
 			flipFrame = true;
-	
+		
 		
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
 		

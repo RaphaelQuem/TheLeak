@@ -38,7 +38,7 @@ public class EnemyAttackState implements IState
 		Transform collider = colliders.get((int)i);
 		if(this.gameObject.getFlipped())
 		{
-			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
+			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage(),true,"attack",1f);
 		}
 		return collider;
 	}

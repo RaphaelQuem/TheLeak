@@ -87,13 +87,22 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 		while(objectIterator.hasNext())
 		{
 			GameObject obj = objectIterator.next();
-			if(this != obj && this.transform.overlaps(obj.getTransform()))
+			if(this != obj )
 			{
-
-				if(!this.transform.getTrigger() && obj.getTransform().getTrigger()) 
-					this.getState().onTriggerEnter(obj.getTransform());
-				this.collisions.add(obj);
+				if(this.transform.overlaps(obj.getTransform()))
+				{
+					if(!this.transform.getTrigger() && obj.getTransform().getTrigger()) 
+						this.getState().onTriggerEnter(obj.getTransform());
+					this.collisions.add(obj);
+				}
+				if(this.transform.overlaps(obj.getCollider()))
+				{
+					if(!this.transform.getTrigger()) 
+						this.getState().onTriggerEnter(obj.getTransform());
+					this.collisions.add(obj);
+				}
 			}
+			
 		}
 	}
 	

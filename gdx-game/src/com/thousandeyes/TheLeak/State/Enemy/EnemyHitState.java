@@ -10,6 +10,7 @@ public class EnemyHitState implements IState
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private GameObject hitter;
+	private IState hitterState;
 	private String name;
 	private float stateTime;
 	@Override
@@ -40,6 +41,7 @@ public class EnemyHitState implements IState
 		stateTime = 0f;
 		this.gameObject = _gameObject;
 		this.hitter = _hitter;
+		this.hitterState = _hitter.getState();
 		this.gameObject.DecreaseHealthBy(MathUtils.random((hitter.getStrength()* GameResources.MDamage- hitter.getStrength()),(hitter.getStrength()*GameResources.MDamage+ hitter.getStrength())));
 		if(_hitter.equals(GameResources.Player))
 			GameResources.ScreenShake(0.3f);
@@ -74,7 +76,8 @@ public class EnemyHitState implements IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
-		this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
+		if(other.getOwner().getState()!= hitterState)
+			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
 		
 	}
 
