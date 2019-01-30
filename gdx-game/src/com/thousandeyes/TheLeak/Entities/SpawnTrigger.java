@@ -25,8 +25,7 @@ public class SpawnTrigger extends GameObject
 	@Override
 	public void Update()
 	{
-		/*
-		if(this.getTransform().overlaps(GameResources.Player.getTransform()))
+		if(getCollisions().contains(GameResources.Player)) 
 		{
 			GameResources.LocalLeftLimit = localLefLimit;
 			GameResources.LocalRightLimit = localRightLimit;
@@ -37,16 +36,13 @@ public class SpawnTrigger extends GameObject
 				for(int i = 0;i<spawn.getNumber();i++)
 				{
 					float x = spawn.getLeft()?GameResources.getCameraLeft():GameResources.getCameraLeft()+GameResources.Camera.viewportWidth;
-					
+
 					GameResources.LockingObjects.add(EnemyHelper.newEnemy(spawn.getType(),x,y));
-					
+
 					y += GameResources.Camera.viewportHeight/6;
-					
+
 				}
 			}
-				
-		}*/
+		}
 	}
-	
-	
 }
