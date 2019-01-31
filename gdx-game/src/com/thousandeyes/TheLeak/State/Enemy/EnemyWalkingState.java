@@ -108,7 +108,7 @@ public class EnemyWalkingState implements IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
-		//if(other.getTag() == "attack")
+		if(other.getTag() == "attack")
 			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
 	}
 }

@@ -19,14 +19,14 @@ public class Transform extends Rectangle
 	private List<GameObject> collisions =  new ArrayList<GameObject>();
 	private boolean trigger = false;
 
-	public void setTag(String tag)
+	public void setTag(String _tag)
 	{
-		this.tag = tag;
+		this.tag = _tag;
 	}
 
 	public String getTag()
 	{
-		return tag;
+		return this.tag;
 	}
 
 	public void setCollisions(List<GameObject> collisions)

@@ -38,7 +38,7 @@ public class EnemyAttackState implements IState
 		Transform collider = colliders.get((int)i);
 		if(this.gameObject.getFlipped())
 		{
-			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage(),true,"attack",1f);
+			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
 		}
 		return collider;
 	}
@@ -85,6 +85,7 @@ public class EnemyAttackState implements IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
-		this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
+		if(other.getTag() == "attack")
+			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
 	}
 }

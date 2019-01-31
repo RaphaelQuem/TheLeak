@@ -60,7 +60,6 @@ public class PlayerRollingState implements IState
 			
 			gameObject.setState(new PlayerIdleState(gameObject));
 		}
-	
 		
 		
 		this.gameObject.getTransform().AddTransform(new Vector2(5*(left?-1:1),0),this.gameObject.getSpeed());
