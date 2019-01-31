@@ -70,12 +70,10 @@ public class LevelGameState extends GameState
 		GameResources.LockingObjects.removeAll(GameResources.DeleteObjects);
 		GameResources.DeleteObjects.clear();
 	
-		float d = 0;
-		if(Gdx.input.getX(0)<= Gdx.graphics.getWidth() / 2)
-			d = 1;
 		
 		
-		TextHelper.Show(String.valueOf(d).replace(".","+"),new Transform(GameResources.getCameraLeft(),0,100f,20f),32,1);
+		
+		TextHelper.Show(String.valueOf(GameResources.debugme).replace('.','+'),new Transform(GameResources.getCameraLeft(),0,100f,20f),32,1);
 		
 	}
 	

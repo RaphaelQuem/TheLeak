@@ -126,6 +126,20 @@ public class Transform extends Rectangle
 
 		GameResources.TransformInstances.add(this);
 	}
+	public Transform(GameObject _owner, float _x, float _y, float widthPct, float heightPct, boolean _trigger, String _tag, float _multiplier){
+		this.x = _x;
+		this.y = _y;
+		this.screenHeightPercentage = heightPct;
+		this.screenWidthPercentage = widthPct;
+		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
+		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
+		this.trigger = _trigger;
+		this.tag =_tag; 
+		this.multiplier = _multiplier;
+		this.owner =_owner;
+
+		GameResources.TransformInstances.add(this);
+	}
 	public Transform(GameObject _owner,float _x, float _y, float widthPct, float heightPct, boolean _trigger){
 		this.owner =_owner;
 		this.x = _x;

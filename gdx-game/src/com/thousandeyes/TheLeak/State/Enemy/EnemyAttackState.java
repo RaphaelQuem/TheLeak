@@ -51,8 +51,8 @@ public class EnemyAttackState implements IState
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName();
 		colliders = new ArrayList<Transform>();
-		colliders.add(new Transform(gameObject,gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f,true));
-		colliders.add(new Transform(gameObject,gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 20f,10f,true));
+		colliders.add(new Transform(gameObject,gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 10f,10f,true,"attack",1f));
+		colliders.add(new Transform(gameObject,gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y, 20f,10f,true,"attack",1f));
 		
 
 	}
