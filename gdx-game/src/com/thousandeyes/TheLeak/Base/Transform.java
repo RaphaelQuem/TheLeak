@@ -19,6 +19,16 @@ public class Transform extends Rectangle
 	private List<GameObject> collisions =  new ArrayList<GameObject>();
 	private boolean trigger = false;
 
+	public void setMultiplier(float multiplier)
+	{
+		this.multiplier = multiplier;
+	}
+
+	public float getMultiplier()
+	{
+		return multiplier;
+	}
+
 	public void setTag(String _tag)
 	{
 		this.tag = _tag;

@@ -90,9 +90,12 @@ public class PlayerIdleState implements IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
+		float x = other.getMultiplier();
 		if(other.getTag() == "attack")
+		{
+			GameResources.debugme--;
 			this.gameObject.setState(new PlayerHitState(this.gameObject,other.getOwner()));
-	}
+	}}
 	
 
 }
