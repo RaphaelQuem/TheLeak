@@ -84,7 +84,7 @@ public class Transform extends Rectangle
 		this.canvasWPct = _canvasWPct;
 		this.canvasHPct = _canvasHPct;
 		this.screenWidthPercentage = this.width/ GameResources.Camera.viewportWidth*100f;
-
+		this.multiplier = 999;
 		GameResources.TransformInstances.add(this);
 	} 
 	
@@ -97,7 +97,7 @@ public class Transform extends Rectangle
 		this.screenWidthPercentage = widthPct;
 		this.width = GameResources.Camera.viewportWidth /100f*widthPct;
 		this.height = GameResources.Camera.viewportHeight/100f*heightPct;
-
+		this.multiplier= 999;
 		GameResources.TransformInstances.add(this);
 	}
 	public Transform(GameObject _owner,float _x, float _y, float widthPct, float heightPct){

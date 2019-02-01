@@ -40,7 +40,7 @@ public class PlayerAttackState implements IState
 		Transform collider = colliders.get((int)i);
 		if(this.gameObject.getFlipped())
 		{
-			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
+			return new Transform(collider.getOwner(),collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage(),collider.getTrigger(), collider.getTag(), collider.getMultiplier());
 		}
 		return collider;
 	}
@@ -57,8 +57,6 @@ public class PlayerAttackState implements IState
 		colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 1f));
 		colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 1f));
 		collisions = new ArrayList<GameObject>();
-		
-		
 	}
 	@Override
 	public void Update()
