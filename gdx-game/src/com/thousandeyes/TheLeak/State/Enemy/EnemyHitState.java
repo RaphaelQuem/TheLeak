@@ -10,7 +10,7 @@ public class EnemyHitState implements IState
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private GameObject hitter;
-	private IState hitterState;
+	private String hitterState;
 	private String name;
 	private float stateTime;
 	@Override
@@ -41,8 +41,8 @@ public class EnemyHitState implements IState
 		stateTime = 0f;
 		this.gameObject = _gameObject;
 		this.hitter = _hitter;
-		this.hitterState = _hitter.getState();
-		this.gameObject.DecreaseHealthBy(MathUtils.random((hitter.getStrength()*_hitter.getCollider().getMultiplier() *GameResources.MDamage- hitter.getStrength()),(hitter.getStrength()*GameResources.MDamage+ hitter.getStrength())));
+		this.hitterState = _hitter.getState().getName();
+		this.gameObject.DecreaseHealthBy(MathUtils.random((hitter.getStrength() * GameResources.MDamage)- hitter.getStrength(),(hitter.getStrength()*GameResources.MDamage+ hitter.getStrength())));
 		if(_hitter.equals(GameResources.Player))
 			GameResources.ScreenShake(0.3f);
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName() + "-hit-spritesheet.png",6,1,0.1f);
@@ -76,8 +76,12 @@ public class EnemyHitState implements IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
-		if(other.getOwner() != null && other.getOwner().getState()!= hitterState)
+		if(other.getTag() == "attack")
+		{
 			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
+		}
+		/*if(other.getOwner() != null && other.getOwner().getState().getName() != hitterState)
+			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));*/
 		
 	}
 
