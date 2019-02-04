@@ -76,7 +76,7 @@ public class EnemyHitState implements IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
-		if(other.getOwner().getState()!= hitterState)
+		if(other.getOwner() != null && other.getOwner().getState()!= hitterState)
 			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
 		
 	}

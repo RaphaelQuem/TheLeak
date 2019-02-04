@@ -97,7 +97,7 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 				}
 				if(this.transform.overlaps(obj.getCollider()))
 				{
-					if(!this.transform.getTrigger()) 
+					if(!this.transform.getTrigger() ) 
 						this.getState().onTriggerEnter(obj.getCollider());
 					this.collisions.add(obj);
 				}

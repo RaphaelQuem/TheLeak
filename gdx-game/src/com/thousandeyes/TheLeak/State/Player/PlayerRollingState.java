@@ -45,6 +45,7 @@ public class PlayerRollingState implements IState
 		left = _left;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-rolling-spritesheet.png",3,3,0.05f,7);
 		gameObject.getTransform().setTrigger(true);
+		gameObject.getTransform().setTag("roll");
 		
 		name = this.getClass().getName();
 	}

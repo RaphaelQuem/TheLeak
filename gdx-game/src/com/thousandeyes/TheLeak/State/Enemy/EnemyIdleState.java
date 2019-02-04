@@ -68,12 +68,9 @@ public class EnemyIdleState implements IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
-		GameResources.debugme++;
-		float i = other.getMultiplier();
-		String y = other.getOwner().getName();
+	
 		if(other.getTag() == "attack")
 		{
-			
 			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
 		}
 	}
