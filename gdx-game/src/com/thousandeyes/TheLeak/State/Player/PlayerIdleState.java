@@ -8,7 +8,7 @@ import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
 import com.badlogic.gdx.scenes.scene2d.utils.*;
 
-public class PlayerIdleState implements IState
+public class PlayerIdleState extends IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

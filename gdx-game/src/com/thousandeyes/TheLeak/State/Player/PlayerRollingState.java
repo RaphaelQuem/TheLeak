@@ -9,7 +9,7 @@ import com.thousandeyes.TheLeak.State.GameState.*;
 import com.thousandeyes.TheLeak.Entities.*;
 import com.thousandeyes.TheLeak.State.Enemy.*;
 
-public class PlayerRollingState implements IState
+public class PlayerRollingState extends IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

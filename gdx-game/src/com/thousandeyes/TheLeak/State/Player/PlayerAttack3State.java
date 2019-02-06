@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.*;
 import java.util.*;
 import com.badlogic.gdx.*;
 
-public class PlayerAttack3State implements IState
+public class PlayerAttack3State extends IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
