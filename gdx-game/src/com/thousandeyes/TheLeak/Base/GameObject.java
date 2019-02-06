@@ -93,10 +93,10 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 				{
 					if(!this.transform.getTrigger() && obj.getTransform().getTrigger())
 					{
-						if(!obj.getTransform().getTriggeredState().contains(this.getState()))
+						if(!obj.getState().getTriggeredObjects().contains(this))
 						{
 							this.getState().onTriggerEnter(obj.getTransform());
-							obj.getTransform().getTriggeredState().add(obj.getState());
+							obj.getState().getTriggeredObjects().add(this);
 						}
 					}
 					this.collisions.add(obj);
@@ -105,10 +105,10 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 				{
 					if(!this.transform.getTrigger() ) 
 					{
-						if(!obj.getCollider().getTriggeredState().contains(this.getState()))
+						if(!obj.getState().getTriggeredObjects().contains(this))
 						{
 							this.getState().onTriggerEnter(obj.getCollider());
-							obj.getCollider().getTriggeredState().add(obj.getState());
+							obj.getState().getTriggeredObjects().add(this);
 						}
 					}
 					this.collisions.add(obj);
