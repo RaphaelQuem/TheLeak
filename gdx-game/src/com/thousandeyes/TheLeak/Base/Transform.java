@@ -4,6 +4,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.*;
 import com.thousandeyes.TheLeak.*;
 import java.util.*;
+import com.thousandeyes.TheLeak.State.*;
 
 
 public class Transform extends Rectangle
@@ -18,6 +19,7 @@ public class Transform extends Rectangle
 	private float canvasHPct = 100f;
 	private List<GameObject> collisions =  new ArrayList<GameObject>();
 	private boolean trigger = false;
+
 
 	public void setMultiplier(float multiplier)
 	{

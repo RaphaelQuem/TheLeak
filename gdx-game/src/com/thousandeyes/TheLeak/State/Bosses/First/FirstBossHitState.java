@@ -8,7 +8,7 @@ import com.thousandeyes.TheLeak.Base.Enums.*;
 import com.thousandeyes.TheLeak.Entities.*;
 import com.thousandeyes.TheLeak.State.Enemy.*;
 
-public class FirstBossHitState implements IState
+public class FirstBossHitState extends IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

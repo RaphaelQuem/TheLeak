@@ -6,7 +6,7 @@ import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 
-public class PlayerHitState implements IState
+public class PlayerHitState extends IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

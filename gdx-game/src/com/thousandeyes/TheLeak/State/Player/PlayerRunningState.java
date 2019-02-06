@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
 
-public class PlayerRunningState implements IState
+public class PlayerRunningState extends IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
