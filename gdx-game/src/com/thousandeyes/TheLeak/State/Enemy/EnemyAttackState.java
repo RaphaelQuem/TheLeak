@@ -31,7 +31,7 @@ public class EnemyAttackState extends IState
 	}
 
 	public EnemyAttackState(GameObject _gameObject){
-		stateTime = 0;
+		
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName()+"-attack-spritesheet.png",6,1,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
@@ -45,9 +45,10 @@ public class EnemyAttackState extends IState
 	@Override
 	public void Update()
 	{
-		stateTime  += Gdx.graphics.getDeltaTime();
+	
+		super.Update();
 		
-		if(this.getStateAnimation().isAnimationFinished(stateTime))
+		if(this.getStateAnimation().isAnimationFinished(super.stateTime))
 		{
 			gameObject.setState(new EnemyIdleState(gameObject));
 		}
@@ -55,16 +56,16 @@ public class EnemyAttackState extends IState
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(super.stateTime,true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(super.stateTime,true).isFlipX()
 		)
 			flipFrame = true;
 		
 
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(super.stateTime, true).flip(flipFrame,false);
 		
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(super.stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 	}
 

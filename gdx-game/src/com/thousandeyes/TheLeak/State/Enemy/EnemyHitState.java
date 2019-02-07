@@ -20,13 +20,6 @@ public class EnemyHitState extends IState
 	}
 
 	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-
-
-	@Override
 	public GameObject getGameObject()
 	{
 		return gameObject;

@@ -17,13 +17,6 @@ public class EnemyIdleState extends IState
 	{
 		return stateAnimation;
 	}
-
-	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-
 	
 	@Override
 	public GameObject getGameObject()

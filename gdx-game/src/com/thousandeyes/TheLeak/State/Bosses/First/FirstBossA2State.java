@@ -29,14 +29,7 @@ public class FirstBossA2State extends IState
 	public Animation getStateAnimation()
 	{
 		return stateAnimation;
-	}
-
-	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-
+	}  
 
 	@Override
 	public GameObject getGameObject()

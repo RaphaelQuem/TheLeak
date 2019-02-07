@@ -17,13 +17,6 @@ public class EnemyConfusedState extends IState
 	}
 
 	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-
-
-	@Override
 	public GameObject getGameObject()
 	{
 		return gameObject;

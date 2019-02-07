@@ -31,20 +31,7 @@ public class PlayerAttack2State extends IState
 		return name;
 	}
 
-	@Override
-
-	public Transform getCollider()
-	{
-		double i = Math.floor(stateAnimation.getKeyFrameIndex(stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
-		Transform collider = colliders.get((int)i);
-		if(this.gameObject.getFlipped())
-		{
-			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
-		}
-		return collider;
-	}
-
-
+	
 	public PlayerAttack2State(GameObject _gameObject){
 		stateTime = 0f;
 		gameObject = _gameObject;
@@ -59,6 +46,7 @@ public class PlayerAttack2State extends IState
 
 		
 	}
+	
 	@Override
 	public void Update()
 	{

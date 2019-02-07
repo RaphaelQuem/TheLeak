@@ -30,12 +30,6 @@ public class PlayerIdleState extends IState
 		return name;
 	}
 
-	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-	
 	public PlayerIdleState(GameObject _gameObject){
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",3,2,0.16f);

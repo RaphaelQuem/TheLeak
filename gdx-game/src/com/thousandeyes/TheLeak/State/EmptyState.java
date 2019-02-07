@@ -10,12 +10,6 @@ public class EmptyState extends IState
 		return null;
 	}
 
-	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-
 
 	@Override
 	public GameObject getGameObject()

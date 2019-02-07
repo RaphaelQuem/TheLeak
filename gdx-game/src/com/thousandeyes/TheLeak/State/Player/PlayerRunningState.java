@@ -30,12 +30,6 @@ public class PlayerRunningState extends IState
 		return name;
 	}
 
-	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-
 	public PlayerRunningState(GameObject _gameObject, boolean _left){
 		gameObject = _gameObject;
 		left = _left;

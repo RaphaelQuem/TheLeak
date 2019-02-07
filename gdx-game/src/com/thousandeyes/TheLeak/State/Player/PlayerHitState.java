@@ -29,12 +29,6 @@ public class PlayerHitState extends IState
 		return name;
 	}
 
-	@Override
-	public Transform getCollider()
-	{
-		return new Transform();
-	}
-
 	public PlayerHitState(GameObject _gameObject, GameObject _hitter){
 		this.gameObject = _gameObject;
 		this.hitter = _hitter;
