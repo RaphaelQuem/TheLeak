@@ -11,7 +11,6 @@ public class EnemyAttackState extends IState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
-	private float stateTime;
 	private String name;
 	private List<Transform> colliders;
 
@@ -31,21 +30,8 @@ public class EnemyAttackState extends IState
 		return name;
 	}
 
-	@Override
-	public Transform getCollider()
-	{
-		double i = Math.floor(stateAnimation.getKeyFrameIndex(stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
-		Transform collider = colliders.get((int)i);
-		if(this.gameObject.getFlipped())
-		{
-			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
-		}
-		return collider;
-	}
-
-
 	public EnemyAttackState(GameObject _gameObject){
-		stateTime = 0f;
+		stateTime = 0;
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName()+"-attack-spritesheet.png",6,1,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);

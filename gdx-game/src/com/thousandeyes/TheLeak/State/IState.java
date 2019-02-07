@@ -5,6 +5,8 @@ import java.util.*;
 
 public class IState
 {
+
+	public float stateTime=0f;
 	private List<GameObject> triggeredObjects = new ArrayList<GameObject>();
 
 	public void setTriggeredObjects(List<GameObject> triggeredObjects)
@@ -24,6 +26,7 @@ public class IState
 	public void onTriggerEnter(Transform other){};
 	public Transform getCollider(){return null;};
 	public void Update(){};
+
 	
 
 }

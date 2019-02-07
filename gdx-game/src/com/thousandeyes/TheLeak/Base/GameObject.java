@@ -47,11 +47,6 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 	{
 		return this.speed;
 	};
-	
-	public Transform getCollider()
-	{
-		return this.state.getCollider();
-	};
 
 	public boolean getFlipped()
 	{
@@ -116,6 +111,17 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 			}
 			
 		}
+	}
+	
+	public Transform getCollider()
+	{
+		double i = Math.floor(this.getState().getStateAnimation().getKeyFrameIndex(this.getState().stateTime)/(stateAnimation.getKeyFrames().length/colliders.size()));
+		Transform collider = colliders.get((int)i);
+		if(this.gameObject.getFlipped())
+		{
+			return new Transform(collider.x - collider.width - this.gameObject.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
+		}
+		return collider;
 	}
 	
 	
