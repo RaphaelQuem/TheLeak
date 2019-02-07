@@ -85,6 +85,10 @@ public class EnemyAttackState extends IState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
+
+		if(other.getTag() == "roll")
+			this.gameObject.setState(new EnemyConfusedState(this.gameObject));
+		
 		if(other.getTag() == "attack")
 			this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
 	}
