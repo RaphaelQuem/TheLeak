@@ -46,7 +46,7 @@ public class IState
 
 	
 	public String getName(){return "ISate";};
-	public Animation getStateAnimation(){return null;};
+	public Animation getStateAnimation(){return AnimationHelper.GetAnimationFromSpritesheet("hero-attack3-spritesheet.png",3,1,0.1f);};
 	public GameObject getGameObject(){return null;};
 	public void onTriggerEnter(Transform other){};
 	public void Update()

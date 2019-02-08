@@ -13,7 +13,6 @@ public class PlayerAttackState extends IState
 	private GameObject gameObject;
 	private float stateTime;
 	private String name;
-	private List<Transform> colliders;
 	private List<GameObject> collisions;
 	private boolean combo;
 	@Override
@@ -39,16 +38,16 @@ public class PlayerAttackState extends IState
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",3,1,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
-		colliders = new ArrayList<Transform>();
-		colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 65f), 1f,5f,true, "attack", 1f));
-		colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 1f));
-		colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 1f));
+		super.colliders = new ArrayList<Transform>();
+		super.colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 65f), 1f,5f,true, "attack", 1f));
+		super.colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 1f));
+		super.colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 1f));
 		collisions = new ArrayList<GameObject>();
 	}
 	@Override
 	public void Update()
 	{
-		stateTime  += Gdx.graphics.getDeltaTime();
+		super.Update();
 		if(InputHandler.getTouched("action"))
 			combo = true;
 			
@@ -75,7 +74,6 @@ public class PlayerAttackState extends IState
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 	}
-
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
