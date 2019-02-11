@@ -1,12 +1,11 @@
-package com.thousandeyes.TheLeak.State;
-import com.badlogic.gdx.graphics.g2d.*;
-import com.thousandeyes.TheLeak.Base.*;
+package com.thousandeyes.TheLeak.Base;
+
 import java.util.*;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.*;
 
-public class IState
+public class BaseState
 {
-
 	private float stateTime=0f;
 	private List<Transform> colliders= new ArrayList<Transform>();
 	private List<GameObject> triggeredObjects = new ArrayList<GameObject>();
@@ -44,7 +43,7 @@ public class IState
 		return triggeredObjects;
 	}
 
-	
+
 	public String getName(){return "ISate";};
 	public Animation getStateAnimation(){return AnimationHelper.GetAnimationFromSpritesheet("hero-attack3-spritesheet.png",3,1,0.1f);};
 	public GameObject getGameObject(){return null;};
@@ -53,7 +52,5 @@ public class IState
 	{
 		stateTime += Gdx.graphics.getDeltaTime();
 	};
-
 	
-
 }

@@ -8,7 +8,7 @@ import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.math.*;
 
-public class FirstBossA2State extends IState
+public class FirstBossA2State extends BaseState
 {
 	//teste zapier
 	private Animation stateAnimation;

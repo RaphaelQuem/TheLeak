@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
 
-public class EnemyConfusedState extends IState
+public class EnemyConfusedState extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

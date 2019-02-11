@@ -2,7 +2,7 @@ package com.thousandeyes.TheLeak.State;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.graphics.g2d.*;
 
-public class EmptyState extends IState
+public class EmptyState extends BaseState
 {
 	@Override
 	public Animation getStateAnimation()

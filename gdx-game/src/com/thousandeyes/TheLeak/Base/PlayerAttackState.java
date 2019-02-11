@@ -1,4 +1,4 @@
-package com.thousandeyes.TheLeak.State.Player;
+package com.thousandeyes.TheLeak.Base;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.*;
 import java.util.*;
 import com.thousandeyes.TheLeak.State.*;
 
-public class PlayerAttackState extends IState
+public class PlayerAttackState extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

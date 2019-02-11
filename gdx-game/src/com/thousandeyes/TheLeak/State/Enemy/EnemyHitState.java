@@ -5,7 +5,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 
-public class EnemyHitState extends IState
+public class EnemyHitState extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

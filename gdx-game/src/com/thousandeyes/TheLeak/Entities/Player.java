@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.scenes.scene2d.*;
-import com.thousandeyes.TheLeak.State.Player.*;
+
 
 public class Player extends GameObject
 {

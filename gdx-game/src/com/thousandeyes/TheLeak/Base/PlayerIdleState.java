@@ -1,4 +1,4 @@
-package com.thousandeyes.TheLeak.State.Player;
+package com.thousandeyes.TheLeak.Base;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
@@ -6,14 +6,14 @@ import android.hardware.input.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.thousandeyes.TheLeak.State.GameState.*;
+import com.badlogic.gdx.scenes.scene2d.utils.*;
 
-public class PlayerRunningState extends IState
+public class PlayerIdleState extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private String name;
 	private float stateTime;
-	private boolean left;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -30,12 +30,11 @@ public class PlayerRunningState extends IState
 		return name;
 	}
 
-	public PlayerRunningState(GameObject _gameObject, boolean _left){
+	public PlayerIdleState(GameObject _gameObject){
 		gameObject = _gameObject;
-		left = _left;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-running-spritesheet.png",3,3,0.09f,8);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-idle-spritesheet.png",3,2,0.16f);
 
-
+		//TextHelper.Show(String.valueOf(test),new Transform(0,0,10,10),3,3);
 		name = this.getClass().getName();
 	}
 	@Override
@@ -44,32 +43,27 @@ public class PlayerRunningState extends IState
 		stateTime += Gdx.graphics.getDeltaTime();
 		if(InputHandler.getTouched("action"))
 			gameObject.setState(new PlayerAttackState(gameObject));
-
-		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero) && stateTime > 1f)
-			gameObject.setState(new PlayerWalkingState(gameObject));
 		
+		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero))
+			gameObject.setState(new PlayerWalkingState(gameObject));
+	
 		if(InputHandler.getTouched("LeftSwipeForward") )
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,false));
 
 		if(InputHandler.getTouched("LeftSwipeBack")) 
 			GameResources.Player.setState(new PlayerRunningState(GameResources.Player,true));
-		
+	
 		if(InputHandler.getTouched("RightSwipeForward"))
 			GameResources.Player.setState(new PlayerRollingState(GameResources.Player,false));
 		
-		
 		if(InputHandler.getTouched("RightSwipeBack"))
 			GameResources.Player.setState(new PlayerRollingState(GameResources.Player,true));
-
-		
-		this.gameObject.getTransform().AddTransform(new Vector2(3*(left?-1:1),0),this.gameObject.getSpeed());
-		
 		
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
 			this.gameObject.setFlipped(true);
 		if(this.gameObject.getFlipped() && InputHandler.InputVector().x > 0)
 			this.gameObject.setFlipped(false);
-
+		
 		boolean flipFrame = false;
 		if
 		(
@@ -81,18 +75,21 @@ public class PlayerRunningState extends IState
 
 
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
-
+		
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
-
+		
 	}
 
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
+		
 		if(other.getTag() == "attack")
+		{
+			GameResources.debugme--;
 			this.gameObject.setState(new PlayerHitState(this.gameObject,other.getOwner()));
-	}
-
+	}}
+	
 
 }

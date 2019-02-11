@@ -6,7 +6,7 @@ import java.util.*;
 import com.badlogic.gdx.math.*;
 import com.thousandeyes.TheLeak.State.*;
 
-public class EnemyIdleState extends IState
+public class EnemyIdleState extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;

@@ -9,7 +9,7 @@ import java.util.*;
 public abstract class GameObject  implements Comparable<GameObject>, Disposable {
 	// Attributes
 	private Transform transform = new Transform();
-	private IState state;
+	private BaseState state;
 	private boolean flipped;
 	private float speed;
 	private ListIterator<GameObject> objectIterator;
@@ -32,7 +32,7 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 		return this.getClass().getSimpleName().toLowerCase();
 	};
 	
-	public IState getState()
+	public BaseState getState()
 	{
 		return this.state;
 	};
@@ -55,7 +55,7 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 	// 
 
 	//Setters
-	public void setState (IState _state)
+	public void setState (BaseState _state)
 	{
 		this.state = _state;
 	};
