@@ -123,7 +123,7 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 		Transform collider = this.getState().getColliders().get((int)i);
 		if(this.getFlipped())
 		{
-			return new Transform(collider.x - collider.width - this.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage());
+			return new Transform(collider.getOwner(),collider.x - collider.width - this.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage(),collider.getTrigger(), collider.getTag(), collider.getMultiplier());
 		}
 		return collider;
 	}
