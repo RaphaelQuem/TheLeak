@@ -65,6 +65,7 @@ public class InputHandler
 	{
 		try
 		{
+			
 		if(action.contains("Swipe"))
 		{
 			for (int i=0; i<5; i++)
@@ -113,7 +114,7 @@ public class InputHandler
 				InputHandler.Touches = InputHandler.Touches.replace("|" + action,"").replace(action,"");
 					
 			}
-		
+		GameResources.debugme = InputHandler.LastTouches.length();
 		return result;
 		}
 		catch(Exception ex)
