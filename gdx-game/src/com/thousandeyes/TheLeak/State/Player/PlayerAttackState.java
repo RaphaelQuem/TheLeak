@@ -36,10 +36,10 @@ public class PlayerAttackState extends BaseState
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",3,1,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
-		super.colliders = new ArrayList<Transform>();
-		super.colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 65f), 1f,5f,true, "attack", 1f));
-		super.colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 1f));
-		super.colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 1f));
+		super.setColliders(new ArrayList<Transform>());
+		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 65f), 1f,5f,true, "attack", 1f));
+		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 1f));
+		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 1f));
 		collisions = new ArrayList<GameObject>();
 	}
 	
@@ -52,7 +52,7 @@ public class PlayerAttackState extends BaseState
 			combo = true;
 			
 			
-		if(this.getStateAnimation().isAnimationFinished(super.stateTime))
+		if(this.getStateAnimation().isAnimationFinished(super.getStateTime()))
 		{
 			if(combo)
 				gameObject.setState(new PlayerAttack2State(gameObject));
@@ -62,16 +62,16 @@ public class PlayerAttackState extends BaseState
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(super.stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(super.getStateTime(),true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(super.stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(super.getStateTime(),true).isFlipX()
 		)
 			flipFrame = true;
 		
 		
-		this.getStateAnimation().getKeyFrame(super.stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(super.getStateTime(), true).flip(flipFrame,false);
 		
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(super.stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(super.getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 	}
 	@Override
