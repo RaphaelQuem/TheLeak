@@ -1,4 +1,4 @@
-package com.thousandeyes.TheLeak.Base;
+package com.thousandeyes.TheLeak.State.Player;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.thousandeyes.TheLeak.Base.*;
 import com.badlogic.gdx.*;
@@ -11,7 +11,6 @@ public class PlayerAttackState extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
-	private float stateTime;
 	private String name;
 	private List<GameObject> collisions;
 	private boolean combo;
@@ -33,7 +32,6 @@ public class PlayerAttackState extends BaseState
 
 	
 	public PlayerAttackState(GameObject _gameObject){
-		stateTime = 0f;
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",3,1,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
@@ -44,15 +42,17 @@ public class PlayerAttackState extends BaseState
 		super.colliders.add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 1f));
 		collisions = new ArrayList<GameObject>();
 	}
-	@Override
+	
+	
 	public void Update()
 	{
 		super.Update();
+		
 		if(InputHandler.getTouched("action"))
 			combo = true;
 			
 			
-		if(this.getStateAnimation().isAnimationFinished(stateTime))
+		if(this.getStateAnimation().isAnimationFinished(super.stateTime))
 		{
 			if(combo)
 				gameObject.setState(new PlayerAttack2State(gameObject));
@@ -62,16 +62,16 @@ public class PlayerAttackState extends BaseState
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(super.stateTime,true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(super.stateTime,true).isFlipX()
 		)
 			flipFrame = true;
 		
 		
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(super.stateTime, true).flip(flipFrame,false);
 		
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(super.stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 	}
 	@Override

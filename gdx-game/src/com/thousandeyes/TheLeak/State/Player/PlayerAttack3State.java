@@ -1,4 +1,4 @@
-package com.thousandeyes.TheLeak.Base;
+package com.thousandeyes.TheLeak.State.Player;
 import com.thousandeyes.TheLeak.Base.*;
 import com.thousandeyes.TheLeak.State.*;
 import com.badlogic.gdx.graphics.g2d.*;
