@@ -13,7 +13,7 @@ public class EnemyWalkingState extends BaseState
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private String name;
-	private float stateTime;
+	
 	private float substateTime;
 	private boolean offensive;
 	@Override
@@ -70,7 +70,7 @@ public class EnemyWalkingState extends BaseState
 			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
 			||
 			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
-			)
+		)
 			flipFrame = true;
 		
 		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);

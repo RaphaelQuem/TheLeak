@@ -12,7 +12,7 @@ public class PlayerRunningState extends BaseState
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private String name;
-	private float stateTime;
+	
 	private boolean left;
 	@Override
 	public Animation getStateAnimation()

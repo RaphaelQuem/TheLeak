@@ -12,7 +12,6 @@ public class PlayerAttackState extends BaseState
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private String name;
-	private List<GameObject> collisions;
 	private boolean combo;
 	@Override
 	public Animation getStateAnimation()
@@ -40,7 +39,7 @@ public class PlayerAttackState extends BaseState
 		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 65f), 1f,5f,true, "attack", 1f));
 		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 1f));
 		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 1f));
-		collisions = new ArrayList<GameObject>();
+		
 	}
 	
 	

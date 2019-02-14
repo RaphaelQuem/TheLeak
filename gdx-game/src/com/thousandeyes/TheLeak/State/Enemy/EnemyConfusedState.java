@@ -9,7 +9,6 @@ public class EnemyConfusedState extends BaseState
 	private Animation stateAnimation;
 	private GameObject gameObject;
 	private String name;
-	private float stateTime;
 	@Override
 	public Animation getStateAnimation()
 	{
