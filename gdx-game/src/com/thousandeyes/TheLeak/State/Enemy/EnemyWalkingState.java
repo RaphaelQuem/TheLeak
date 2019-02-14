@@ -47,7 +47,7 @@ public class EnemyWalkingState extends BaseState
 	{
 		
 		substateTime -= Gdx.graphics.getDeltaTime();
-		stateTime += Gdx.graphics.getDeltaTime(); 
+		super.Update(); 
 	
 		if(substateTime<= 0f)
 		{

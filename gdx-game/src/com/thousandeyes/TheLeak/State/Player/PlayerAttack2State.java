@@ -50,7 +50,8 @@ public class PlayerAttack2State extends BaseState
 	@Override
 	public void Update()
 	{
-		super.addStateTime(Gdx.graphics.getDeltaTime());
+		super.Update();
+		
 		if(InputHandler.getTouched("action"))
 			combo = true;
 
