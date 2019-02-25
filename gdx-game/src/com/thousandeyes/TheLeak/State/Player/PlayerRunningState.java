@@ -41,7 +41,6 @@ public class PlayerRunningState extends BaseState
 	@Override
 	public void Update()
 	{
-		stateTime += Gdx.graphics.getDeltaTime();
 		if(InputHandler.getTouched("action"))
 			gameObject.setState(new PlayerAttackState(gameObject));
 
