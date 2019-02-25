@@ -36,12 +36,12 @@ public class PlayerWalkingState extends BaseState
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-walking-spritesheet.png",3,3,0.1f,8);
 		name = this.getClass().getName();
-		stateTime = 0f;
+		
 	}
 	@Override
 	public void Update()
 	{
-		stateTime += Gdx.graphics.getDeltaTime();
+		super.Update();
 		this.gameObject.getTransform().AddTransform(InputHandler.InputVector(),this.gameObject.getSpeed());
 		boolean flipFrame = false;
 		if(!this.gameObject.getFlipped() && InputHandler.InputVector().x < 0)
@@ -51,9 +51,9 @@ public class PlayerWalkingState extends BaseState
 		
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 		)
 			flipFrame = true;
 			
@@ -70,9 +70,9 @@ public class PlayerWalkingState extends BaseState
 		if(InputHandler.getTouched("RightSwipeForward"))
 			GameResources.CurrentGameState = new CharacterGameState(GameResources.CurrentGameState);
 		
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(getStateTime(), true).flip(flipFrame,false);
 			
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 	}
 

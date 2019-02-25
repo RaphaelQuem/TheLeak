@@ -28,7 +28,7 @@ public class EnemyConfusedState extends BaseState
 
 	public EnemyConfusedState(GameObject _gameObject)
 	{
-		stateTime = 0f;
+		
 		gameObject = _gameObject;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet(this.getGameObject().getName() + "-hit-spritesheet.png",3,2,0.1f);
 		name = this.getClass().getName();
@@ -36,22 +36,22 @@ public class EnemyConfusedState extends BaseState
 	@Override
 	public void Update()
 	{
-		stateTime += Gdx.graphics.getDeltaTime();
-		if(stateTime >= 1.5f)
+		
+		if(getStateTime() >= 1.5f)
 			this.gameObject.setState(new EnemyWalkingState(this.gameObject));
 
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			)
 			flipFrame = true;
 
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(getStateTime(), true).flip(flipFrame,false);
 
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 	}
 

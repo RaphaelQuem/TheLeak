@@ -44,7 +44,7 @@ public class PlayerRunningState extends BaseState
 		if(InputHandler.getTouched("action"))
 			gameObject.setState(new PlayerAttackState(gameObject));
 
-		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero) && stateTime > 1f)
+		if(InputHandler.InputVector() != null && !InputHandler.InputVector().equals(Vector2.Zero) && getStateTime() > 1f)
 			gameObject.setState(new PlayerWalkingState(gameObject));
 		
 		if(InputHandler.getTouched("LeftSwipeForward") )
@@ -72,17 +72,17 @@ public class PlayerRunningState extends BaseState
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			)
 			flipFrame = true;
 
 
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(getStateTime(), true).flip(flipFrame,false);
 
 
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 	}
 

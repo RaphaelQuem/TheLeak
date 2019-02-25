@@ -46,6 +46,7 @@ public class EnemyWalkingState extends BaseState
 	public void Update()
 	{
 		
+		
 		substateTime -= Gdx.graphics.getDeltaTime();
 		super.Update(); 
 	
@@ -67,13 +68,13 @@ public class EnemyWalkingState extends BaseState
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 		)
 			flipFrame = true;
 		
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(getStateTime(), true).flip(flipFrame,false);
 		
 		if(offensive)
 			this.gameObject.getTransform().AddTransform(movVector.nor(),2);
@@ -92,7 +93,7 @@ public class EnemyWalkingState extends BaseState
 			gameObject.setState(new EnemyIdleState(gameObject));
 			
 		
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		
 		
 		

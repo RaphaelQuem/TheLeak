@@ -46,10 +46,8 @@ public class PlayerRollingState extends BaseState
 	@Override
 	public void Update()
 	{
-		stateTime += Gdx.graphics.getDeltaTime();
-	
-	
-		if(this.getStateAnimation().isAnimationFinished(stateTime))
+		super.Update();
+		if(this.getStateAnimation().isAnimationFinished(getStateTime()))
 		{		
 			gameObject.getTransform().setTrigger(false);
 			
@@ -68,17 +66,17 @@ public class PlayerRollingState extends BaseState
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(getStateTime(),true).isFlipX()
 			)
 			flipFrame = true;
 
 
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(getStateTime(), true).flip(flipFrame,false);
 	
 		
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 	}
 
