@@ -41,6 +41,7 @@ public class PlayerRunningState extends BaseState
 	@Override
 	public void Update()
 	{
+		super.Update();
 		if(InputHandler.getTouched("action"))
 			gameObject.setState(new PlayerAttackState(gameObject));
 

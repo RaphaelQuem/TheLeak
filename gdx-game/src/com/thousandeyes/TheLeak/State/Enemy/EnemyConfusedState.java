@@ -36,7 +36,7 @@ public class EnemyConfusedState extends BaseState
 	@Override
 	public void Update()
 	{
-		
+		super.Update();
 		if(getStateTime() >= 1.5f)
 			this.gameObject.setState(new EnemyWalkingState(this.gameObject));
 
