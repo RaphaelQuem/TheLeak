@@ -32,7 +32,7 @@ public class PlayerAttackState extends BaseState
 	
 	public PlayerAttackState(GameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",3,1,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",3,3,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
 		super.setColliders(new ArrayList<Transform>());
