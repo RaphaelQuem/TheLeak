@@ -120,7 +120,11 @@ public abstract class GameObject  implements Comparable<GameObject>, Disposable 
 	
 		
 		double i = Math.floor(this.getState().getStateAnimation().getKeyFrameIndex(this.getState().getStateTime())/(this.getState().getStateAnimation().getKeyFrames().length/this.getState().getColliders().size()));
-		Transform collider = this.getState().getColliders().get((int)i);
+		Transform collider;
+		if(this.getState().getColliders().size()>i)
+			collider = this.getState().getColliders().get((int)i);
+		else
+			collider = this.getState().getColliders().get(this.getState().getColliders().size()-1);
 		if(this.getFlipped())
 		{
 			return new Transform(collider.getOwner(),collider.x - collider.width - this.getTransform().width, collider.y,collider.getWidthPercentage(), collider.getHeightPercentage(),collider.getTrigger(), collider.getTag(), collider.getMultiplier());

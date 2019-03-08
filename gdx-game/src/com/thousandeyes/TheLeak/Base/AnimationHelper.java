@@ -18,7 +18,10 @@ public class AnimationHelper
 			for (int j = 0; j < cols; j++)
 			{
 				if(spriteCount ==0 || index<spriteCount)
-					frames[index++] = tmp[i][j];
+				{
+					frames[index] = tmp[i][j];
+					index++;
+				}
 				
 			}
 		}

@@ -32,7 +32,7 @@ public class PlayerAttackState extends BaseState
 	
 	public PlayerAttackState(GameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",3,3,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",2,2,0.1f);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
 		super.setColliders(new ArrayList<Transform>());
@@ -51,13 +51,7 @@ public class PlayerAttackState extends BaseState
 			combo = true;
 			
 			
-		if(this.getStateAnimation().isAnimationFinished(super.getStateTime()))
-		{
-			if(combo)
-				gameObject.setState(new PlayerAttack2State(gameObject));
-			else
-				gameObject.setState(new PlayerIdleState(gameObject));
-		}
+		
 		boolean flipFrame = false;
 		if
 		(
@@ -71,7 +65,14 @@ public class PlayerAttackState extends BaseState
 		this.getStateAnimation().getKeyFrame(super.getStateTime(), true).flip(flipFrame,false);
 		
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(super.getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
-		
+		if(this.getStateAnimation().isAnimationFinished(super.getStateTime()))
+		{
+			if(combo)
+				gameObject.setState(new PlayerAttack2State(gameObject));
+			else
+				gameObject.setState(new PlayerIdleState(gameObject));
+
+		}
 	}
 	@Override
 	public void onTriggerEnter(Transform other)
