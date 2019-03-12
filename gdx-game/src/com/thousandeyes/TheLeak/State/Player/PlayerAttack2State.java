@@ -11,7 +11,9 @@ public class PlayerAttack2State extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
-
+	private int rows=1;
+	private int cols =2;
+	private float frameTime =0.1f;
 	private String name;
 	
 	private boolean combo;
@@ -35,14 +37,14 @@ public class PlayerAttack2State extends BaseState
 	public PlayerAttack2State(GameObject _gameObject){
 		super.setStateTime( 0f);
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack2-spritesheet.png",3,1,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack2-spritesheet.png",cols,rows,frameTime);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
-		super.setColliders(new ArrayList<Transform>());
+		/*super.setColliders(new ArrayList<Transform>());
 		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 65f), 1f,5f,true, "attack", 5f));
 		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 5f));
 		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 5f));
-		
+		*/
 
 		
 	}
@@ -55,7 +57,9 @@ public class PlayerAttack2State extends BaseState
 		if(InputHandler.getTouched("action"))
 			combo = true;
 
-
+		float capTime = (rows*cols*frameTime)-frameTime;
+		capTime= Math.min(super.getStateTime(),capTime);
+		
 		if(this.getStateAnimation().isAnimationFinished(super.getStateTime()))
 		{
 			if(combo)
@@ -73,7 +77,7 @@ public class PlayerAttack2State extends BaseState
 			flipFrame = true;
 
 		
-		this.getStateAnimation().getKeyFrame(super.getStateTime(), true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(capTime, true).flip(flipFrame,false);
 
 		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(super.getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
