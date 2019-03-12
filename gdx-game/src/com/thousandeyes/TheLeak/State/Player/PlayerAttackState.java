@@ -13,6 +13,10 @@ public class PlayerAttackState extends BaseState
 	private GameObject gameObject;
 	private String name;
 	private boolean combo;
+	private int cols=2;
+	private int rows=2;
+	private float frameTime=0.1f;
+	
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -32,7 +36,7 @@ public class PlayerAttackState extends BaseState
 	
 	public PlayerAttackState(GameObject _gameObject){
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",2,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack-spritesheet.png",rows,cols,frameTime);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
 		super.setColliders(new ArrayList<Transform>());
@@ -50,7 +54,8 @@ public class PlayerAttackState extends BaseState
 		if(InputHandler.getTouched("action"))
 			combo = true;
 			
-			
+		float capTime = (rows*cols*frameTime)-frameTime;
+		capTime= Math.min(super.getStateTime(),capTime);
 		
 		boolean flipFrame = false;
 		if
@@ -64,7 +69,7 @@ public class PlayerAttackState extends BaseState
 		
 		this.getStateAnimation().getKeyFrame(super.getStateTime(), true).flip(flipFrame,false);
 		
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(super.getStateTime(), true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(capTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 		if(this.getStateAnimation().isAnimationFinished(super.getStateTime()))
 		{
 			if(combo)
