@@ -40,11 +40,11 @@ public class PlayerAttack2State extends BaseState
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack2-spritesheet.png",cols,rows,frameTime);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
-		/*super.setColliders(new ArrayList<Transform>());
-		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 65f), 1f,5f,true, "attack", 5f));
-		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 5f));
-		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 5f));
-		*/
+		super.setColliders(new ArrayList<Transform>());
+		super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y + (gameObject.getTransform().height/ 100f * 5f), 7f,35f,true, "attack", 5f));
+		//super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 3f,5f,true, "attack", 5f));
+		//super.getColliders().add(new Transform(gameObject, gameObject.getTransform().x +gameObject.getTransform().width, gameObject.getTransform().y+ (gameObject.getTransform().height/ 100f * 65f), 6f,5f,true, "attack", 5f));
+		
 
 		
 	}

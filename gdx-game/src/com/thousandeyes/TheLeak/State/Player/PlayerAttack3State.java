@@ -13,7 +13,9 @@ public class PlayerAttack3State extends BaseState
 	private String name;
 	private List<Transform> colliders;
 	private List<GameObject> collisions;
-	private boolean combo;
+	private int rows=1;
+	private int cols =2;
+	private float frameTime =0.1f;
 	@Override
 	public Animation getStateAnimation()
 	{
@@ -33,7 +35,7 @@ public class PlayerAttack3State extends BaseState
 	public PlayerAttack3State(GameObject _gameObject){
 		stateTime = 0f;
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack3-spritesheet.png",3,1,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("hero-attack3-spritesheet.png",cols,rows,frameTime);
 		stateAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 		name = this.getClass().getName(); 
 		colliders = new ArrayList<Transform>();
@@ -47,9 +49,11 @@ public class PlayerAttack3State extends BaseState
 	@Override
 	public void Update()
 	{
-		stateTime  += Gdx.graphics.getDeltaTime();
+		super.Update();
 		
-
+		float capTime = (rows*cols*frameTime)-frameTime;
+		capTime= Math.min(super.getStateTime(),capTime);
+		
 		if(this.getStateAnimation().isAnimationFinished(stateTime))
 		{
 			gameObject.setState(new PlayerIdleState(gameObject));
@@ -65,9 +69,9 @@ public class PlayerAttack3State extends BaseState
 
 		
 
-		this.getStateAnimation().getKeyFrame(stateTime, true).flip(flipFrame,false);
+		this.getStateAnimation().getKeyFrame(capTime, true).flip(flipFrame,false);
 
-		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(stateTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
+		GameResources.SpriteBatch.draw(getStateAnimation().getKeyFrame(capTime, true), getGameObject().getTransform().getCanvas().x,getGameObject().getTransform().getCanvas().y, getGameObject().getTransform().getCanvas().width, getGameObject().getTransform().getCanvas().height);
 
 
 	}
