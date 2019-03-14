@@ -54,7 +54,7 @@ public class PlayerAttack3State extends BaseState
 		float capTime = (rows*cols*frameTime)-frameTime;
 		capTime= Math.min(super.getStateTime(),capTime);
 		
-		if(this.getStateAnimation().isAnimationFinished(stateTime))
+		if(this.getStateAnimation().isAnimationFinished(super.getStateTime()))
 		{
 			gameObject.setState(new PlayerIdleState(gameObject));
 		}
