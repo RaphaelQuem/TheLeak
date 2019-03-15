@@ -11,7 +11,7 @@ public class PlayerAttack2State extends BaseState
 {
 	private Animation stateAnimation;
 	private GameObject gameObject;
-	private int rows=1;
+	private int rows=2;
 	private int cols =2;
 	private float frameTime =0.1f;
 	private String name;
