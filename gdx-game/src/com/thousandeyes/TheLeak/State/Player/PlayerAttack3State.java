@@ -61,12 +61,12 @@ public class PlayerAttack3State extends BaseState
 		boolean flipFrame = false;
 		if
 		(
-			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			this.gameObject.getFlipped() && !this.getStateAnimation().getKeyFrame(super.getStateTime(),true).isFlipX()
 			||
-			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(stateTime,true).isFlipX()
+			!this.gameObject.getFlipped() && this.getStateAnimation().getKeyFrame(super.getStateTime(),true).isFlipX()
 		)
 			flipFrame = true;
-
+		
 		
 
 		this.getStateAnimation().getKeyFrame(capTime, true).flip(flipFrame,false);
