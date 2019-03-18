@@ -14,7 +14,7 @@ public class PlayerAttack3State extends BaseState
 	private List<Transform> colliders;
 	private List<GameObject> collisions;
 	private int rows=1;
-	private int cols =2;
+	private int cols =4;
 	private float frameTime =0.1f;
 	@Override
 	public Animation getStateAnimation()
