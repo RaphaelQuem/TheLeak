@@ -137,6 +137,6 @@ public class FirstBossA1State extends BaseState
 	@Override
 	public void onTriggerEnter(Transform other)
 	{
-		this.gameObject.setState(new EnemyHitState(this.gameObject, other.getOwner()));
+		this.gameObject.setState(new FirstBossHitState(this.gameObject, other.getOwner()));
 	}
 }
