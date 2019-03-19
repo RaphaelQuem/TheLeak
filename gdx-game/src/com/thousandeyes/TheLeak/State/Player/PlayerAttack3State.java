@@ -11,7 +11,6 @@ public class PlayerAttack3State extends BaseState
 	private GameObject gameObject;
 	private float stateTime;
 	private String name;
-	private List<Transform> colliders;
 	private List<GameObject> collisions;
 	private int rows=1;
 	private int cols =4;
