@@ -35,7 +35,7 @@ public class FirstBossWalkingState extends BaseState
 	public FirstBossWalkingState(GameObject _gameObject)
 	{
 		gameObject = _gameObject;
-		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
+		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-idle-spritesheet.png",2,1,0.1f);
 		name = this.getClass().getName();
 	}
 	@Override
