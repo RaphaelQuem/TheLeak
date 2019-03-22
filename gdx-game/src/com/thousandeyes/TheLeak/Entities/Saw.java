@@ -29,6 +29,8 @@ public class Saw extends GameObject
 	public Transform getCollider()
 	{
 		Transform collider = new Transform();
+		collider.setTag("attack");
+		collider.setOwner(this);
 		collider.x = this.getTransform().x;
 		collider.y = this.getTransform().y;
 		collider.width = this.getTransform().width;
@@ -54,8 +56,8 @@ public class Saw extends GameObject
 			{
 				Transform objcollision = objy.getTransform().Copy();
 				objcollision.height = objcollision.height * 0.1f;
-			
-				
+
+
 				if(reduced.overlaps(objcollision))
 				{
 					objy.getState().onTriggerEnter(this.getCollider());
