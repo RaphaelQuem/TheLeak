@@ -26,6 +26,17 @@ public class Saw extends GameObject
 	}
 
 	@Override
+	public Transform getCollider()
+	{
+		Transform collider = new Transform();
+		collider.x = this.getTransform().x;
+		collider.y = this.getTransform().y;
+		collider.width = this.getTransform().width;
+		collider.height = this.getTransform().height * 0.2f;
+		return collider;
+	}
+	
+	@Override
 	public void Update()
 	{
 		this.getTransform().AddTransform(Vectors.Left,2);
