@@ -52,7 +52,7 @@ public class FirstBossA1State extends BaseState
 		launchSaw = false;
 		stateAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-walking-spritesheet.png",5,2,0.1f);
 		yupAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstbossyup.png",5,2,0.1f);
-		ydownAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstbossydown.png",5,2,0.1f);
+		ydownAnimation = AnimationHelper.GetAnimationFromSpritesheet("firstboss-attack-spritesheet.png",2,2,0.1f);
 		attackAnimation = AnimationHelper.GetAnimationFromSpritesheet("datascavenger-attack-spritesheet.png",1,3,0.1f);
 		name = this.getClass().getName();
 	}
@@ -91,7 +91,7 @@ public class FirstBossA1State extends BaseState
 					stateAnimation = ydownAnimation;
 					float ybefore = this.gameObject.getTransform().y;
 
-					this.gameObject.getTransform().AddTransform(Vectors.Down,10);
+					this.gameObject.getTransform().AddTransform(Vectors.Down,2);
 
 					float yafter = this.gameObject.getTransform().y;
 	
