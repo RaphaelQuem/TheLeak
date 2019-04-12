@@ -82,6 +82,7 @@ public class MyGdxGame  implements ApplicationListener
 		{
 		if(GameResources.Debug) 
 		{
+		
 
 			GameResources.ShapeRenderer.setProjectionMatrix(GameResources.Camera.combined);
 			GameResources.ShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
