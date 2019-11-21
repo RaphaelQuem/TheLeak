@@ -8,6 +8,8 @@ THE LEAK is a Beat 'em up / ARPG mobile-first game being entirely developed on a
 JAVA SDK
 LIBGDX
 
+![Brazil](https://sd.keepcalms.com/i-w600/keep-calm-e-nada-acontece-feijoada.jpg)
+
 ## Built With
 
 * [LIBGDX](https://libgdx.badlogicgames.com/documentation/) - Java gameframework for Android
